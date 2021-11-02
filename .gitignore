@@ -2,3 +2,4 @@
 /backend/api/migrations
 /backend/api/__pycache__
 /backend/proj/__pycache__
+/backend/db.sqlite3
