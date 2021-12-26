@@ -61,8 +61,7 @@ class Repository {
       final res = await cs.get('/packs');
       final packs = (res.data as List<Object?>)
           .map(
-            (e) => Pack.fromJson(
-                (e as Map<String, dynamic>)..['runtimeType'] = 'from'),
+            (e) => Pack.fromJson((e as Map<String, dynamic>)),
           )
           .toList();
       return right(packs);

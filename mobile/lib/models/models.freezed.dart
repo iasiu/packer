@@ -543,7 +543,7 @@ class __$ReceiverCopyWithImpl<$Res> extends _$ReceiverCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Receiver implements _Receiver {
-  _$_Receiver(
+  const _$_Receiver(
       {required this.name,
       required this.emailAddress,
       this.phoneNumber = '',
@@ -602,7 +602,7 @@ class _$_Receiver implements _Receiver {
 }
 
 abstract class _Receiver implements Receiver {
-  factory _Receiver(
+  const factory _Receiver(
       {required String name,
       required String emailAddress,
       String phoneNumber,
@@ -625,46 +625,24 @@ abstract class _Receiver implements Receiver {
 }
 
 Pack _$PackFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
-    case 'from':
-      return _PackFrom.fromJson(json);
-    case 'to':
-      return _PackTo.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'Pack',
-          'Invalid union type "${json['runtimeType']}"!');
-  }
+  return _Pack.fromJson(json);
 }
 
 /// @nodoc
 class _$PackTearOff {
   const _$PackTearOff();
 
-  _PackFrom from(
+  _Pack call(
       {String barcode = '',
       required DateTime deliveryDate,
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
       required Sender sender,
       Receiver? receiver = null}) {
-    return _PackFrom(
+    return _Pack(
       barcode: barcode,
       deliveryDate: deliveryDate,
       passDate: passDate,
-      deliveryCompany: deliveryCompany,
-      sender: sender,
-      receiver: receiver,
-    );
-  }
-
-  _PackTo to(
-      {String barcode = '',
-      required DeliveryCompany deliveryCompany,
-      required Sender sender,
-      Receiver? receiver = null}) {
-    return _PackTo(
-      barcode: barcode,
       deliveryCompany: deliveryCompany,
       sender: sender,
       receiver: receiver,
@@ -682,65 +660,12 @@ const $Pack = _$PackTearOff();
 /// @nodoc
 mixin _$Pack {
   String get barcode => throw _privateConstructorUsedError;
+  DateTime get deliveryDate => throw _privateConstructorUsedError;
+  DateTime? get passDate => throw _privateConstructorUsedError;
   DeliveryCompany get deliveryCompany => throw _privateConstructorUsedError;
   Sender get sender => throw _privateConstructorUsedError;
   Receiver? get receiver => throw _privateConstructorUsedError;
 
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String barcode,
-            DateTime deliveryDate,
-            DateTime? passDate,
-            DeliveryCompany deliveryCompany,
-            Sender sender,
-            Receiver? receiver)
-        from,
-    required TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)
-        to,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String barcode, DateTime deliveryDate, DateTime? passDate,
-            DeliveryCompany deliveryCompany, Sender sender, Receiver? receiver)?
-        from,
-    TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)?
-        to,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String barcode, DateTime deliveryDate, DateTime? passDate,
-            DeliveryCompany deliveryCompany, Sender sender, Receiver? receiver)?
-        from,
-    TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)?
-        to,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PackFrom value) from,
-    required TResult Function(_PackTo value) to,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PackFrom value)? from,
-    TResult Function(_PackTo value)? to,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PackFrom value)? from,
-    TResult Function(_PackTo value)? to,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PackCopyWith<Pack> get copyWith => throw _privateConstructorUsedError;
@@ -752,6 +677,8 @@ abstract class $PackCopyWith<$Res> {
       _$PackCopyWithImpl<$Res>;
   $Res call(
       {String barcode,
+      DateTime deliveryDate,
+      DateTime? passDate,
       DeliveryCompany deliveryCompany,
       Sender sender,
       Receiver? receiver});
@@ -772,6 +699,8 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
   @override
   $Res call({
     Object? barcode = freezed,
+    Object? deliveryDate = freezed,
+    Object? passDate = freezed,
     Object? deliveryCompany = freezed,
     Object? sender = freezed,
     Object? receiver = freezed,
@@ -781,6 +710,14 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
           ? _value.barcode
           : barcode // ignore: cast_nullable_to_non_nullable
               as String,
+      deliveryDate: deliveryDate == freezed
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      passDate: passDate == freezed
+          ? _value.passDate
+          : passDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       deliveryCompany: deliveryCompany == freezed
           ? _value.deliveryCompany
           : deliveryCompany // ignore: cast_nullable_to_non_nullable
@@ -823,9 +760,9 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PackFromCopyWith<$Res> implements $PackCopyWith<$Res> {
-  factory _$PackFromCopyWith(_PackFrom value, $Res Function(_PackFrom) then) =
-      __$PackFromCopyWithImpl<$Res>;
+abstract class _$PackCopyWith<$Res> implements $PackCopyWith<$Res> {
+  factory _$PackCopyWith(_Pack value, $Res Function(_Pack) then) =
+      __$PackCopyWithImpl<$Res>;
   @override
   $Res call(
       {String barcode,
@@ -844,13 +781,13 @@ abstract class _$PackFromCopyWith<$Res> implements $PackCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PackFromCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
-    implements _$PackFromCopyWith<$Res> {
-  __$PackFromCopyWithImpl(_PackFrom _value, $Res Function(_PackFrom) _then)
-      : super(_value, (v) => _then(v as _PackFrom));
+class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
+    implements _$PackCopyWith<$Res> {
+  __$PackCopyWithImpl(_Pack _value, $Res Function(_Pack) _then)
+      : super(_value, (v) => _then(v as _Pack));
 
   @override
-  _PackFrom get _value => super._value as _PackFrom;
+  _Pack get _value => super._value as _Pack;
 
   @override
   $Res call({
@@ -861,7 +798,7 @@ class __$PackFromCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
     Object? sender = freezed,
     Object? receiver = freezed,
   }) {
-    return _then(_PackFrom(
+    return _then(_Pack(
       barcode: barcode == freezed
           ? _value.barcode
           : barcode // ignore: cast_nullable_to_non_nullable
@@ -892,19 +829,16 @@ class __$PackFromCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PackFrom implements _PackFrom {
-  _$_PackFrom(
+class _$_Pack implements _Pack {
+  const _$_Pack(
       {this.barcode = '',
       required this.deliveryDate,
       this.passDate,
       required this.deliveryCompany,
       required this.sender,
-      this.receiver = null,
-      String? $type})
-      : $type = $type ?? 'from';
+      this.receiver = null});
 
-  factory _$_PackFrom.fromJson(Map<String, dynamic> json) =>
-      _$$_PackFromFromJson(json);
+  factory _$_Pack.fromJson(Map<String, dynamic> json) => _$$_PackFromJson(json);
 
   @JsonKey()
   @override
@@ -921,19 +855,16 @@ class _$_PackFrom implements _PackFrom {
   @override
   final Receiver? receiver;
 
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
   @override
   String toString() {
-    return 'Pack.from(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver)';
+    return 'Pack(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PackFrom &&
+            other is _Pack &&
             const DeepCollectionEquality().equals(other.barcode, barcode) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryDate, deliveryDate) &&
@@ -956,111 +887,31 @@ class _$_PackFrom implements _PackFrom {
 
   @JsonKey(ignore: true)
   @override
-  _$PackFromCopyWith<_PackFrom> get copyWith =>
-      __$PackFromCopyWithImpl<_PackFrom>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String barcode,
-            DateTime deliveryDate,
-            DateTime? passDate,
-            DeliveryCompany deliveryCompany,
-            Sender sender,
-            Receiver? receiver)
-        from,
-    required TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)
-        to,
-  }) {
-    return from(
-        barcode, deliveryDate, passDate, deliveryCompany, sender, receiver);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String barcode, DateTime deliveryDate, DateTime? passDate,
-            DeliveryCompany deliveryCompany, Sender sender, Receiver? receiver)?
-        from,
-    TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)?
-        to,
-  }) {
-    return from?.call(
-        barcode, deliveryDate, passDate, deliveryCompany, sender, receiver);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String barcode, DateTime deliveryDate, DateTime? passDate,
-            DeliveryCompany deliveryCompany, Sender sender, Receiver? receiver)?
-        from,
-    TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)?
-        to,
-    required TResult orElse(),
-  }) {
-    if (from != null) {
-      return from(
-          barcode, deliveryDate, passDate, deliveryCompany, sender, receiver);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PackFrom value) from,
-    required TResult Function(_PackTo value) to,
-  }) {
-    return from(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PackFrom value)? from,
-    TResult Function(_PackTo value)? to,
-  }) {
-    return from?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PackFrom value)? from,
-    TResult Function(_PackTo value)? to,
-    required TResult orElse(),
-  }) {
-    if (from != null) {
-      return from(this);
-    }
-    return orElse();
-  }
+  _$PackCopyWith<_Pack> get copyWith =>
+      __$PackCopyWithImpl<_Pack>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PackFromToJson(this);
+    return _$$_PackToJson(this);
   }
 }
 
-abstract class _PackFrom implements Pack {
-  factory _PackFrom(
+abstract class _Pack implements Pack {
+  const factory _Pack(
       {String barcode,
       required DateTime deliveryDate,
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
       required Sender sender,
-      Receiver? receiver}) = _$_PackFrom;
+      Receiver? receiver}) = _$_Pack;
 
-  factory _PackFrom.fromJson(Map<String, dynamic> json) = _$_PackFrom.fromJson;
+  factory _Pack.fromJson(Map<String, dynamic> json) = _$_Pack.fromJson;
 
   @override
   String get barcode;
+  @override
   DateTime get deliveryDate;
+  @override
   DateTime? get passDate;
   @override
   DeliveryCompany get deliveryCompany;
@@ -1070,227 +921,5 @@ abstract class _PackFrom implements Pack {
   Receiver? get receiver;
   @override
   @JsonKey(ignore: true)
-  _$PackFromCopyWith<_PackFrom> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$PackToCopyWith<$Res> implements $PackCopyWith<$Res> {
-  factory _$PackToCopyWith(_PackTo value, $Res Function(_PackTo) then) =
-      __$PackToCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String barcode,
-      DeliveryCompany deliveryCompany,
-      Sender sender,
-      Receiver? receiver});
-
-  @override
-  $DeliveryCompanyCopyWith<$Res> get deliveryCompany;
-  @override
-  $SenderCopyWith<$Res> get sender;
-  @override
-  $ReceiverCopyWith<$Res>? get receiver;
-}
-
-/// @nodoc
-class __$PackToCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
-    implements _$PackToCopyWith<$Res> {
-  __$PackToCopyWithImpl(_PackTo _value, $Res Function(_PackTo) _then)
-      : super(_value, (v) => _then(v as _PackTo));
-
-  @override
-  _PackTo get _value => super._value as _PackTo;
-
-  @override
-  $Res call({
-    Object? barcode = freezed,
-    Object? deliveryCompany = freezed,
-    Object? sender = freezed,
-    Object? receiver = freezed,
-  }) {
-    return _then(_PackTo(
-      barcode: barcode == freezed
-          ? _value.barcode
-          : barcode // ignore: cast_nullable_to_non_nullable
-              as String,
-      deliveryCompany: deliveryCompany == freezed
-          ? _value.deliveryCompany
-          : deliveryCompany // ignore: cast_nullable_to_non_nullable
-              as DeliveryCompany,
-      sender: sender == freezed
-          ? _value.sender
-          : sender // ignore: cast_nullable_to_non_nullable
-              as Sender,
-      receiver: receiver == freezed
-          ? _value.receiver
-          : receiver // ignore: cast_nullable_to_non_nullable
-              as Receiver?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_PackTo implements _PackTo {
-  _$_PackTo(
-      {this.barcode = '',
-      required this.deliveryCompany,
-      required this.sender,
-      this.receiver = null,
-      String? $type})
-      : $type = $type ?? 'to';
-
-  factory _$_PackTo.fromJson(Map<String, dynamic> json) =>
-      _$$_PackToFromJson(json);
-
-  @JsonKey()
-  @override
-  final String barcode;
-  @override
-  final DeliveryCompany deliveryCompany;
-  @override
-  final Sender sender;
-  @JsonKey()
-  @override
-  final Receiver? receiver;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'Pack.to(barcode: $barcode, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _PackTo &&
-            const DeepCollectionEquality().equals(other.barcode, barcode) &&
-            const DeepCollectionEquality()
-                .equals(other.deliveryCompany, deliveryCompany) &&
-            const DeepCollectionEquality().equals(other.sender, sender) &&
-            const DeepCollectionEquality().equals(other.receiver, receiver));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(barcode),
-      const DeepCollectionEquality().hash(deliveryCompany),
-      const DeepCollectionEquality().hash(sender),
-      const DeepCollectionEquality().hash(receiver));
-
-  @JsonKey(ignore: true)
-  @override
-  _$PackToCopyWith<_PackTo> get copyWith =>
-      __$PackToCopyWithImpl<_PackTo>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String barcode,
-            DateTime deliveryDate,
-            DateTime? passDate,
-            DeliveryCompany deliveryCompany,
-            Sender sender,
-            Receiver? receiver)
-        from,
-    required TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)
-        to,
-  }) {
-    return to(barcode, deliveryCompany, sender, receiver);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String barcode, DateTime deliveryDate, DateTime? passDate,
-            DeliveryCompany deliveryCompany, Sender sender, Receiver? receiver)?
-        from,
-    TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)?
-        to,
-  }) {
-    return to?.call(barcode, deliveryCompany, sender, receiver);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String barcode, DateTime deliveryDate, DateTime? passDate,
-            DeliveryCompany deliveryCompany, Sender sender, Receiver? receiver)?
-        from,
-    TResult Function(String barcode, DeliveryCompany deliveryCompany,
-            Sender sender, Receiver? receiver)?
-        to,
-    required TResult orElse(),
-  }) {
-    if (to != null) {
-      return to(barcode, deliveryCompany, sender, receiver);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PackFrom value) from,
-    required TResult Function(_PackTo value) to,
-  }) {
-    return to(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PackFrom value)? from,
-    TResult Function(_PackTo value)? to,
-  }) {
-    return to?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PackFrom value)? from,
-    TResult Function(_PackTo value)? to,
-    required TResult orElse(),
-  }) {
-    if (to != null) {
-      return to(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_PackToToJson(this);
-  }
-}
-
-abstract class _PackTo implements Pack {
-  factory _PackTo(
-      {String barcode,
-      required DeliveryCompany deliveryCompany,
-      required Sender sender,
-      Receiver? receiver}) = _$_PackTo;
-
-  factory _PackTo.fromJson(Map<String, dynamic> json) = _$_PackTo.fromJson;
-
-  @override
-  String get barcode;
-  @override
-  DeliveryCompany get deliveryCompany;
-  @override
-  Sender get sender;
-  @override
-  Receiver? get receiver;
-  @override
-  @JsonKey(ignore: true)
-  _$PackToCopyWith<_PackTo> get copyWith => throw _privateConstructorUsedError;
+  _$PackCopyWith<_Pack> get copyWith => throw _privateConstructorUsedError;
 }

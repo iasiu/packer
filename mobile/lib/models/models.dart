@@ -27,7 +27,7 @@ class Sender with _$Sender {
 
 @freezed
 class Receiver with _$Receiver {
-  factory Receiver({
+  const factory Receiver({
     required String name,
     required String emailAddress,
     @Default('') String phoneNumber,
@@ -39,21 +39,14 @@ class Receiver with _$Receiver {
 
 @freezed
 class Pack with _$Pack {
-  factory Pack.from({
+  const factory Pack({
     @Default('') String barcode,
     required DateTime deliveryDate,
     DateTime? passDate,
     required DeliveryCompany deliveryCompany,
     required Sender sender,
     @Default(null) Receiver? receiver,
-  }) = _PackFrom;
-
-  factory Pack.to({
-    @Default('') String barcode,
-    required DeliveryCompany deliveryCompany,
-    required Sender sender,
-    @Default(null) Receiver? receiver,
-  }) = _PackTo;
+  }) = _Pack;
 
   factory Pack.fromJson(Map<String, dynamic> json) => _$PackFromJson(json);
 }
