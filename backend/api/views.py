@@ -11,7 +11,7 @@ class Ping(APIView):
     def get(self, request):
         return Response({'ping': 'pong'})
 
-class DeliveryCompanyViewSet(viewsets.ModelViewSet):
+class DeliveryCompanyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.DeliveryCompany.objects.all()
     serializer_class = serializers.DeliveryCompanySerializer
     permission_classes = [permissions.IsAuthenticated]

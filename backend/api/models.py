@@ -35,12 +35,12 @@ class Receiver(models.Model):
         ordering = ['name']
     
 class Pack(models.Model):
-    barcode = models.CharField(max_length=200, blank=True, default='')
-    deliveryDate = models.DateTimeField(auto_now_add=True)
-    passDate = models.DateTimeField(blank=True)
+    barcode = models.CharField(max_length=200, blank=True)
+    deliveryDate = models.DateTimeField(auto_now_add=True, blank=True)
+    passDate = models.DateTimeField(blank=True, null=True)
     deliveryCompany = models.ForeignKey(DeliveryCompany, on_delete=models.PROTECT, related_name='packs')
     sender = models.ForeignKey(Sender, on_delete=models.PROTECT, related_name='packs')
-    receiver = models.ForeignKey(Receiver, on_delete=models.PROTECT, blank=True, related_name='packs')
+    receiver = models.ForeignKey(Receiver, on_delete=models.PROTECT, blank=True, null=True, related_name='packs')
     
     def __str__(self):
         return 'For {}, {}'.format(self.receiver.name, self.deliveryDate)

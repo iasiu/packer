@@ -24,3 +24,4 @@ class PackSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Pack
         fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver']
+        depth = 1
