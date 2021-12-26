@@ -21,6 +21,7 @@ class SenderViewSet(viewsets.ModelViewSet):
     queryset = models.Sender.objects.all()
     serializer_class = serializers.SenderSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
 
 class ReceiverViewSet(viewsets.ModelViewSet):
     queryset = models.Receiver.objects.all()
@@ -30,7 +31,24 @@ class ReceiverViewSet(viewsets.ModelViewSet):
 class PackViewSet(viewsets.ModelViewSet):
     queryset = models.Pack.objects.all()
     serializer_class = serializers.PackSerializer
+    read_serializer_class = serializers.PackReadSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
+    def list(self, request, *args, **kwargs): 
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.read_serializer_class
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.read_serializer_class(queryset, many=True)
+        return Response(serializer.data)
+    
+    def retrieve(self, request, *args, **kwargs):   
+        instance = self.get_object()
+        serializer = self.read_serializer_class(instance)
+        return Response(serializer.data)
 
 class PassPack(APIView):
     def get(self, _, pack_id, receiver_id):

@@ -15,14 +15,17 @@ class ReceiverSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Receiver
         fields = ['id', 'name', 'emailAddress', 'phoneNumber', 'officeNumber']
+
+class PackSerializer(serializers.ModelSerializer): 
+    class Meta:
+        model = models.Pack
+        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver']
         
-class PackSerializer(serializers.ModelSerializer):
+class PackReadSerializer(serializers.ModelSerializer):
     deliveryCompany = DeliveryCompanySerializer(read_only=True)
     sender = SenderSerializer(read_only=True)
     receiver = ReceiverSerializer(read_only=True)
-    deliveryCompanyId = serializers.SlugRelatedField(queryset=models.DeliveryCompany.objects.all(), slug_field='id', write_only=True)
-    senderId = serializers.SlugRelatedField(queryset=models.Sender.objects.all(), slug_field='id', write_only=True)
-    receiverId = serializers.SlugRelatedField(queryset=models.Receiver.objects.all(), slug_field='id', write_only=True)
+        
     class Meta:
         model = models.Pack
-        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver', 'deliveryCompanyId', 'senderId', 'receiverId']
+        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver']
