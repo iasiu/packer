@@ -21,7 +21,7 @@ _$_Sender _$$_SenderFromJson(Map<String, dynamic> json) => _$_Sender(
       city: json['city'] as String,
       addressLine: json['addressLine'] as String,
       postCode: json['postCode'] as String,
-      comment: json['comment'] as String? ?? null,
+      comment: json['comment'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_SenderToJson(_$_Sender instance) => <String, dynamic>{
@@ -35,8 +35,8 @@ Map<String, dynamic> _$$_SenderToJson(_$_Sender instance) => <String, dynamic>{
 _$_Receiver _$$_ReceiverFromJson(Map<String, dynamic> json) => _$_Receiver(
       name: json['name'] as String,
       emailAddress: json['emailAddress'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      officeNumber: json['officeNumber'] as String,
+      phoneNumber: json['phoneNumber'] as String? ?? '',
+      officeNumber: json['officeNumber'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_ReceiverToJson(_$_Receiver instance) =>
@@ -47,23 +47,47 @@ Map<String, dynamic> _$$_ReceiverToJson(_$_Receiver instance) =>
       'officeNumber': instance.officeNumber,
     };
 
-_$_Pack _$$_PackFromJson(Map<String, dynamic> json) => _$_Pack(
+_$_PackFrom _$$_PackFromFromJson(Map<String, dynamic> json) => _$_PackFrom(
       barcode: json['barcode'] as String? ?? '',
-      deliveryDate: json['deliveryDate'] as String,
-      passDate: json['passDate'] as String? ?? null,
+      deliveryDate: DateTime.parse(json['deliveryDate'] as String),
+      passDate: json['passDate'] == null
+          ? null
+          : DateTime.parse(json['passDate'] as String),
       deliveryCompany: DeliveryCompany.fromJson(
           json['deliveryCompany'] as Map<String, dynamic>),
       sender: Sender.fromJson(json['sender'] as Map<String, dynamic>),
       receiver: json['receiver'] == null
           ? null
           : Receiver.fromJson(json['receiver'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_PackToJson(_$_Pack instance) => <String, dynamic>{
+Map<String, dynamic> _$$_PackFromToJson(_$_PackFrom instance) =>
+    <String, dynamic>{
       'barcode': instance.barcode,
-      'deliveryDate': instance.deliveryDate,
-      'passDate': instance.passDate,
+      'deliveryDate': instance.deliveryDate.toIso8601String(),
+      'passDate': instance.passDate?.toIso8601String(),
       'deliveryCompany': instance.deliveryCompany,
       'sender': instance.sender,
       'receiver': instance.receiver,
+      'runtimeType': instance.$type,
+    };
+
+_$_PackTo _$$_PackToFromJson(Map<String, dynamic> json) => _$_PackTo(
+      barcode: json['barcode'] as String? ?? '',
+      deliveryCompany: DeliveryCompany.fromJson(
+          json['deliveryCompany'] as Map<String, dynamic>),
+      sender: Sender.fromJson(json['sender'] as Map<String, dynamic>),
+      receiver: json['receiver'] == null
+          ? null
+          : Receiver.fromJson(json['receiver'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$_PackToToJson(_$_PackTo instance) => <String, dynamic>{
+      'barcode': instance.barcode,
+      'deliveryCompany': instance.deliveryCompany,
+      'sender': instance.sender,
+      'receiver': instance.receiver,
+      'runtimeType': instance.$type,
     };

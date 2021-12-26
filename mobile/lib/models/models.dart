@@ -19,7 +19,7 @@ class Sender with _$Sender {
     required String city,
     required String addressLine,
     required String postCode,
-    @Default(null) String? comment,
+    @Default('') String comment,
   }) = _Sender;
 
   factory Sender.fromJson(Map<String, dynamic> json) => _$SenderFromJson(json);
@@ -30,8 +30,8 @@ class Receiver with _$Receiver {
   factory Receiver({
     required String name,
     required String emailAddress,
-    required String phoneNumber,
-    required String officeNumber,
+    @Default('') String phoneNumber,
+    @Default('') String officeNumber,
   }) = _Receiver;
 
   factory Receiver.fromJson(Map<String, dynamic> json) => _$ReceiverFromJson(json);
@@ -39,14 +39,21 @@ class Receiver with _$Receiver {
 
 @freezed
 class Pack with _$Pack {
-  factory Pack({
-    @Default('') String? barcode,
-    required String deliveryDate,
-    @Default(null) String? passDate,
+  factory Pack.from({
+    @Default('') String barcode,
+    required DateTime deliveryDate,
+    DateTime? passDate,
     required DeliveryCompany deliveryCompany,
     required Sender sender,
     @Default(null) Receiver? receiver,
-  }) = _Pack;
+  }) = _PackFrom;
+
+  factory Pack.to({
+    @Default('') String barcode,
+    required DeliveryCompany deliveryCompany,
+    required Sender sender,
+    @Default(null) Receiver? receiver,
+  }) = _PackTo;
 
   factory Pack.fromJson(Map<String, dynamic> json) => _$PackFromJson(json);
 }
