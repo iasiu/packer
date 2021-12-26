@@ -59,6 +59,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Add package`
+  String get addPackage {
+    return Intl.message(
+      'Add package',
+      name: 'addPackage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pass package`
+  String get passPackage {
+    return Intl.message(
+      'Pass package',
+      name: 'passPackage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit package`
+  String get editPackage {
+    return Intl.message(
+      'Edit package',
+      name: 'editPackage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History`
+  String get history {
+    return Intl.message(
+      'History',
+      name: 'history',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

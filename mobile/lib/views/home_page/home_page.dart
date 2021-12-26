@@ -34,7 +34,7 @@ class HomePage extends HookWidget {
                       color: AppColors.cultured,
                       size: tileButtonSize - 48,
                     ),
-                    text: 'Add package',
+                    text: S.of(context).addPackage,
                     onTap: () {
                       Navigator.of(context).pushNamed('/add');
                     },
@@ -49,7 +49,7 @@ class HomePage extends HookWidget {
                       color: AppColors.cultured,
                       size: tileButtonSize - 48,
                     ),
-                    text: 'Pass package',
+                    text: S.of(context).passPackage,
                     onTap: () {
                       Navigator.of(context).pushNamed('/pass');
                     },
@@ -71,7 +71,7 @@ class HomePage extends HookWidget {
                       color: AppColors.cultured,
                       size: tileButtonSize - 48,
                     ),
-                    text: 'Edit package',
+                    text: S.of(context).editPackage,
                     onTap: () {
                       Navigator.of(context).pushNamed('/edit');
                     },
@@ -86,7 +86,7 @@ class HomePage extends HookWidget {
                       color: AppColors.cultured,
                       size: tileButtonSize - 48,
                     ),
-                    text: 'History',
+                    text: S.of(context).history,
                     onTap: () {
                       Navigator.of(context).pushNamed('/history');
                     },
@@ -100,5 +100,3 @@ class HomePage extends HookWidget {
     );
   }
 }
-
-

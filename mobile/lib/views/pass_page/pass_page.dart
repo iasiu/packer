@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
+import 'package:packer/generated/l10n.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 
 class PassPage extends StatelessWidget {
@@ -7,10 +8,10 @@ class PassPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
+    return AppScaffold(
       height: 60,
       title: Text(
-        'Pass package',
+        S.of(context).passPackage,
         style: TextStyles.white30,
       ),
     );

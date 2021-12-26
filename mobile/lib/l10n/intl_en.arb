@@ -1,3 +1,7 @@
 {
-    "packer": "Packer"
+    "packer": "Packer",
+    "addPackage": "Add package",
+    "passPackage": "Pass package",
+    "editPackage": "Edit package",
+    "history": "History"
 }
