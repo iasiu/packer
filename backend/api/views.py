@@ -59,7 +59,7 @@ class PassPack(APIView):
             pack.receiver = receiver
             pack.passDate = datetime.now()
             pack.save()
-            return Response(serializers.PackSerializer(pack).data)
+            return Response(serializers.PackReadSerializer(pack).data)
         else:
             message = "Pack with id {}, already has a receiver with id {}".format(pack_id, pack.receiver.id)
             return HttpResponseForbidden(message)
