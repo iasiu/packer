@@ -25,11 +25,11 @@ class Sender(models.Model):
 class Receiver(models.Model):
     name = models.CharField(max_length=200)
     emailAddress = models.CharField(max_length=200)
-    phoneNumber = models.CharField(max_length=20)
-    officeNumber = models.CharField(max_length=20)
+    phoneNumber = models.CharField(max_length=20, blank=True)
+    officeNumber = models.CharField(max_length=20, blank=True)
     
     def __str__(self):
-        return '{}, {}'.format(self.name, self.phoneNumber)
+        return '{}, {}'.format(self.name, self.emailAddress)
     
     class Meta:
         ordering = ['name']

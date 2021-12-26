@@ -13,5 +13,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('ping/', views.Ping.as_view()),
+    path('pass/<int:pack_id>/<int:receiver_id>/', views.PassPack.as_view()),
     path('', include(router.urls)),
 ]
