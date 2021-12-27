@@ -69,3 +69,24 @@ Map<String, dynamic> _$$_PackToJson(_$_Pack instance) => <String, dynamic>{
       'sender': instance.sender,
       'receiver': instance.receiver,
     };
+
+_$_PackWrite _$$_PackWriteFromJson(Map<String, dynamic> json) => _$_PackWrite(
+      barcode: json['barcode'] as String? ?? '',
+      deliveryDate: DateTime.parse(json['deliveryDate'] as String),
+      passDate: json['passDate'] == null
+          ? null
+          : DateTime.parse(json['passDate'] as String),
+      deliveryCompanyId: json['deliveryCompanyId'] as int,
+      senderId: json['senderId'] as int,
+      receiverId: json['receiverId'] as int? ?? null,
+    );
+
+Map<String, dynamic> _$$_PackWriteToJson(_$_PackWrite instance) =>
+    <String, dynamic>{
+      'barcode': instance.barcode,
+      'deliveryDate': instance.deliveryDate.toIso8601String(),
+      'passDate': instance.passDate?.toIso8601String(),
+      'deliveryCompanyId': instance.deliveryCompanyId,
+      'senderId': instance.senderId,
+      'receiverId': instance.receiverId,
+    };

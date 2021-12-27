@@ -50,3 +50,17 @@ class Pack with _$Pack {
 
   factory Pack.fromJson(Map<String, dynamic> json) => _$PackFromJson(json);
 }
+
+@freezed
+class PackWrite with _$PackWrite {
+  const factory PackWrite({
+    @Default('') String barcode,
+    required DateTime deliveryDate,
+    DateTime? passDate,
+    required int deliveryCompanyId,
+    required int senderId,
+    @Default(null) int? receiverId,
+  }) = _PackWrite;
+
+  factory PackWrite.fromJson(Map<String, dynamic> json) => _$PackWriteFromJson(json);
+}

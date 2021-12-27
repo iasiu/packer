@@ -923,3 +923,273 @@ abstract class _Pack implements Pack {
   @JsonKey(ignore: true)
   _$PackCopyWith<_Pack> get copyWith => throw _privateConstructorUsedError;
 }
+
+PackWrite _$PackWriteFromJson(Map<String, dynamic> json) {
+  return _PackWrite.fromJson(json);
+}
+
+/// @nodoc
+class _$PackWriteTearOff {
+  const _$PackWriteTearOff();
+
+  _PackWrite call(
+      {String barcode = '',
+      required DateTime deliveryDate,
+      DateTime? passDate,
+      required int deliveryCompanyId,
+      required int senderId,
+      int? receiverId = null}) {
+    return _PackWrite(
+      barcode: barcode,
+      deliveryDate: deliveryDate,
+      passDate: passDate,
+      deliveryCompanyId: deliveryCompanyId,
+      senderId: senderId,
+      receiverId: receiverId,
+    );
+  }
+
+  PackWrite fromJson(Map<String, Object?> json) {
+    return PackWrite.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $PackWrite = _$PackWriteTearOff();
+
+/// @nodoc
+mixin _$PackWrite {
+  String get barcode => throw _privateConstructorUsedError;
+  DateTime get deliveryDate => throw _privateConstructorUsedError;
+  DateTime? get passDate => throw _privateConstructorUsedError;
+  int get deliveryCompanyId => throw _privateConstructorUsedError;
+  int get senderId => throw _privateConstructorUsedError;
+  int? get receiverId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PackWriteCopyWith<PackWrite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PackWriteCopyWith<$Res> {
+  factory $PackWriteCopyWith(PackWrite value, $Res Function(PackWrite) then) =
+      _$PackWriteCopyWithImpl<$Res>;
+  $Res call(
+      {String barcode,
+      DateTime deliveryDate,
+      DateTime? passDate,
+      int deliveryCompanyId,
+      int senderId,
+      int? receiverId});
+}
+
+/// @nodoc
+class _$PackWriteCopyWithImpl<$Res> implements $PackWriteCopyWith<$Res> {
+  _$PackWriteCopyWithImpl(this._value, this._then);
+
+  final PackWrite _value;
+  // ignore: unused_field
+  final $Res Function(PackWrite) _then;
+
+  @override
+  $Res call({
+    Object? barcode = freezed,
+    Object? deliveryDate = freezed,
+    Object? passDate = freezed,
+    Object? deliveryCompanyId = freezed,
+    Object? senderId = freezed,
+    Object? receiverId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      barcode: barcode == freezed
+          ? _value.barcode
+          : barcode // ignore: cast_nullable_to_non_nullable
+              as String,
+      deliveryDate: deliveryDate == freezed
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      passDate: passDate == freezed
+          ? _value.passDate
+          : passDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      deliveryCompanyId: deliveryCompanyId == freezed
+          ? _value.deliveryCompanyId
+          : deliveryCompanyId // ignore: cast_nullable_to_non_nullable
+              as int,
+      senderId: senderId == freezed
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as int,
+      receiverId: receiverId == freezed
+          ? _value.receiverId
+          : receiverId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$PackWriteCopyWith<$Res> implements $PackWriteCopyWith<$Res> {
+  factory _$PackWriteCopyWith(
+          _PackWrite value, $Res Function(_PackWrite) then) =
+      __$PackWriteCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String barcode,
+      DateTime deliveryDate,
+      DateTime? passDate,
+      int deliveryCompanyId,
+      int senderId,
+      int? receiverId});
+}
+
+/// @nodoc
+class __$PackWriteCopyWithImpl<$Res> extends _$PackWriteCopyWithImpl<$Res>
+    implements _$PackWriteCopyWith<$Res> {
+  __$PackWriteCopyWithImpl(_PackWrite _value, $Res Function(_PackWrite) _then)
+      : super(_value, (v) => _then(v as _PackWrite));
+
+  @override
+  _PackWrite get _value => super._value as _PackWrite;
+
+  @override
+  $Res call({
+    Object? barcode = freezed,
+    Object? deliveryDate = freezed,
+    Object? passDate = freezed,
+    Object? deliveryCompanyId = freezed,
+    Object? senderId = freezed,
+    Object? receiverId = freezed,
+  }) {
+    return _then(_PackWrite(
+      barcode: barcode == freezed
+          ? _value.barcode
+          : barcode // ignore: cast_nullable_to_non_nullable
+              as String,
+      deliveryDate: deliveryDate == freezed
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      passDate: passDate == freezed
+          ? _value.passDate
+          : passDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      deliveryCompanyId: deliveryCompanyId == freezed
+          ? _value.deliveryCompanyId
+          : deliveryCompanyId // ignore: cast_nullable_to_non_nullable
+              as int,
+      senderId: senderId == freezed
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as int,
+      receiverId: receiverId == freezed
+          ? _value.receiverId
+          : receiverId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PackWrite implements _PackWrite {
+  const _$_PackWrite(
+      {this.barcode = '',
+      required this.deliveryDate,
+      this.passDate,
+      required this.deliveryCompanyId,
+      required this.senderId,
+      this.receiverId = null});
+
+  factory _$_PackWrite.fromJson(Map<String, dynamic> json) =>
+      _$$_PackWriteFromJson(json);
+
+  @JsonKey()
+  @override
+  final String barcode;
+  @override
+  final DateTime deliveryDate;
+  @override
+  final DateTime? passDate;
+  @override
+  final int deliveryCompanyId;
+  @override
+  final int senderId;
+  @JsonKey()
+  @override
+  final int? receiverId;
+
+  @override
+  String toString() {
+    return 'PackWrite(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompanyId: $deliveryCompanyId, senderId: $senderId, receiverId: $receiverId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PackWrite &&
+            const DeepCollectionEquality().equals(other.barcode, barcode) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryDate, deliveryDate) &&
+            const DeepCollectionEquality().equals(other.passDate, passDate) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryCompanyId, deliveryCompanyId) &&
+            const DeepCollectionEquality().equals(other.senderId, senderId) &&
+            const DeepCollectionEquality()
+                .equals(other.receiverId, receiverId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(barcode),
+      const DeepCollectionEquality().hash(deliveryDate),
+      const DeepCollectionEquality().hash(passDate),
+      const DeepCollectionEquality().hash(deliveryCompanyId),
+      const DeepCollectionEquality().hash(senderId),
+      const DeepCollectionEquality().hash(receiverId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PackWriteCopyWith<_PackWrite> get copyWith =>
+      __$PackWriteCopyWithImpl<_PackWrite>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PackWriteToJson(this);
+  }
+}
+
+abstract class _PackWrite implements PackWrite {
+  const factory _PackWrite(
+      {String barcode,
+      required DateTime deliveryDate,
+      DateTime? passDate,
+      required int deliveryCompanyId,
+      required int senderId,
+      int? receiverId}) = _$_PackWrite;
+
+  factory _PackWrite.fromJson(Map<String, dynamic> json) =
+      _$_PackWrite.fromJson;
+
+  @override
+  String get barcode;
+  @override
+  DateTime get deliveryDate;
+  @override
+  DateTime? get passDate;
+  @override
+  int get deliveryCompanyId;
+  @override
+  int get senderId;
+  @override
+  int? get receiverId;
+  @override
+  @JsonKey(ignore: true)
+  _$PackWriteCopyWith<_PackWrite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
