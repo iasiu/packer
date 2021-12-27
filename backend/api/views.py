@@ -2,8 +2,7 @@ from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from datetime import datetime
-from django.http import HttpResponseForbidden
+from django.utils import timezone
 
 from api import models
 from api import serializers
@@ -53,14 +52,11 @@ class PackViewSet(viewsets.ModelViewSet):
 class PassPack(APIView):
     def get(self, _, pack_id, receiver_id):
         pack = get_object_or_404(models.Pack, pk=pack_id)
-        if pack.receiver == None:
+        if pack.receiver == None or pack.receiver.id != receiver_id:
             receiver = get_object_or_404(models.Receiver, pk=receiver_id)
-            
             pack.receiver = receiver
-            pack.passDate = datetime.now()
-            pack.save()
-            return Response(serializers.PackReadSerializer(pack).data)
-        else:
-            message = "Pack with id {}, already has a receiver with id {}".format(pack_id, pack.receiver.id)
-            return HttpResponseForbidden(message)
+            
+        pack.passDate = timezone.now()
+        pack.save()
+        return Response(serializers.PackReadSerializer(pack).data)
         
