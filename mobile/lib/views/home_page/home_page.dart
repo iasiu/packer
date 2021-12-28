@@ -14,7 +14,7 @@ class HomePage extends HookWidget {
     final tileButtonSize = ((width / 2.3) ~/ 4) * 4.0;
 
     return AppScaffold(
-      title: Text(S.of(context).packer, style: TextStyles.white48),
+      title: Text(S.of(context).appName, style: TextStyles.white48),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -31,7 +31,7 @@ class HomePage extends HookWidget {
                     size: tileButtonSize,
                     icon: Icon(
                       Icons.crop_free,
-                      color: AppColors.cultured,
+                      color: AppColors.inpost,
                       size: tileButtonSize - 48,
                     ),
                     text: S.of(context).addPackage,
@@ -46,7 +46,7 @@ class HomePage extends HookWidget {
                     size: tileButtonSize,
                     icon: Icon(
                       Icons.volunteer_activism,
-                      color: AppColors.cultured,
+                      color: AppColors.inpost,
                       size: tileButtonSize - 48,
                     ),
                     text: S.of(context).passPackage,
@@ -68,7 +68,7 @@ class HomePage extends HookWidget {
                     size: tileButtonSize,
                     icon: Icon(
                       Icons.edit,
-                      color: AppColors.cultured,
+                      color: AppColors.inpost,
                       size: tileButtonSize - 48,
                     ),
                     text: S.of(context).editPackage,
@@ -83,7 +83,7 @@ class HomePage extends HookWidget {
                     size: tileButtonSize,
                     icon: Icon(
                       Icons.history,
-                      color: AppColors.cultured,
+                      color: AppColors.inpost,
                       size: tileButtonSize - 48,
                     ),
                     text: S.of(context).history,

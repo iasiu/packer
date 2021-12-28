@@ -1,5 +1,5 @@
 {
-    "packer": "Packer",
+    "appName": "Packup",
     "addPackage": "Add package",
     "passPackage": "Pass package",
     "editPackage": "Edit package",

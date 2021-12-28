@@ -28,7 +28,7 @@ class TileButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(16)),
           border: Border.fromBorderSide(
             BorderSide(
-              color: AppColors.cultured,
+              color: AppColors.inpost,
               width: 3,
             ),
           ),

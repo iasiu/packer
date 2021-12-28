@@ -16,7 +16,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.davysGray,
+      backgroundColor: AppColors.black,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, height),
         child: AppBar(
