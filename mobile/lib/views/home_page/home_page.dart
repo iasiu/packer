@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:packer/config/config.dart';
+import 'package:packer/config/router.dart';
 import 'package:packer/generated/l10n.dart';
 import 'package:packer/views/home_page/widgets/tile_button.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
@@ -36,7 +37,7 @@ class HomePage extends HookWidget {
                     ),
                     text: S.of(context).addPackage,
                     onTap: () {
-                      Navigator.of(context).pushNamed('/add');
+                      Navigator.of(context).pushNamed(AppPages.add.route);
                     },
                   ),
                 ),
@@ -51,7 +52,7 @@ class HomePage extends HookWidget {
                     ),
                     text: S.of(context).passPackage,
                     onTap: () {
-                      Navigator.of(context).pushNamed('/pass');
+                      Navigator.of(context).pushNamed(AppPages.pass.route);
                     },
                   ),
                 ),
@@ -73,7 +74,7 @@ class HomePage extends HookWidget {
                     ),
                     text: S.of(context).editPackage,
                     onTap: () {
-                      Navigator.of(context).pushNamed('/edit');
+                      Navigator.of(context).pushNamed(AppPages.edit.route);
                     },
                   ),
                 ),
@@ -88,7 +89,7 @@ class HomePage extends HookWidget {
                     ),
                     text: S.of(context).history,
                     onTap: () {
-                      Navigator.of(context).pushNamed('/history');
+                      Navigator.of(context).pushNamed(AppPages.history.route);
                     },
                   ),
                 ),

@@ -25,4 +25,8 @@ class TextStyles {
     color: AppColors.cultured,
     fontSize: 14,
   );
+  static const black14 = TextStyle(
+    color: AppColors.black,
+    fontSize: 14,
+  );
 }
