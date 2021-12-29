@@ -14,4 +14,8 @@ class AppToaster {
       fontSize: 16,
     );
   }
+
+  static void cancel() {
+    Fluttertoast.cancel();
+  }
 }

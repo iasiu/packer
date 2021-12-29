@@ -6,6 +6,7 @@ class AppColors {
   static const cultured = Color(0xFFFCFAF9);
   static const inpost = Color(0xFFFFCC02);
   static const davysGray = Color(0xFFB8B8B8);
+  static const loadingBackground = Color(0xBB000000);
 }
 
 class TextStyles {

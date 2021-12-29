@@ -6,6 +6,7 @@ part 'models.freezed.dart';
 @freezed
 class DeliveryCompany with _$DeliveryCompany {
   const factory DeliveryCompany({
+    required int id,
     required String name,
   }) = _DeliveryCompany;
 
@@ -16,6 +17,7 @@ class DeliveryCompany with _$DeliveryCompany {
 @freezed
 class Sender with _$Sender {
   const factory Sender({
+    required int id,
     required String name,
     required String city,
     required String addressLine,
@@ -28,6 +30,7 @@ class Sender with _$Sender {
 @freezed
 class Receiver with _$Receiver {
   const factory Receiver({
+    required int id,
     required String name,
     required String emailAddress,
     @Default('') String phoneNumber,
@@ -41,6 +44,7 @@ class Receiver with _$Receiver {
 @freezed
 class Pack with _$Pack {
   const factory Pack({
+    required int id,
     @Default('') String barcode,
     required DateTime deliveryDate,
     DateTime? passDate,
@@ -59,9 +63,9 @@ class PackWrite with _$PackWrite {
     @Default('') String barcode,
     required DateTime deliveryDate,
     DateTime? passDate,
-    required int deliveryCompanyId,
-    required int senderId,
-    required int receiverId,
+    required int deliveryCompany,
+    required int sender,
+    required int receiver,
     @Default('') String comment,
   }) = _PackWrite;
 

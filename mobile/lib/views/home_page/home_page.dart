@@ -1,13 +1,19 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/config/router.dart';
+import 'package:packer/controllers/add_package_cubit/add_package_cubit.dart';
+import 'package:packer/controllers/pass_package_cubit/pass_package_cubit.dart';
 import 'package:packer/generated/l10n.dart';
 import 'package:packer/utils/app_scanner.dart';
-import 'package:packer/views/add_page/add_page.dart';
+import 'package:packer/utils/app_toaster.dart';
+import 'package:packer/views/add_package_page/add_package_page.dart';
 import 'package:packer/views/home_page/widgets/tile_button.dart';
-import 'package:packer/views/pass_page/pass_page.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
+import 'package:packer/views/widgets/loading_placeholder.dart';
 
 class HomePage extends HookWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,101 +25,151 @@ class HomePage extends HookWidget {
 
     return AppScaffold(
       title: Text(S.of(context).appName, style: TextStyles.white48),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: TileButton(
-                    size: tileButtonSize,
-                    icon: Icon(
-                      Icons.crop_free,
-                      color: AppColors.inpost,
-                      size: tileButtonSize - 48,
-                    ),
-                    text: S.of(context).addPackage,
-                    onTap: () async {
-                      AppScanner.barcode().then((barcodeScanRes) {
-                        if (barcodeScanRes != '-1') {
-                          Navigator.of(context).pushNamed(
-                            AppPages.add.route,
-                            arguments: AddPageArguments(barcodeScanRes),
-                          );
-                        }
-                      });
-                    },
+      body: BlocBuilder<PassPackageCubit, PassPackageState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              MultiBlocListener(
+                listeners: [
+                  BlocListener<AddPackageCubit, AddPackageState>(
+                      listener: (context, state) {
+                    state.maybeMap(
+                      orElse: () {},
+                      added: (_) => AppToaster.show(
+                        text: 'Successfully added a package',
+                        bgColor: Colors.green,
+                        textColor: AppColors.cultured,
+                      ),
+                    );
+                  }),
+                  BlocListener<PassPackageCubit, PassPackageState>(
+                      listener: (context, state) {
+                    state.maybeMap(
+                      orElse: () {},
+                      failure: (f) => AppToaster.show(
+                        text: f.message ?? 'Encountered unknown error',
+                        bgColor: Colors.red,
+                        textColor: AppColors.cultured,
+                      ),
+                      success: (_) => AppToaster.show(
+                        text: 'Successfully passed a package',
+                        bgColor: Colors.green,
+                        textColor: AppColors.cultured,
+                      ),
+                    );
+                  }),
+                ],
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flex(
+                        direction: Axis.horizontal,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: TileButton(
+                              size: tileButtonSize,
+                              icon: Icon(
+                                Icons.crop_free,
+                                color: AppColors.inpost,
+                                size: tileButtonSize - 48,
+                              ),
+                              text: S.of(context).addPackage,
+                              onTap: () async {
+                                AppScanner.barcode().then((barcodeScanRes) {
+                                  if (barcodeScanRes != '-1') {
+                                    Navigator.of(context).pushNamed(
+                                      AppPages.add.route,
+                                      arguments: AddPackagePageArguments(
+                                          barcodeScanRes),
+                                    );
+                                  }
+                                });
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Flexible(
+                            child: TileButton(
+                              size: tileButtonSize,
+                              icon: Icon(
+                                Icons.volunteer_activism,
+                                color: AppColors.inpost,
+                                size: tileButtonSize - 48,
+                              ),
+                              text: S.of(context).passPackage,
+                              onTap: () {
+                                AppToaster.cancel();
+                                context.read<PassPackageCubit>().emit(
+                                      const PassPackageState.inProgress(),
+                                    );
+                                AppScanner.barcode().then((barcodeScanRes) {
+                                  if (barcodeScanRes != '-1') {
+                                    context
+                                        .read<PassPackageCubit>()
+                                        .passPackage(barcodeScanRes);
+                                  } else {
+                                    context
+                                        .read<PassPackageCubit>()
+                                        .emit(const PassPackageState.initial());
+                                  }
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Flex(
+                        direction: Axis.horizontal,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: TileButton(
+                              size: tileButtonSize,
+                              icon: Icon(
+                                Icons.edit,
+                                color: AppColors.inpost,
+                                size: tileButtonSize - 48,
+                              ),
+                              text: S.of(context).editPackage,
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(AppPages.edit.route);
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Flexible(
+                            child: TileButton(
+                              size: tileButtonSize,
+                              icon: Icon(
+                                Icons.history,
+                                color: AppColors.inpost,
+                                size: tileButtonSize - 48,
+                              ),
+                              text: S.of(context).history,
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(AppPages.history.route);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(width: 16),
-                Flexible(
-                  child: TileButton(
-                    size: tileButtonSize,
-                    icon: Icon(
-                      Icons.volunteer_activism,
-                      color: AppColors.inpost,
-                      size: tileButtonSize - 48,
-                    ),
-                    text: S.of(context).passPackage,
-                    onTap: () {
-                      AppScanner.barcode().then((barcodeScanRes) {
-                        if (barcodeScanRes != '-1') {
-                          Navigator.of(context).pushNamed(
-                          AppPages.pass.route,
-                          arguments: PassPageArguments(barcodeScanRes),
-                        );
-                        }
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: TileButton(
-                    size: tileButtonSize,
-                    icon: Icon(
-                      Icons.edit,
-                      color: AppColors.inpost,
-                      size: tileButtonSize - 48,
-                    ),
-                    text: S.of(context).editPackage,
-                    onTap: () {
-                      Navigator.of(context).pushNamed(AppPages.edit.route);
-                    },
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Flexible(
-                  child: TileButton(
-                    size: tileButtonSize,
-                    icon: Icon(
-                      Icons.history,
-                      color: AppColors.inpost,
-                      size: tileButtonSize - 48,
-                    ),
-                    text: S.of(context).history,
-                    onTap: () {
-                      Navigator.of(context).pushNamed(AppPages.history.route);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+              if (state is PassPackageInProgress) const LoadingPlaceholder(),
+            ],
+          );
+        },
       ),
     );
   }

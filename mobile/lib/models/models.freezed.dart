@@ -21,8 +21,9 @@ DeliveryCompany _$DeliveryCompanyFromJson(Map<String, dynamic> json) {
 class _$DeliveryCompanyTearOff {
   const _$DeliveryCompanyTearOff();
 
-  _DeliveryCompany call({required String name}) {
+  _DeliveryCompany call({required int id, required String name}) {
     return _DeliveryCompany(
+      id: id,
       name: name,
     );
   }
@@ -37,6 +38,7 @@ const $DeliveryCompany = _$DeliveryCompanyTearOff();
 
 /// @nodoc
 mixin _$DeliveryCompany {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +52,7 @@ abstract class $DeliveryCompanyCopyWith<$Res> {
   factory $DeliveryCompanyCopyWith(
           DeliveryCompany value, $Res Function(DeliveryCompany) then) =
       _$DeliveryCompanyCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -64,9 +66,14 @@ class _$DeliveryCompanyCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -82,7 +89,7 @@ abstract class _$DeliveryCompanyCopyWith<$Res>
           _DeliveryCompany value, $Res Function(_DeliveryCompany) then) =
       __$DeliveryCompanyCopyWithImpl<$Res>;
   @override
-  $Res call({String name});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -98,9 +105,14 @@ class __$DeliveryCompanyCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
   }) {
     return _then(_DeliveryCompany(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -112,17 +124,19 @@ class __$DeliveryCompanyCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DeliveryCompany implements _DeliveryCompany {
-  const _$_DeliveryCompany({required this.name});
+  const _$_DeliveryCompany({required this.id, required this.name});
 
   factory _$_DeliveryCompany.fromJson(Map<String, dynamic> json) =>
       _$$_DeliveryCompanyFromJson(json);
 
   @override
+  final int id;
+  @override
   final String name;
 
   @override
   String toString() {
-    return 'DeliveryCompany(name: $name)';
+    return 'DeliveryCompany(id: $id, name: $name)';
   }
 
   @override
@@ -130,12 +144,15 @@ class _$_DeliveryCompany implements _DeliveryCompany {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DeliveryCompany &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -149,11 +166,14 @@ class _$_DeliveryCompany implements _DeliveryCompany {
 }
 
 abstract class _DeliveryCompany implements DeliveryCompany {
-  const factory _DeliveryCompany({required String name}) = _$_DeliveryCompany;
+  const factory _DeliveryCompany({required int id, required String name}) =
+      _$_DeliveryCompany;
 
   factory _DeliveryCompany.fromJson(Map<String, dynamic> json) =
       _$_DeliveryCompany.fromJson;
 
+  @override
+  int get id;
   @override
   String get name;
   @override
@@ -171,11 +191,13 @@ class _$SenderTearOff {
   const _$SenderTearOff();
 
   _Sender call(
-      {required String name,
+      {required int id,
+      required String name,
       required String city,
       required String addressLine,
       required String postCode}) {
     return _Sender(
+      id: id,
       name: name,
       city: city,
       addressLine: addressLine,
@@ -193,6 +215,7 @@ const $Sender = _$SenderTearOff();
 
 /// @nodoc
 mixin _$Sender {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get addressLine => throw _privateConstructorUsedError;
@@ -207,7 +230,8 @@ mixin _$Sender {
 abstract class $SenderCopyWith<$Res> {
   factory $SenderCopyWith(Sender value, $Res Function(Sender) then) =
       _$SenderCopyWithImpl<$Res>;
-  $Res call({String name, String city, String addressLine, String postCode});
+  $Res call(
+      {int id, String name, String city, String addressLine, String postCode});
 }
 
 /// @nodoc
@@ -220,12 +244,17 @@ class _$SenderCopyWithImpl<$Res> implements $SenderCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? city = freezed,
     Object? addressLine = freezed,
     Object? postCode = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -251,7 +280,8 @@ abstract class _$SenderCopyWith<$Res> implements $SenderCopyWith<$Res> {
   factory _$SenderCopyWith(_Sender value, $Res Function(_Sender) then) =
       __$SenderCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String city, String addressLine, String postCode});
+  $Res call(
+      {int id, String name, String city, String addressLine, String postCode});
 }
 
 /// @nodoc
@@ -265,12 +295,17 @@ class __$SenderCopyWithImpl<$Res> extends _$SenderCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? city = freezed,
     Object? addressLine = freezed,
     Object? postCode = freezed,
   }) {
     return _then(_Sender(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -295,7 +330,8 @@ class __$SenderCopyWithImpl<$Res> extends _$SenderCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Sender implements _Sender {
   const _$_Sender(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.city,
       required this.addressLine,
       required this.postCode});
@@ -303,6 +339,8 @@ class _$_Sender implements _Sender {
   factory _$_Sender.fromJson(Map<String, dynamic> json) =>
       _$$_SenderFromJson(json);
 
+  @override
+  final int id;
   @override
   final String name;
   @override
@@ -314,7 +352,7 @@ class _$_Sender implements _Sender {
 
   @override
   String toString() {
-    return 'Sender(name: $name, city: $city, addressLine: $addressLine, postCode: $postCode)';
+    return 'Sender(id: $id, name: $name, city: $city, addressLine: $addressLine, postCode: $postCode)';
   }
 
   @override
@@ -322,6 +360,7 @@ class _$_Sender implements _Sender {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Sender &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.city, city) &&
             const DeepCollectionEquality()
@@ -332,6 +371,7 @@ class _$_Sender implements _Sender {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(city),
       const DeepCollectionEquality().hash(addressLine),
@@ -350,13 +390,16 @@ class _$_Sender implements _Sender {
 
 abstract class _Sender implements Sender {
   const factory _Sender(
-      {required String name,
+      {required int id,
+      required String name,
       required String city,
       required String addressLine,
       required String postCode}) = _$_Sender;
 
   factory _Sender.fromJson(Map<String, dynamic> json) = _$_Sender.fromJson;
 
+  @override
+  int get id;
   @override
   String get name;
   @override
@@ -379,11 +422,13 @@ class _$ReceiverTearOff {
   const _$ReceiverTearOff();
 
   _Receiver call(
-      {required String name,
+      {required int id,
+      required String name,
       required String emailAddress,
       String phoneNumber = '',
       String officeNumber = ''}) {
     return _Receiver(
+      id: id,
       name: name,
       emailAddress: emailAddress,
       phoneNumber: phoneNumber,
@@ -401,6 +446,7 @@ const $Receiver = _$ReceiverTearOff();
 
 /// @nodoc
 mixin _$Receiver {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get emailAddress => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
@@ -417,7 +463,8 @@ abstract class $ReceiverCopyWith<$Res> {
   factory $ReceiverCopyWith(Receiver value, $Res Function(Receiver) then) =
       _$ReceiverCopyWithImpl<$Res>;
   $Res call(
-      {String name,
+      {int id,
+      String name,
       String emailAddress,
       String phoneNumber,
       String officeNumber});
@@ -433,12 +480,17 @@ class _$ReceiverCopyWithImpl<$Res> implements $ReceiverCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? emailAddress = freezed,
     Object? phoneNumber = freezed,
     Object? officeNumber = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -465,7 +517,8 @@ abstract class _$ReceiverCopyWith<$Res> implements $ReceiverCopyWith<$Res> {
       __$ReceiverCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
+      {int id,
+      String name,
       String emailAddress,
       String phoneNumber,
       String officeNumber});
@@ -482,12 +535,17 @@ class __$ReceiverCopyWithImpl<$Res> extends _$ReceiverCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? emailAddress = freezed,
     Object? phoneNumber = freezed,
     Object? officeNumber = freezed,
   }) {
     return _then(_Receiver(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -512,7 +570,8 @@ class __$ReceiverCopyWithImpl<$Res> extends _$ReceiverCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Receiver implements _Receiver {
   const _$_Receiver(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.emailAddress,
       this.phoneNumber = '',
       this.officeNumber = ''});
@@ -520,6 +579,8 @@ class _$_Receiver implements _Receiver {
   factory _$_Receiver.fromJson(Map<String, dynamic> json) =>
       _$$_ReceiverFromJson(json);
 
+  @override
+  final int id;
   @override
   final String name;
   @override
@@ -533,7 +594,7 @@ class _$_Receiver implements _Receiver {
 
   @override
   String toString() {
-    return 'Receiver(name: $name, emailAddress: $emailAddress, phoneNumber: $phoneNumber, officeNumber: $officeNumber)';
+    return 'Receiver(id: $id, name: $name, emailAddress: $emailAddress, phoneNumber: $phoneNumber, officeNumber: $officeNumber)';
   }
 
   @override
@@ -541,6 +602,7 @@ class _$_Receiver implements _Receiver {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Receiver &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.emailAddress, emailAddress) &&
@@ -553,6 +615,7 @@ class _$_Receiver implements _Receiver {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(emailAddress),
       const DeepCollectionEquality().hash(phoneNumber),
@@ -571,13 +634,16 @@ class _$_Receiver implements _Receiver {
 
 abstract class _Receiver implements Receiver {
   const factory _Receiver(
-      {required String name,
+      {required int id,
+      required String name,
       required String emailAddress,
       String phoneNumber,
       String officeNumber}) = _$_Receiver;
 
   factory _Receiver.fromJson(Map<String, dynamic> json) = _$_Receiver.fromJson;
 
+  @override
+  int get id;
   @override
   String get name;
   @override
@@ -601,7 +667,8 @@ class _$PackTearOff {
   const _$PackTearOff();
 
   _Pack call(
-      {String barcode = '',
+      {required int id,
+      String barcode = '',
       required DateTime deliveryDate,
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
@@ -609,6 +676,7 @@ class _$PackTearOff {
       required Receiver receiver,
       String comment = ''}) {
     return _Pack(
+      id: id,
       barcode: barcode,
       deliveryDate: deliveryDate,
       passDate: passDate,
@@ -629,6 +697,7 @@ const $Pack = _$PackTearOff();
 
 /// @nodoc
 mixin _$Pack {
+  int get id => throw _privateConstructorUsedError;
   String get barcode => throw _privateConstructorUsedError;
   DateTime get deliveryDate => throw _privateConstructorUsedError;
   DateTime? get passDate => throw _privateConstructorUsedError;
@@ -647,7 +716,8 @@ abstract class $PackCopyWith<$Res> {
   factory $PackCopyWith(Pack value, $Res Function(Pack) then) =
       _$PackCopyWithImpl<$Res>;
   $Res call(
-      {String barcode,
+      {int id,
+      String barcode,
       DateTime deliveryDate,
       DateTime? passDate,
       DeliveryCompany deliveryCompany,
@@ -670,6 +740,7 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? barcode = freezed,
     Object? deliveryDate = freezed,
     Object? passDate = freezed,
@@ -679,6 +750,10 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
     Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       barcode: barcode == freezed
           ? _value.barcode
           : barcode // ignore: cast_nullable_to_non_nullable
@@ -738,7 +813,8 @@ abstract class _$PackCopyWith<$Res> implements $PackCopyWith<$Res> {
       __$PackCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String barcode,
+      {int id,
+      String barcode,
       DateTime deliveryDate,
       DateTime? passDate,
       DeliveryCompany deliveryCompany,
@@ -765,6 +841,7 @@ class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? barcode = freezed,
     Object? deliveryDate = freezed,
     Object? passDate = freezed,
@@ -774,6 +851,10 @@ class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
     Object? comment = freezed,
   }) {
     return _then(_Pack(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       barcode: barcode == freezed
           ? _value.barcode
           : barcode // ignore: cast_nullable_to_non_nullable
@@ -810,7 +891,8 @@ class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Pack implements _Pack {
   const _$_Pack(
-      {this.barcode = '',
+      {required this.id,
+      this.barcode = '',
       required this.deliveryDate,
       this.passDate,
       required this.deliveryCompany,
@@ -820,6 +902,8 @@ class _$_Pack implements _Pack {
 
   factory _$_Pack.fromJson(Map<String, dynamic> json) => _$$_PackFromJson(json);
 
+  @override
+  final int id;
   @JsonKey()
   @override
   final String barcode;
@@ -839,7 +923,7 @@ class _$_Pack implements _Pack {
 
   @override
   String toString() {
-    return 'Pack(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver, comment: $comment)';
+    return 'Pack(id: $id, barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver, comment: $comment)';
   }
 
   @override
@@ -847,6 +931,7 @@ class _$_Pack implements _Pack {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Pack &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.barcode, barcode) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryDate, deliveryDate) &&
@@ -861,6 +946,7 @@ class _$_Pack implements _Pack {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(barcode),
       const DeepCollectionEquality().hash(deliveryDate),
       const DeepCollectionEquality().hash(passDate),
@@ -882,7 +968,8 @@ class _$_Pack implements _Pack {
 
 abstract class _Pack implements Pack {
   const factory _Pack(
-      {String barcode,
+      {required int id,
+      String barcode,
       required DateTime deliveryDate,
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
@@ -892,6 +979,8 @@ abstract class _Pack implements Pack {
 
   factory _Pack.fromJson(Map<String, dynamic> json) = _$_Pack.fromJson;
 
+  @override
+  int get id;
   @override
   String get barcode;
   @override
@@ -923,17 +1012,17 @@ class _$PackWriteTearOff {
       {String barcode = '',
       required DateTime deliveryDate,
       DateTime? passDate,
-      required int deliveryCompanyId,
-      required int senderId,
-      required int receiverId,
+      required int deliveryCompany,
+      required int sender,
+      required int receiver,
       String comment = ''}) {
     return _PackWrite(
       barcode: barcode,
       deliveryDate: deliveryDate,
       passDate: passDate,
-      deliveryCompanyId: deliveryCompanyId,
-      senderId: senderId,
-      receiverId: receiverId,
+      deliveryCompany: deliveryCompany,
+      sender: sender,
+      receiver: receiver,
       comment: comment,
     );
   }
@@ -951,9 +1040,9 @@ mixin _$PackWrite {
   String get barcode => throw _privateConstructorUsedError;
   DateTime get deliveryDate => throw _privateConstructorUsedError;
   DateTime? get passDate => throw _privateConstructorUsedError;
-  int get deliveryCompanyId => throw _privateConstructorUsedError;
-  int get senderId => throw _privateConstructorUsedError;
-  int get receiverId => throw _privateConstructorUsedError;
+  int get deliveryCompany => throw _privateConstructorUsedError;
+  int get sender => throw _privateConstructorUsedError;
+  int get receiver => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -970,9 +1059,9 @@ abstract class $PackWriteCopyWith<$Res> {
       {String barcode,
       DateTime deliveryDate,
       DateTime? passDate,
-      int deliveryCompanyId,
-      int senderId,
-      int receiverId,
+      int deliveryCompany,
+      int sender,
+      int receiver,
       String comment});
 }
 
@@ -989,9 +1078,9 @@ class _$PackWriteCopyWithImpl<$Res> implements $PackWriteCopyWith<$Res> {
     Object? barcode = freezed,
     Object? deliveryDate = freezed,
     Object? passDate = freezed,
-    Object? deliveryCompanyId = freezed,
-    Object? senderId = freezed,
-    Object? receiverId = freezed,
+    Object? deliveryCompany = freezed,
+    Object? sender = freezed,
+    Object? receiver = freezed,
     Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1007,17 +1096,17 @@ class _$PackWriteCopyWithImpl<$Res> implements $PackWriteCopyWith<$Res> {
           ? _value.passDate
           : passDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      deliveryCompanyId: deliveryCompanyId == freezed
-          ? _value.deliveryCompanyId
-          : deliveryCompanyId // ignore: cast_nullable_to_non_nullable
+      deliveryCompany: deliveryCompany == freezed
+          ? _value.deliveryCompany
+          : deliveryCompany // ignore: cast_nullable_to_non_nullable
               as int,
-      senderId: senderId == freezed
-          ? _value.senderId
-          : senderId // ignore: cast_nullable_to_non_nullable
+      sender: sender == freezed
+          ? _value.sender
+          : sender // ignore: cast_nullable_to_non_nullable
               as int,
-      receiverId: receiverId == freezed
-          ? _value.receiverId
-          : receiverId // ignore: cast_nullable_to_non_nullable
+      receiver: receiver == freezed
+          ? _value.receiver
+          : receiver // ignore: cast_nullable_to_non_nullable
               as int,
       comment: comment == freezed
           ? _value.comment
@@ -1037,9 +1126,9 @@ abstract class _$PackWriteCopyWith<$Res> implements $PackWriteCopyWith<$Res> {
       {String barcode,
       DateTime deliveryDate,
       DateTime? passDate,
-      int deliveryCompanyId,
-      int senderId,
-      int receiverId,
+      int deliveryCompany,
+      int sender,
+      int receiver,
       String comment});
 }
 
@@ -1057,9 +1146,9 @@ class __$PackWriteCopyWithImpl<$Res> extends _$PackWriteCopyWithImpl<$Res>
     Object? barcode = freezed,
     Object? deliveryDate = freezed,
     Object? passDate = freezed,
-    Object? deliveryCompanyId = freezed,
-    Object? senderId = freezed,
-    Object? receiverId = freezed,
+    Object? deliveryCompany = freezed,
+    Object? sender = freezed,
+    Object? receiver = freezed,
     Object? comment = freezed,
   }) {
     return _then(_PackWrite(
@@ -1075,17 +1164,17 @@ class __$PackWriteCopyWithImpl<$Res> extends _$PackWriteCopyWithImpl<$Res>
           ? _value.passDate
           : passDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      deliveryCompanyId: deliveryCompanyId == freezed
-          ? _value.deliveryCompanyId
-          : deliveryCompanyId // ignore: cast_nullable_to_non_nullable
+      deliveryCompany: deliveryCompany == freezed
+          ? _value.deliveryCompany
+          : deliveryCompany // ignore: cast_nullable_to_non_nullable
               as int,
-      senderId: senderId == freezed
-          ? _value.senderId
-          : senderId // ignore: cast_nullable_to_non_nullable
+      sender: sender == freezed
+          ? _value.sender
+          : sender // ignore: cast_nullable_to_non_nullable
               as int,
-      receiverId: receiverId == freezed
-          ? _value.receiverId
-          : receiverId // ignore: cast_nullable_to_non_nullable
+      receiver: receiver == freezed
+          ? _value.receiver
+          : receiver // ignore: cast_nullable_to_non_nullable
               as int,
       comment: comment == freezed
           ? _value.comment
@@ -1102,9 +1191,9 @@ class _$_PackWrite implements _PackWrite {
       {this.barcode = '',
       required this.deliveryDate,
       this.passDate,
-      required this.deliveryCompanyId,
-      required this.senderId,
-      required this.receiverId,
+      required this.deliveryCompany,
+      required this.sender,
+      required this.receiver,
       this.comment = ''});
 
   factory _$_PackWrite.fromJson(Map<String, dynamic> json) =>
@@ -1118,18 +1207,18 @@ class _$_PackWrite implements _PackWrite {
   @override
   final DateTime? passDate;
   @override
-  final int deliveryCompanyId;
+  final int deliveryCompany;
   @override
-  final int senderId;
+  final int sender;
   @override
-  final int receiverId;
+  final int receiver;
   @JsonKey()
   @override
   final String comment;
 
   @override
   String toString() {
-    return 'PackWrite(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompanyId: $deliveryCompanyId, senderId: $senderId, receiverId: $receiverId, comment: $comment)';
+    return 'PackWrite(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver, comment: $comment)';
   }
 
   @override
@@ -1142,10 +1231,9 @@ class _$_PackWrite implements _PackWrite {
                 .equals(other.deliveryDate, deliveryDate) &&
             const DeepCollectionEquality().equals(other.passDate, passDate) &&
             const DeepCollectionEquality()
-                .equals(other.deliveryCompanyId, deliveryCompanyId) &&
-            const DeepCollectionEquality().equals(other.senderId, senderId) &&
-            const DeepCollectionEquality()
-                .equals(other.receiverId, receiverId) &&
+                .equals(other.deliveryCompany, deliveryCompany) &&
+            const DeepCollectionEquality().equals(other.sender, sender) &&
+            const DeepCollectionEquality().equals(other.receiver, receiver) &&
             const DeepCollectionEquality().equals(other.comment, comment));
   }
 
@@ -1155,9 +1243,9 @@ class _$_PackWrite implements _PackWrite {
       const DeepCollectionEquality().hash(barcode),
       const DeepCollectionEquality().hash(deliveryDate),
       const DeepCollectionEquality().hash(passDate),
-      const DeepCollectionEquality().hash(deliveryCompanyId),
-      const DeepCollectionEquality().hash(senderId),
-      const DeepCollectionEquality().hash(receiverId),
+      const DeepCollectionEquality().hash(deliveryCompany),
+      const DeepCollectionEquality().hash(sender),
+      const DeepCollectionEquality().hash(receiver),
       const DeepCollectionEquality().hash(comment));
 
   @JsonKey(ignore: true)
@@ -1176,9 +1264,9 @@ abstract class _PackWrite implements PackWrite {
       {String barcode,
       required DateTime deliveryDate,
       DateTime? passDate,
-      required int deliveryCompanyId,
-      required int senderId,
-      required int receiverId,
+      required int deliveryCompany,
+      required int sender,
+      required int receiver,
       String comment}) = _$_PackWrite;
 
   factory _PackWrite.fromJson(Map<String, dynamic> json) =
@@ -1191,11 +1279,11 @@ abstract class _PackWrite implements PackWrite {
   @override
   DateTime? get passDate;
   @override
-  int get deliveryCompanyId;
+  int get deliveryCompany;
   @override
-  int get senderId;
+  int get sender;
   @override
-  int get receiverId;
+  int get receiver;
   @override
   String get comment;
   @override

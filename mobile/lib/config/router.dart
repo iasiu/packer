@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:packer/views/add_page/add_page.dart';
+import 'package:packer/views/add_package_page/add_package_page.dart';
 import 'package:packer/views/edit_page/edit_page.dart';
 import 'package:packer/views/history_page/history_page.dart';
 import 'package:packer/views/home_page/home_page.dart';
-import 'package:packer/views/pass_page/pass_page.dart';
 
 class AppRouter {
   static Route generateNewRoute(RouteSettings settings) {
@@ -55,12 +54,8 @@ class AppPages {
     route: '/',
   );
   static final add = AppPage(
-    build: (_, __) => const AddPage(),
+    build: (_, __) => AddPackagePage(),
     route: '/add',
-  );
-  static final pass = AppPage(
-    build: (_, __) => const PassPage(),
-    route: '/pass',
   );
   static final edit = AppPage(
     build: (_, __) => const EditPage(),
@@ -73,5 +68,5 @@ class AppPages {
 
   static final String initialRoute = home.route;
 
-  static final List<AppPage> allPages = [home, add, pass, edit, history];
+  static final List<AppPage> allPages = [home, add, edit, history];
 }
