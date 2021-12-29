@@ -46,7 +46,7 @@ class Pack with _$Pack {
     DateTime? passDate,
     required DeliveryCompany deliveryCompany,
     required Sender sender,
-    @Default(null) Receiver? receiver,
+    required Receiver receiver,
     @Default('') String comment,
   }) = _Pack;
 
@@ -61,7 +61,7 @@ class PackWrite with _$PackWrite {
     DateTime? passDate,
     required int deliveryCompanyId,
     required int senderId,
-    @Default(null) int? receiverId,
+    required int receiverId,
     @Default('') String comment,
   }) = _PackWrite;
 

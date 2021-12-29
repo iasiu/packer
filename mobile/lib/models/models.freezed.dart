@@ -606,7 +606,7 @@ class _$PackTearOff {
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
       required Sender sender,
-      Receiver? receiver = null,
+      required Receiver receiver,
       String comment = ''}) {
     return _Pack(
       barcode: barcode,
@@ -634,7 +634,7 @@ mixin _$Pack {
   DateTime? get passDate => throw _privateConstructorUsedError;
   DeliveryCompany get deliveryCompany => throw _privateConstructorUsedError;
   Sender get sender => throw _privateConstructorUsedError;
-  Receiver? get receiver => throw _privateConstructorUsedError;
+  Receiver get receiver => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -652,12 +652,12 @@ abstract class $PackCopyWith<$Res> {
       DateTime? passDate,
       DeliveryCompany deliveryCompany,
       Sender sender,
-      Receiver? receiver,
+      Receiver receiver,
       String comment});
 
   $DeliveryCompanyCopyWith<$Res> get deliveryCompany;
   $SenderCopyWith<$Res> get sender;
-  $ReceiverCopyWith<$Res>? get receiver;
+  $ReceiverCopyWith<$Res> get receiver;
 }
 
 /// @nodoc
@@ -702,7 +702,7 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
       receiver: receiver == freezed
           ? _value.receiver
           : receiver // ignore: cast_nullable_to_non_nullable
-              as Receiver?,
+              as Receiver,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -725,12 +725,8 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
   }
 
   @override
-  $ReceiverCopyWith<$Res>? get receiver {
-    if (_value.receiver == null) {
-      return null;
-    }
-
-    return $ReceiverCopyWith<$Res>(_value.receiver!, (value) {
+  $ReceiverCopyWith<$Res> get receiver {
+    return $ReceiverCopyWith<$Res>(_value.receiver, (value) {
       return _then(_value.copyWith(receiver: value));
     });
   }
@@ -747,7 +743,7 @@ abstract class _$PackCopyWith<$Res> implements $PackCopyWith<$Res> {
       DateTime? passDate,
       DeliveryCompany deliveryCompany,
       Sender sender,
-      Receiver? receiver,
+      Receiver receiver,
       String comment});
 
   @override
@@ -755,7 +751,7 @@ abstract class _$PackCopyWith<$Res> implements $PackCopyWith<$Res> {
   @override
   $SenderCopyWith<$Res> get sender;
   @override
-  $ReceiverCopyWith<$Res>? get receiver;
+  $ReceiverCopyWith<$Res> get receiver;
 }
 
 /// @nodoc
@@ -801,7 +797,7 @@ class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
       receiver: receiver == freezed
           ? _value.receiver
           : receiver // ignore: cast_nullable_to_non_nullable
-              as Receiver?,
+              as Receiver,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -819,7 +815,7 @@ class _$_Pack implements _Pack {
       this.passDate,
       required this.deliveryCompany,
       required this.sender,
-      this.receiver = null,
+      required this.receiver,
       this.comment = ''});
 
   factory _$_Pack.fromJson(Map<String, dynamic> json) => _$$_PackFromJson(json);
@@ -835,9 +831,8 @@ class _$_Pack implements _Pack {
   final DeliveryCompany deliveryCompany;
   @override
   final Sender sender;
-  @JsonKey()
   @override
-  final Receiver? receiver;
+  final Receiver receiver;
   @JsonKey()
   @override
   final String comment;
@@ -892,7 +887,7 @@ abstract class _Pack implements Pack {
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
       required Sender sender,
-      Receiver? receiver,
+      required Receiver receiver,
       String comment}) = _$_Pack;
 
   factory _Pack.fromJson(Map<String, dynamic> json) = _$_Pack.fromJson;
@@ -908,7 +903,7 @@ abstract class _Pack implements Pack {
   @override
   Sender get sender;
   @override
-  Receiver? get receiver;
+  Receiver get receiver;
   @override
   String get comment;
   @override
@@ -930,7 +925,7 @@ class _$PackWriteTearOff {
       DateTime? passDate,
       required int deliveryCompanyId,
       required int senderId,
-      int? receiverId = null,
+      required int receiverId,
       String comment = ''}) {
     return _PackWrite(
       barcode: barcode,
@@ -958,7 +953,7 @@ mixin _$PackWrite {
   DateTime? get passDate => throw _privateConstructorUsedError;
   int get deliveryCompanyId => throw _privateConstructorUsedError;
   int get senderId => throw _privateConstructorUsedError;
-  int? get receiverId => throw _privateConstructorUsedError;
+  int get receiverId => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -977,7 +972,7 @@ abstract class $PackWriteCopyWith<$Res> {
       DateTime? passDate,
       int deliveryCompanyId,
       int senderId,
-      int? receiverId,
+      int receiverId,
       String comment});
 }
 
@@ -1023,7 +1018,7 @@ class _$PackWriteCopyWithImpl<$Res> implements $PackWriteCopyWith<$Res> {
       receiverId: receiverId == freezed
           ? _value.receiverId
           : receiverId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -1044,7 +1039,7 @@ abstract class _$PackWriteCopyWith<$Res> implements $PackWriteCopyWith<$Res> {
       DateTime? passDate,
       int deliveryCompanyId,
       int senderId,
-      int? receiverId,
+      int receiverId,
       String comment});
 }
 
@@ -1091,7 +1086,7 @@ class __$PackWriteCopyWithImpl<$Res> extends _$PackWriteCopyWithImpl<$Res>
       receiverId: receiverId == freezed
           ? _value.receiverId
           : receiverId // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -1109,7 +1104,7 @@ class _$_PackWrite implements _PackWrite {
       this.passDate,
       required this.deliveryCompanyId,
       required this.senderId,
-      this.receiverId = null,
+      required this.receiverId,
       this.comment = ''});
 
   factory _$_PackWrite.fromJson(Map<String, dynamic> json) =>
@@ -1126,9 +1121,8 @@ class _$_PackWrite implements _PackWrite {
   final int deliveryCompanyId;
   @override
   final int senderId;
-  @JsonKey()
   @override
-  final int? receiverId;
+  final int receiverId;
   @JsonKey()
   @override
   final String comment;
@@ -1184,7 +1178,7 @@ abstract class _PackWrite implements PackWrite {
       DateTime? passDate,
       required int deliveryCompanyId,
       required int senderId,
-      int? receiverId,
+      required int receiverId,
       String comment}) = _$_PackWrite;
 
   factory _PackWrite.fromJson(Map<String, dynamic> json) =
@@ -1201,7 +1195,7 @@ abstract class _PackWrite implements PackWrite {
   @override
   int get senderId;
   @override
-  int? get receiverId;
+  int get receiverId;
   @override
   String get comment;
   @override

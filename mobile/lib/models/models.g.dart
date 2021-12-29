@@ -54,9 +54,7 @@ _$_Pack _$$_PackFromJson(Map<String, dynamic> json) => _$_Pack(
       deliveryCompany: DeliveryCompany.fromJson(
           json['deliveryCompany'] as Map<String, dynamic>),
       sender: Sender.fromJson(json['sender'] as Map<String, dynamic>),
-      receiver: json['receiver'] == null
-          ? null
-          : Receiver.fromJson(json['receiver'] as Map<String, dynamic>),
+      receiver: Receiver.fromJson(json['receiver'] as Map<String, dynamic>),
       comment: json['comment'] as String? ?? '',
     );
 
@@ -78,7 +76,7 @@ _$_PackWrite _$$_PackWriteFromJson(Map<String, dynamic> json) => _$_PackWrite(
           : DateTime.parse(json['passDate'] as String),
       deliveryCompanyId: json['deliveryCompanyId'] as int,
       senderId: json['senderId'] as int,
-      receiverId: json['receiverId'] as int? ?? null,
+      receiverId: json['receiverId'] as int,
       comment: json['comment'] as String? ?? '',
     );
 

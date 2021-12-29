@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class AppToaster {
   static void show({required String text, Color? bgColor, Color? textColor}) {
+    Fluttertoast.cancel();
     Fluttertoast.showToast(
       msg: text,
       backgroundColor: bgColor,
