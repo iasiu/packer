@@ -3,7 +3,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/config/router.dart';
 import 'package:packer/generated/l10n.dart';
+import 'package:packer/utils/app_scanner.dart';
+import 'package:packer/views/add_page/add_page.dart';
 import 'package:packer/views/home_page/widgets/tile_button.dart';
+import 'package:packer/views/pass_page/pass_page.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 
 class HomePage extends HookWidget {
@@ -36,8 +39,15 @@ class HomePage extends HookWidget {
                       size: tileButtonSize - 48,
                     ),
                     text: S.of(context).addPackage,
-                    onTap: () {
-                      Navigator.of(context).pushNamed(AppPages.add.route);
+                    onTap: () async {
+                      AppScanner.barcode().then((barcodeScanRes) {
+                        if (barcodeScanRes != '-1') {
+                          Navigator.of(context).pushNamed(
+                            AppPages.add.route,
+                            arguments: AddPageArguments(barcodeScanRes),
+                          );
+                        }
+                      });
                     },
                   ),
                 ),
@@ -52,7 +62,14 @@ class HomePage extends HookWidget {
                     ),
                     text: S.of(context).passPackage,
                     onTap: () {
-                      Navigator.of(context).pushNamed(AppPages.pass.route);
+                      AppScanner.barcode().then((barcodeScanRes) {
+                        if (barcodeScanRes != '-1') {
+                          Navigator.of(context).pushNamed(
+                          AppPages.pass.route,
+                          arguments: PassPageArguments(barcodeScanRes),
+                        );
+                        }
+                      });
                     },
                   ),
                 ),

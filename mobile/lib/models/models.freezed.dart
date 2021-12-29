@@ -174,14 +174,12 @@ class _$SenderTearOff {
       {required String name,
       required String city,
       required String addressLine,
-      required String postCode,
-      String comment = ''}) {
+      required String postCode}) {
     return _Sender(
       name: name,
       city: city,
       addressLine: addressLine,
       postCode: postCode,
-      comment: comment,
     );
   }
 
@@ -199,7 +197,6 @@ mixin _$Sender {
   String get city => throw _privateConstructorUsedError;
   String get addressLine => throw _privateConstructorUsedError;
   String get postCode => throw _privateConstructorUsedError;
-  String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -210,12 +207,7 @@ mixin _$Sender {
 abstract class $SenderCopyWith<$Res> {
   factory $SenderCopyWith(Sender value, $Res Function(Sender) then) =
       _$SenderCopyWithImpl<$Res>;
-  $Res call(
-      {String name,
-      String city,
-      String addressLine,
-      String postCode,
-      String comment});
+  $Res call({String name, String city, String addressLine, String postCode});
 }
 
 /// @nodoc
@@ -232,7 +224,6 @@ class _$SenderCopyWithImpl<$Res> implements $SenderCopyWith<$Res> {
     Object? city = freezed,
     Object? addressLine = freezed,
     Object? postCode = freezed,
-    Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -251,10 +242,6 @@ class _$SenderCopyWithImpl<$Res> implements $SenderCopyWith<$Res> {
           ? _value.postCode
           : postCode // ignore: cast_nullable_to_non_nullable
               as String,
-      comment: comment == freezed
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -264,12 +251,7 @@ abstract class _$SenderCopyWith<$Res> implements $SenderCopyWith<$Res> {
   factory _$SenderCopyWith(_Sender value, $Res Function(_Sender) then) =
       __$SenderCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String name,
-      String city,
-      String addressLine,
-      String postCode,
-      String comment});
+  $Res call({String name, String city, String addressLine, String postCode});
 }
 
 /// @nodoc
@@ -287,7 +269,6 @@ class __$SenderCopyWithImpl<$Res> extends _$SenderCopyWithImpl<$Res>
     Object? city = freezed,
     Object? addressLine = freezed,
     Object? postCode = freezed,
-    Object? comment = freezed,
   }) {
     return _then(_Sender(
       name: name == freezed
@@ -306,10 +287,6 @@ class __$SenderCopyWithImpl<$Res> extends _$SenderCopyWithImpl<$Res>
           ? _value.postCode
           : postCode // ignore: cast_nullable_to_non_nullable
               as String,
-      comment: comment == freezed
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -321,8 +298,7 @@ class _$_Sender implements _Sender {
       {required this.name,
       required this.city,
       required this.addressLine,
-      required this.postCode,
-      this.comment = ''});
+      required this.postCode});
 
   factory _$_Sender.fromJson(Map<String, dynamic> json) =>
       _$$_SenderFromJson(json);
@@ -335,13 +311,10 @@ class _$_Sender implements _Sender {
   final String addressLine;
   @override
   final String postCode;
-  @JsonKey()
-  @override
-  final String comment;
 
   @override
   String toString() {
-    return 'Sender(name: $name, city: $city, addressLine: $addressLine, postCode: $postCode, comment: $comment)';
+    return 'Sender(name: $name, city: $city, addressLine: $addressLine, postCode: $postCode)';
   }
 
   @override
@@ -353,8 +326,7 @@ class _$_Sender implements _Sender {
             const DeepCollectionEquality().equals(other.city, city) &&
             const DeepCollectionEquality()
                 .equals(other.addressLine, addressLine) &&
-            const DeepCollectionEquality().equals(other.postCode, postCode) &&
-            const DeepCollectionEquality().equals(other.comment, comment));
+            const DeepCollectionEquality().equals(other.postCode, postCode));
   }
 
   @override
@@ -363,8 +335,7 @@ class _$_Sender implements _Sender {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(city),
       const DeepCollectionEquality().hash(addressLine),
-      const DeepCollectionEquality().hash(postCode),
-      const DeepCollectionEquality().hash(comment));
+      const DeepCollectionEquality().hash(postCode));
 
   @JsonKey(ignore: true)
   @override
@@ -382,8 +353,7 @@ abstract class _Sender implements Sender {
       {required String name,
       required String city,
       required String addressLine,
-      required String postCode,
-      String comment}) = _$_Sender;
+      required String postCode}) = _$_Sender;
 
   factory _Sender.fromJson(Map<String, dynamic> json) = _$_Sender.fromJson;
 
@@ -395,8 +365,6 @@ abstract class _Sender implements Sender {
   String get addressLine;
   @override
   String get postCode;
-  @override
-  String get comment;
   @override
   @JsonKey(ignore: true)
   _$SenderCopyWith<_Sender> get copyWith => throw _privateConstructorUsedError;
@@ -638,7 +606,8 @@ class _$PackTearOff {
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
       required Sender sender,
-      Receiver? receiver = null}) {
+      Receiver? receiver = null,
+      String comment = ''}) {
     return _Pack(
       barcode: barcode,
       deliveryDate: deliveryDate,
@@ -646,6 +615,7 @@ class _$PackTearOff {
       deliveryCompany: deliveryCompany,
       sender: sender,
       receiver: receiver,
+      comment: comment,
     );
   }
 
@@ -665,6 +635,7 @@ mixin _$Pack {
   DeliveryCompany get deliveryCompany => throw _privateConstructorUsedError;
   Sender get sender => throw _privateConstructorUsedError;
   Receiver? get receiver => throw _privateConstructorUsedError;
+  String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -681,7 +652,8 @@ abstract class $PackCopyWith<$Res> {
       DateTime? passDate,
       DeliveryCompany deliveryCompany,
       Sender sender,
-      Receiver? receiver});
+      Receiver? receiver,
+      String comment});
 
   $DeliveryCompanyCopyWith<$Res> get deliveryCompany;
   $SenderCopyWith<$Res> get sender;
@@ -704,6 +676,7 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
     Object? deliveryCompany = freezed,
     Object? sender = freezed,
     Object? receiver = freezed,
+    Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
       barcode: barcode == freezed
@@ -730,6 +703,10 @@ class _$PackCopyWithImpl<$Res> implements $PackCopyWith<$Res> {
           ? _value.receiver
           : receiver // ignore: cast_nullable_to_non_nullable
               as Receiver?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -770,7 +747,8 @@ abstract class _$PackCopyWith<$Res> implements $PackCopyWith<$Res> {
       DateTime? passDate,
       DeliveryCompany deliveryCompany,
       Sender sender,
-      Receiver? receiver});
+      Receiver? receiver,
+      String comment});
 
   @override
   $DeliveryCompanyCopyWith<$Res> get deliveryCompany;
@@ -797,6 +775,7 @@ class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
     Object? deliveryCompany = freezed,
     Object? sender = freezed,
     Object? receiver = freezed,
+    Object? comment = freezed,
   }) {
     return _then(_Pack(
       barcode: barcode == freezed
@@ -823,6 +802,10 @@ class __$PackCopyWithImpl<$Res> extends _$PackCopyWithImpl<$Res>
           ? _value.receiver
           : receiver // ignore: cast_nullable_to_non_nullable
               as Receiver?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -836,7 +819,8 @@ class _$_Pack implements _Pack {
       this.passDate,
       required this.deliveryCompany,
       required this.sender,
-      this.receiver = null});
+      this.receiver = null,
+      this.comment = ''});
 
   factory _$_Pack.fromJson(Map<String, dynamic> json) => _$$_PackFromJson(json);
 
@@ -854,10 +838,13 @@ class _$_Pack implements _Pack {
   @JsonKey()
   @override
   final Receiver? receiver;
+  @JsonKey()
+  @override
+  final String comment;
 
   @override
   String toString() {
-    return 'Pack(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver)';
+    return 'Pack(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompany: $deliveryCompany, sender: $sender, receiver: $receiver, comment: $comment)';
   }
 
   @override
@@ -872,7 +859,8 @@ class _$_Pack implements _Pack {
             const DeepCollectionEquality()
                 .equals(other.deliveryCompany, deliveryCompany) &&
             const DeepCollectionEquality().equals(other.sender, sender) &&
-            const DeepCollectionEquality().equals(other.receiver, receiver));
+            const DeepCollectionEquality().equals(other.receiver, receiver) &&
+            const DeepCollectionEquality().equals(other.comment, comment));
   }
 
   @override
@@ -883,7 +871,8 @@ class _$_Pack implements _Pack {
       const DeepCollectionEquality().hash(passDate),
       const DeepCollectionEquality().hash(deliveryCompany),
       const DeepCollectionEquality().hash(sender),
-      const DeepCollectionEquality().hash(receiver));
+      const DeepCollectionEquality().hash(receiver),
+      const DeepCollectionEquality().hash(comment));
 
   @JsonKey(ignore: true)
   @override
@@ -903,7 +892,8 @@ abstract class _Pack implements Pack {
       DateTime? passDate,
       required DeliveryCompany deliveryCompany,
       required Sender sender,
-      Receiver? receiver}) = _$_Pack;
+      Receiver? receiver,
+      String comment}) = _$_Pack;
 
   factory _Pack.fromJson(Map<String, dynamic> json) = _$_Pack.fromJson;
 
@@ -919,6 +909,8 @@ abstract class _Pack implements Pack {
   Sender get sender;
   @override
   Receiver? get receiver;
+  @override
+  String get comment;
   @override
   @JsonKey(ignore: true)
   _$PackCopyWith<_Pack> get copyWith => throw _privateConstructorUsedError;
@@ -938,7 +930,8 @@ class _$PackWriteTearOff {
       DateTime? passDate,
       required int deliveryCompanyId,
       required int senderId,
-      int? receiverId = null}) {
+      int? receiverId = null,
+      String comment = ''}) {
     return _PackWrite(
       barcode: barcode,
       deliveryDate: deliveryDate,
@@ -946,6 +939,7 @@ class _$PackWriteTearOff {
       deliveryCompanyId: deliveryCompanyId,
       senderId: senderId,
       receiverId: receiverId,
+      comment: comment,
     );
   }
 
@@ -965,6 +959,7 @@ mixin _$PackWrite {
   int get deliveryCompanyId => throw _privateConstructorUsedError;
   int get senderId => throw _privateConstructorUsedError;
   int? get receiverId => throw _privateConstructorUsedError;
+  String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -982,7 +977,8 @@ abstract class $PackWriteCopyWith<$Res> {
       DateTime? passDate,
       int deliveryCompanyId,
       int senderId,
-      int? receiverId});
+      int? receiverId,
+      String comment});
 }
 
 /// @nodoc
@@ -1001,6 +997,7 @@ class _$PackWriteCopyWithImpl<$Res> implements $PackWriteCopyWith<$Res> {
     Object? deliveryCompanyId = freezed,
     Object? senderId = freezed,
     Object? receiverId = freezed,
+    Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
       barcode: barcode == freezed
@@ -1027,6 +1024,10 @@ class _$PackWriteCopyWithImpl<$Res> implements $PackWriteCopyWith<$Res> {
           ? _value.receiverId
           : receiverId // ignore: cast_nullable_to_non_nullable
               as int?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1043,7 +1044,8 @@ abstract class _$PackWriteCopyWith<$Res> implements $PackWriteCopyWith<$Res> {
       DateTime? passDate,
       int deliveryCompanyId,
       int senderId,
-      int? receiverId});
+      int? receiverId,
+      String comment});
 }
 
 /// @nodoc
@@ -1063,6 +1065,7 @@ class __$PackWriteCopyWithImpl<$Res> extends _$PackWriteCopyWithImpl<$Res>
     Object? deliveryCompanyId = freezed,
     Object? senderId = freezed,
     Object? receiverId = freezed,
+    Object? comment = freezed,
   }) {
     return _then(_PackWrite(
       barcode: barcode == freezed
@@ -1089,6 +1092,10 @@ class __$PackWriteCopyWithImpl<$Res> extends _$PackWriteCopyWithImpl<$Res>
           ? _value.receiverId
           : receiverId // ignore: cast_nullable_to_non_nullable
               as int?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1102,7 +1109,8 @@ class _$_PackWrite implements _PackWrite {
       this.passDate,
       required this.deliveryCompanyId,
       required this.senderId,
-      this.receiverId = null});
+      this.receiverId = null,
+      this.comment = ''});
 
   factory _$_PackWrite.fromJson(Map<String, dynamic> json) =>
       _$$_PackWriteFromJson(json);
@@ -1121,10 +1129,13 @@ class _$_PackWrite implements _PackWrite {
   @JsonKey()
   @override
   final int? receiverId;
+  @JsonKey()
+  @override
+  final String comment;
 
   @override
   String toString() {
-    return 'PackWrite(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompanyId: $deliveryCompanyId, senderId: $senderId, receiverId: $receiverId)';
+    return 'PackWrite(barcode: $barcode, deliveryDate: $deliveryDate, passDate: $passDate, deliveryCompanyId: $deliveryCompanyId, senderId: $senderId, receiverId: $receiverId, comment: $comment)';
   }
 
   @override
@@ -1140,7 +1151,8 @@ class _$_PackWrite implements _PackWrite {
                 .equals(other.deliveryCompanyId, deliveryCompanyId) &&
             const DeepCollectionEquality().equals(other.senderId, senderId) &&
             const DeepCollectionEquality()
-                .equals(other.receiverId, receiverId));
+                .equals(other.receiverId, receiverId) &&
+            const DeepCollectionEquality().equals(other.comment, comment));
   }
 
   @override
@@ -1151,7 +1163,8 @@ class _$_PackWrite implements _PackWrite {
       const DeepCollectionEquality().hash(passDate),
       const DeepCollectionEquality().hash(deliveryCompanyId),
       const DeepCollectionEquality().hash(senderId),
-      const DeepCollectionEquality().hash(receiverId));
+      const DeepCollectionEquality().hash(receiverId),
+      const DeepCollectionEquality().hash(comment));
 
   @JsonKey(ignore: true)
   @override
@@ -1171,7 +1184,8 @@ abstract class _PackWrite implements PackWrite {
       DateTime? passDate,
       required int deliveryCompanyId,
       required int senderId,
-      int? receiverId}) = _$_PackWrite;
+      int? receiverId,
+      String comment}) = _$_PackWrite;
 
   factory _PackWrite.fromJson(Map<String, dynamic> json) =
       _$_PackWrite.fromJson;
@@ -1188,6 +1202,8 @@ abstract class _PackWrite implements PackWrite {
   int get senderId;
   @override
   int? get receiverId;
+  @override
+  String get comment;
   @override
   @JsonKey(ignore: true)
   _$PackWriteCopyWith<_PackWrite> get copyWith =>

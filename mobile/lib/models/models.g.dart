@@ -21,7 +21,6 @@ _$_Sender _$$_SenderFromJson(Map<String, dynamic> json) => _$_Sender(
       city: json['city'] as String,
       addressLine: json['addressLine'] as String,
       postCode: json['postCode'] as String,
-      comment: json['comment'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_SenderToJson(_$_Sender instance) => <String, dynamic>{
@@ -29,7 +28,6 @@ Map<String, dynamic> _$$_SenderToJson(_$_Sender instance) => <String, dynamic>{
       'city': instance.city,
       'addressLine': instance.addressLine,
       'postCode': instance.postCode,
-      'comment': instance.comment,
     };
 
 _$_Receiver _$$_ReceiverFromJson(Map<String, dynamic> json) => _$_Receiver(
@@ -59,6 +57,7 @@ _$_Pack _$$_PackFromJson(Map<String, dynamic> json) => _$_Pack(
       receiver: json['receiver'] == null
           ? null
           : Receiver.fromJson(json['receiver'] as Map<String, dynamic>),
+      comment: json['comment'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_PackToJson(_$_Pack instance) => <String, dynamic>{
@@ -68,6 +67,7 @@ Map<String, dynamic> _$$_PackToJson(_$_Pack instance) => <String, dynamic>{
       'deliveryCompany': instance.deliveryCompany,
       'sender': instance.sender,
       'receiver': instance.receiver,
+      'comment': instance.comment,
     };
 
 _$_PackWrite _$$_PackWriteFromJson(Map<String, dynamic> json) => _$_PackWrite(
@@ -79,6 +79,7 @@ _$_PackWrite _$$_PackWriteFromJson(Map<String, dynamic> json) => _$_PackWrite(
       deliveryCompanyId: json['deliveryCompanyId'] as int,
       senderId: json['senderId'] as int,
       receiverId: json['receiverId'] as int? ?? null,
+      comment: json['comment'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_PackWriteToJson(_$_PackWrite instance) =>
@@ -89,4 +90,5 @@ Map<String, dynamic> _$$_PackWriteToJson(_$_PackWrite instance) =>
       'deliveryCompanyId': instance.deliveryCompanyId,
       'senderId': instance.senderId,
       'receiverId': instance.receiverId,
+      'comment': instance.comment,
     };

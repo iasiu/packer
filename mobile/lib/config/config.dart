@@ -13,13 +13,21 @@ class TextStyles {
     color: AppColors.cultured,
     fontSize: 48,
   );
-  static const white30 = TextStyle(
+  static const white24 = TextStyle(
     color: AppColors.cultured,
-    fontSize: 30,
+    fontSize: 24,
+  );
+  static const white20 = TextStyle(
+    color: AppColors.cultured,
+    fontSize: 20,
   );
   static const white18 = TextStyle(
     color: AppColors.cultured,
     fontSize: 18,
+  );
+  static const white16 = TextStyle(
+    color: AppColors.cultured,
+    fontSize: 16,
   );
   static const white14 = TextStyle(
     color: AppColors.cultured,
