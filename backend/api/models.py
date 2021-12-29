@@ -14,7 +14,6 @@ class Sender(models.Model):
     city = models.CharField(max_length=200)
     addressLine = models.CharField(max_length=200)
     postCode = models.CharField(max_length=20)
-    comment = models.CharField(max_length=200, blank=True)
     
     def __str__(self):
         return '{}'.format(self.name)
@@ -41,6 +40,7 @@ class Pack(models.Model):
     deliveryCompany = models.ForeignKey(DeliveryCompany, on_delete=models.PROTECT, related_name='packs')
     sender = models.ForeignKey(Sender, on_delete=models.PROTECT, related_name='packs')
     receiver = models.ForeignKey(Receiver, on_delete=models.PROTECT, blank=True, null=True, related_name='packs')
+    comment = models.CharField(max_length=200, blank=True)
     
     def __str__(self):
         return 'For {}, {}'.format(self.receiver.name, self.deliveryDate)

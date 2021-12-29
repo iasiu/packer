@@ -9,7 +9,7 @@ class DeliveryCompanySerializer(serializers.ModelSerializer):
 class SenderSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Sender
-        fields = ['id', 'name', 'city', 'addressLine', 'postCode', 'comment']
+        fields = ['id', 'name', 'city', 'addressLine', 'postCode']
         
 class ReceiverSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,7 +19,7 @@ class ReceiverSerializer(serializers.ModelSerializer):
 class PackSerializer(serializers.ModelSerializer): 
     class Meta:
         model = models.Pack
-        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver']
+        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver', 'comment']
         
 class PackReadSerializer(serializers.ModelSerializer):
     deliveryCompany = DeliveryCompanySerializer(read_only=True)
@@ -28,4 +28,4 @@ class PackReadSerializer(serializers.ModelSerializer):
         
     class Meta:
         model = models.Pack
-        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver']
+        fields = ['id', 'barcode', 'deliveryDate', 'passDate', 'deliveryCompany', 'sender', 'receiver', 'comment']

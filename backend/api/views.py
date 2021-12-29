@@ -6,11 +6,6 @@ from django.utils import timezone
 
 from api import models
 from api import serializers
-
-class Ping(APIView):
-    def get(self, _):
-        return Response({'ping': 'pong'})
-
 class DeliveryCompanyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.DeliveryCompany.objects.all()
     serializer_class = serializers.DeliveryCompanySerializer
@@ -48,6 +43,11 @@ class PackViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         serializer = self.read_serializer_class(instance)
         return Response(serializer.data)
+
+class GetPackWithBarcode(APIView):
+    def get(self, _, pack_barcode):
+        pack = get_object_or_404(models.Pack, barcode=pack_barcode)
+        return Response(serializers.PackReadSerializer(pack).data)
 
 class PassPack(APIView):
     def get(self, _, pack_id, receiver_id):
