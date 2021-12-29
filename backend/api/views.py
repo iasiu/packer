@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.http import HttpResponseBadRequest
 
 from api import models
 from api import serializers
@@ -43,19 +44,12 @@ class PackViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         serializer = self.read_serializer_class(instance)
         return Response(serializer.data)
-
-class GetPackWithBarcode(APIView):
+    
+class PassPack(APIView):
     def get(self, _, pack_barcode):
         pack = get_object_or_404(models.Pack, barcode=pack_barcode)
-        return Response(serializers.PackReadSerializer(pack).data)
-
-class PassPack(APIView):
-    def get(self, _, pack_id, receiver_id):
-        pack = get_object_or_404(models.Pack, pk=pack_id)
-        if pack.receiver == None or pack.receiver.id != receiver_id:
-            receiver = get_object_or_404(models.Receiver, pk=receiver_id)
-            pack.receiver = receiver
-            
+        if pack.passDate != None:
+            return HttpResponseBadRequest('This package was already passed')
         pack.passDate = timezone.now()
         pack.save()
         return Response(serializers.PackReadSerializer(pack).data)
