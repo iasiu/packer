@@ -60,12 +60,15 @@ class AddPackagePage extends HookWidget {
                         if (deliveryCompany.value != null) {
                           if (sender.value != null) {
                             if (receiver.value != null) {
+                              formKey.currentState!.saveAndValidate();
+                              final value = formKey.currentState!.value;
                               context.read<AddPackageCubit>().addPackage(
                                     barcode: barcode.value,
                                     deliveryCompanyId:
                                         deliveryCompany.value!.id,
                                     senderId: sender.value!.id,
                                     receiverId: receiver.value!.id,
+                                    comment: value['comment'],
                                   );
                               Navigator.of(context).popUntil(
                                 (route) =>
