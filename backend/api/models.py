@@ -7,6 +7,8 @@ class DeliveryCompany(models.Model):
         return '{}'.format(self.name)
     
     class Meta:
+        verbose_name = 'Delivery company'
+        verbose_name_plural = 'Delivery companies'
         ordering = ['name']
     
 class Sender(models.Model):
@@ -19,6 +21,8 @@ class Sender(models.Model):
         return '{}'.format(self.name)
     
     class Meta:
+        verbose_name = 'Sender'
+        verbose_name_plural = 'Senders'
         ordering = ['name']
 
 class Receiver(models.Model):
@@ -31,10 +35,12 @@ class Receiver(models.Model):
         return '{}, {}'.format(self.name, self.emailAddress)
     
     class Meta:
+        verbose_name = 'Receiver'
+        verbose_name_plural = 'Receivers'
         ordering = ['name']
     
 class Pack(models.Model):
-    barcode = models.CharField(max_length=200)
+    barcode = models.CharField(max_length=200, unique=True)
     deliveryDate = models.DateTimeField(auto_now_add=True, blank=True)
     passDate = models.DateTimeField(blank=True, null=True)
     deliveryCompany = models.ForeignKey(DeliveryCompany, on_delete=models.PROTECT, related_name='packs')
@@ -46,4 +52,6 @@ class Pack(models.Model):
         return 'For {}, {}'.format(self.receiver.name, self.deliveryDate)
     
     class Meta:
+        verbose_name = 'Package'
+        verbose_name_plural = 'Packages'
         ordering = ['deliveryDate']

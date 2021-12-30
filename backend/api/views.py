@@ -1,9 +1,8 @@
 from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
 from django.utils import timezone
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest, HttpResponseNotFound
 
 from api import models
 from api import serializers
@@ -40,17 +39,28 @@ class PackViewSet(viewsets.ModelViewSet):
         serializer = self.read_serializer_class(queryset, many=True)
         return Response(serializer.data)
     
-    def retrieve(self, request, *args, **kwargs):   
-        instance = self.get_object()
-        serializer = self.read_serializer_class(instance)
-        return Response(serializer.data)
+    def retrieve(self, request, *args, **kwargs):
+        try:   
+            instance = self.get_object()
+            serializer = self.read_serializer_class(instance)
+            return Response(serializer.data)
+        except Exception:
+            return HttpResponseNotFound('Couldn\'t find this package.')
     
 class PassPack(APIView):
     def get(self, _, pack_barcode):
-        pack = get_object_or_404(models.Pack, barcode=pack_barcode)
-        if pack.passDate != None:
-            return HttpResponseBadRequest('This package was already passed')
-        pack.passDate = timezone.now()
-        pack.save()
-        return Response(serializers.PackReadSerializer(pack).data)
-        
+        try:
+            pack = models.Pack.objects.get(barcode=pack_barcode)
+            if pack.passDate != None:
+                return HttpResponseBadRequest('Package with this barcode was already passed.')
+            pack.passDate = timezone.now()
+            pack.save()
+            return Response(serializers.PackReadSerializer(pack).data)
+        except models.Pack.DoesNotExist:
+            return HttpResponseNotFound('Couldn\'t find a package with this barcode.')
+        except models.Pack.MultipleObjectsReturned:
+            return HttpResponseBadRequest('Found more than one package with this barcode, report this to admin.')
+        except Exception as e:
+            print(e)
+            return HttpResponseBadRequest('Encountered unknown error, please try again later.')
+            
