@@ -12,6 +12,7 @@ router.register(r'packs', views.PackViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('pass/<str:pack_barcode>/', views.PassPack.as_view()),
+    path('pack/<str:pack_barcode>/', views.GetPackWithBarcode.as_view()),
+    path('pass/<int:pack_id>/', views.PassPack.as_view()),
     path('', include(router.urls)),
 ]
