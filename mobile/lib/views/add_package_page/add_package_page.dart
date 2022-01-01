@@ -14,6 +14,7 @@ import 'package:packer/views/add_package_page/widgets/pick_sender_page.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 import 'package:packer/views/widgets/app_text_button.dart';
 import 'package:packer/utils/app_toaster.dart';
+import 'package:packer/views/widgets/app_text_field.dart';
 import 'package:packer/views/widgets/error_placeholder.dart';
 import 'package:packer/views/widgets/loading_placeholder.dart';
 
@@ -123,171 +124,14 @@ class AddPackagePage extends HookWidget {
                     horizontal: 8.0,
                     vertical: 16.0,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Package barcode*',
-                        style: TextStyles.white20,
-                      ),
-                      AppTextButton(
-                        text: barcode.value,
-                        color: AppColors.jet,
-                        textColor: AppColors.cultured,
-                        textAlign: TextAlign.start,
-                      ),
-                      AppTextButton(
-                        text: 'Scan again',
-                        onPressed: () {
-                          AppScanner.barcode().then((barcodeScanRes) {
-                            if (barcodeScanRes != '-1') {
-                              barcode.value = barcodeScanRes;
-                            }
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Delivery company*',
-                        style: TextStyles.white20,
-                      ),
-                      AppTextButton(
-                        color: AppColors.jet,
-                        textColor: AppColors.cultured,
-                        text: deliveryCompany.value?.name ?? '',
-                        textAlign: TextAlign.start,
-                      ),
-                      AppTextButton(
-                        text: 'Pick delivery company',
-                        onPressed: () async {
-                          final deliveryRes =
-                              await showModalBottomSheet<DeliveryCompany>(
-                            context: context,
-                            isScrollControlled: true,
-                            enableDrag: false,
-                            backgroundColor: AppColors.jet,
-                            builder: (context) => Padding(
-                              padding: EdgeInsets.only(
-                                top: paddingTop,
-                              ),
-                              child: PickDeliveryPage(
-                                deliveryCompanies: fetched.deliveryCompanies,
-                              ),
-                            ),
-                          );
-                          if (deliveryRes != null) {
-                            deliveryCompany.value = deliveryRes;
-                          }
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Sender*',
-                        style: TextStyles.white20,
-                      ),
-                      AppTextButton(
-                        color: AppColors.jet,
-                        textColor: AppColors.cultured,
-                        text: sender.value?.name ?? '',
-                        textAlign: TextAlign.start,
-                      ),
-                      AppTextButton(
-                        text: 'Pick sender',
-                        onPressed: () async {
-                          final senderRes = await showModalBottomSheet<Sender>(
-                            context: context,
-                            isScrollControlled: true,
-                            enableDrag: false,
-                            backgroundColor: AppColors.jet,
-                            builder: (context) => Padding(
-                              padding: EdgeInsets.only(
-                                top: paddingTop,
-                              ),
-                              child: PickSenderPage(
-                                senders: fetched.senders,
-                              ),
-                            ),
-                          );
-                          if (senderRes != null) {
-                            sender.value = senderRes;
-                          }
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Receiver*',
-                        style: TextStyles.white20,
-                      ),
-                      AppTextButton(
-                        color: AppColors.jet,
-                        textColor: AppColors.cultured,
-                        text: receiver.value?.name ?? '',
-                        textAlign: TextAlign.start,
-                      ),
-                      AppTextButton(
-                        text: 'Pick receiver',
-                        onPressed: () async {
-                          final receiverRes =
-                              await showModalBottomSheet<Receiver>(
-                            context: context,
-                            isScrollControlled: true,
-                            enableDrag: false,
-                            backgroundColor: AppColors.jet,
-                            builder: (context) => Padding(
-                              padding: EdgeInsets.only(
-                                top: paddingTop,
-                              ),
-                              child: PickReceiverPage(
-                                receivers: fetched.receivers,
-                              ),
-                            ),
-                          );
-                          if (receiverRes != null) {
-                            receiver.value = receiverRes;
-                          }
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      FormBuilder(
-                        key: formKey,
-                        enabled: true,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Comment',
-                              style: TextStyles.white20,
-                            ),
-                            FormBuilderTextField(
-                              cursorColor: AppColors.cultured,
-                              maxLength: 200,
-                              style: TextStyles.white14,
-                              maxLines: 5,
-                              minLines: 5,
-                              decoration: const InputDecoration.collapsed(
-                                hintText: null,
-                              ).copyWith(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(6.0),
-                                ),
-                                contentPadding: const EdgeInsets.all(8),
-                                disabledBorder: null,
-                                errorBorder: null,
-                                enabledBorder: null,
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(6.0),
-                                ),
-                                focusedErrorBorder: null,
-                                fillColor: AppColors.jet,
-                                filled: true,
-                                counterStyle: TextStyles.white14,
-                              ),
-                              name: 'comment',
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  child: _AddPackageForm(
+                    barcode: barcode,
+                    deliveryCompany: deliveryCompany,
+                    paddingTop: paddingTop,
+                    sender: sender,
+                    receiver: receiver,
+                    formKey: formKey,
+                    fetched: fetched,
                   ),
                 ),
               ),
@@ -295,6 +139,189 @@ class AddPackagePage extends HookWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _AddPackageForm extends StatelessWidget {
+  const _AddPackageForm({
+    Key? key,
+    required this.barcode,
+    required this.deliveryCompany,
+    required this.paddingTop,
+    required this.sender,
+    required this.receiver,
+    required this.formKey,
+    required this.fetched,
+  }) : super(key: key);
+
+  final ValueNotifier<String> barcode;
+  final ValueNotifier<DeliveryCompany?> deliveryCompany;
+  final double paddingTop;
+  final ValueNotifier<Sender?> sender;
+  final ValueNotifier<Receiver?> receiver;
+  final GlobalKey<FormBuilderState> formKey;
+  final AddPackageFetched fetched;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Package barcode*',
+          style: TextStyles.white20,
+        ),
+        AppTextButton(
+          text: barcode.value,
+          color: AppColors.jet,
+          textColor: AppColors.cultured,
+          textAlign: TextAlign.start,
+        ),
+        AppTextButton(
+          text: 'Scan again',
+          onPressed: () {
+            AppScanner.barcode().then((barcodeScanRes) {
+              if (barcodeScanRes != '-1') {
+                barcode.value = barcodeScanRes;
+              }
+            });
+          },
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Delivery company*',
+          style: TextStyles.white20,
+        ),
+        AppTextButton(
+          color: AppColors.jet,
+          textColor: AppColors.cultured,
+          text: deliveryCompany.value?.name ?? '',
+          textAlign: TextAlign.start,
+        ),
+        AppTextButton(
+          text: 'Pick delivery company',
+          onPressed: () async {
+            final deliveryRes = await showModalBottomSheet<DeliveryCompany>(
+              context: context,
+              isScrollControlled: true,
+              enableDrag: false,
+              backgroundColor: AppColors.jet,
+              builder: (context) => Padding(
+                padding: EdgeInsets.only(
+                  top: paddingTop,
+                ),
+                child: PickDeliveryPage(
+                  deliveryCompanies: fetched.deliveryCompanies,
+                ),
+              ),
+            );
+            if (deliveryRes != null) {
+              deliveryCompany.value = deliveryRes;
+            }
+          },
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Sender*',
+          style: TextStyles.white20,
+        ),
+        AppTextButton(
+          color: AppColors.jet,
+          textColor: AppColors.cultured,
+          text: sender.value?.name ?? '',
+          textAlign: TextAlign.start,
+        ),
+        AppTextButton(
+          text: 'Pick sender',
+          onPressed: () async {
+            final senderRes = await showModalBottomSheet<Sender>(
+              context: context,
+              isScrollControlled: true,
+              enableDrag: false,
+              backgroundColor: AppColors.jet,
+              builder: (context) => Padding(
+                padding: EdgeInsets.only(
+                  top: paddingTop,
+                ),
+                child: PickSenderPage(
+                  senders: fetched.senders,
+                  paddingTop: paddingTop,
+                ),
+              ),
+            );
+            if (senderRes != null) {
+              sender.value = senderRes;
+            }
+          },
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Receiver*',
+          style: TextStyles.white20,
+        ),
+        AppTextButton(
+          color: AppColors.jet,
+          textColor: AppColors.cultured,
+          text: receiver.value?.name ?? '',
+          textAlign: TextAlign.start,
+        ),
+        AppTextButton(
+          text: 'Pick receiver',
+          onPressed: () async {
+            final receiverRes = await showModalBottomSheet<Receiver>(
+              context: context,
+              isScrollControlled: true,
+              enableDrag: false,
+              backgroundColor: AppColors.jet,
+              builder: (context) => Padding(
+                padding: EdgeInsets.only(
+                  top: paddingTop,
+                ),
+                child: PickReceiverPage(
+                  receivers: fetched.receivers,
+                ),
+              ),
+            );
+            if (receiverRes != null) {
+              receiver.value = receiverRes;
+            }
+          },
+        ),
+        const SizedBox(height: 16),
+        _CommentForm(formKey: formKey),
+      ],
+    );
+  }
+}
+
+class _CommentForm extends StatelessWidget {
+  const _CommentForm({
+    Key? key,
+    required this.formKey,
+  }) : super(key: key);
+
+  final GlobalKey<FormBuilderState> formKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return FormBuilder(
+      key: formKey,
+      enabled: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            'Comment',
+            style: TextStyles.white20,
+          ),
+          AppTextField(
+            name: 'comment',
+            lines: 5,
+            maxLength: 200,
+          ),
+        ],
+      ),
     );
   }
 }

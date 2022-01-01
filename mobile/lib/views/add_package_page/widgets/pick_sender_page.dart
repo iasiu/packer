@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/models/models.dart';
+import 'package:packer/views/add_package_page/widgets/add_sender_page.dart';
 import 'package:packer/views/add_package_page/widgets/list_element.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 import 'package:packer/views/widgets/app_text_button.dart';
@@ -9,9 +10,11 @@ class PickSenderPage extends StatelessWidget {
   const PickSenderPage({
     Key? key,
     required this.senders,
+    required this.paddingTop,
   }) : super(key: key);
 
   final List<Sender> senders;
+  final double paddingTop;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +61,19 @@ class PickSenderPage extends StatelessWidget {
                   children: [
                     AppTextButton(
                       text: 'New sender',
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          enableDrag: false,
+                          backgroundColor: AppColors.jet,
+                          builder: (context) => Padding(
+                              padding: EdgeInsets.only(
+                                top: paddingTop,
+                              ),
+                              child: const AddSenderPage()),
+                        );
+                      },
                       height: 48,
                       width: (MediaQuery.of(context).size.width ~/ 2.5) * 1.0,
                       radius: 24,
