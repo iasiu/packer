@@ -25,6 +25,12 @@ class _$PassPackageStateTearOff {
     return const PassPackageInProgress();
   }
 
+  PassPackageFetched fetched({required Pack pack}) {
+    return PassPackageFetched(
+      pack: pack,
+    );
+  }
+
   PassPackageSuccess success() {
     return const PassPackageSuccess();
   }
@@ -45,6 +51,7 @@ mixin _$PassPackageState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgress,
+    required TResult Function(Pack pack) fetched,
     required TResult Function() success,
     required TResult Function(String? message) failure,
   }) =>
@@ -53,6 +60,7 @@ mixin _$PassPackageState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
   }) =>
@@ -61,6 +69,7 @@ mixin _$PassPackageState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
     required TResult orElse(),
@@ -70,6 +79,7 @@ mixin _$PassPackageState {
   TResult map<TResult extends Object?>({
     required TResult Function(PassPackageInitial value) initial,
     required TResult Function(PassPackageInProgress value) inProgress,
+    required TResult Function(PassPackageFetched value) fetched,
     required TResult Function(PassPackageSuccess value) success,
     required TResult Function(PassPackageFailure value) failure,
   }) =>
@@ -78,6 +88,7 @@ mixin _$PassPackageState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
   }) =>
@@ -86,6 +97,7 @@ mixin _$PassPackageState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
     required TResult orElse(),
@@ -153,6 +165,7 @@ class _$PassPackageInitial implements PassPackageInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgress,
+    required TResult Function(Pack pack) fetched,
     required TResult Function() success,
     required TResult Function(String? message) failure,
   }) {
@@ -164,6 +177,7 @@ class _$PassPackageInitial implements PassPackageInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
   }) {
@@ -175,6 +189,7 @@ class _$PassPackageInitial implements PassPackageInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
     required TResult orElse(),
@@ -190,6 +205,7 @@ class _$PassPackageInitial implements PassPackageInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(PassPackageInitial value) initial,
     required TResult Function(PassPackageInProgress value) inProgress,
+    required TResult Function(PassPackageFetched value) fetched,
     required TResult Function(PassPackageSuccess value) success,
     required TResult Function(PassPackageFailure value) failure,
   }) {
@@ -201,6 +217,7 @@ class _$PassPackageInitial implements PassPackageInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
   }) {
@@ -212,6 +229,7 @@ class _$PassPackageInitial implements PassPackageInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
     required TResult orElse(),
@@ -270,6 +288,7 @@ class _$PassPackageInProgress implements PassPackageInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgress,
+    required TResult Function(Pack pack) fetched,
     required TResult Function() success,
     required TResult Function(String? message) failure,
   }) {
@@ -281,6 +300,7 @@ class _$PassPackageInProgress implements PassPackageInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
   }) {
@@ -292,6 +312,7 @@ class _$PassPackageInProgress implements PassPackageInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
     required TResult orElse(),
@@ -307,6 +328,7 @@ class _$PassPackageInProgress implements PassPackageInProgress {
   TResult map<TResult extends Object?>({
     required TResult Function(PassPackageInitial value) initial,
     required TResult Function(PassPackageInProgress value) inProgress,
+    required TResult Function(PassPackageFetched value) fetched,
     required TResult Function(PassPackageSuccess value) success,
     required TResult Function(PassPackageFailure value) failure,
   }) {
@@ -318,6 +340,7 @@ class _$PassPackageInProgress implements PassPackageInProgress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
   }) {
@@ -329,6 +352,7 @@ class _$PassPackageInProgress implements PassPackageInProgress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
     required TResult orElse(),
@@ -342,6 +366,167 @@ class _$PassPackageInProgress implements PassPackageInProgress {
 
 abstract class PassPackageInProgress implements PassPackageState {
   const factory PassPackageInProgress() = _$PassPackageInProgress;
+}
+
+/// @nodoc
+abstract class $PassPackageFetchedCopyWith<$Res> {
+  factory $PassPackageFetchedCopyWith(
+          PassPackageFetched value, $Res Function(PassPackageFetched) then) =
+      _$PassPackageFetchedCopyWithImpl<$Res>;
+  $Res call({Pack pack});
+
+  $PackCopyWith<$Res> get pack;
+}
+
+/// @nodoc
+class _$PassPackageFetchedCopyWithImpl<$Res>
+    extends _$PassPackageStateCopyWithImpl<$Res>
+    implements $PassPackageFetchedCopyWith<$Res> {
+  _$PassPackageFetchedCopyWithImpl(
+      PassPackageFetched _value, $Res Function(PassPackageFetched) _then)
+      : super(_value, (v) => _then(v as PassPackageFetched));
+
+  @override
+  PassPackageFetched get _value => super._value as PassPackageFetched;
+
+  @override
+  $Res call({
+    Object? pack = freezed,
+  }) {
+    return _then(PassPackageFetched(
+      pack: pack == freezed
+          ? _value.pack
+          : pack // ignore: cast_nullable_to_non_nullable
+              as Pack,
+    ));
+  }
+
+  @override
+  $PackCopyWith<$Res> get pack {
+    return $PackCopyWith<$Res>(_value.pack, (value) {
+      return _then(_value.copyWith(pack: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$PassPackageFetched implements PassPackageFetched {
+  const _$PassPackageFetched({required this.pack});
+
+  @override
+  final Pack pack;
+
+  @override
+  String toString() {
+    return 'PassPackageState.fetched(pack: $pack)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PassPackageFetched &&
+            const DeepCollectionEquality().equals(other.pack, pack));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pack));
+
+  @JsonKey(ignore: true)
+  @override
+  $PassPackageFetchedCopyWith<PassPackageFetched> get copyWith =>
+      _$PassPackageFetchedCopyWithImpl<PassPackageFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() inProgress,
+    required TResult Function(Pack pack) fetched,
+    required TResult Function() success,
+    required TResult Function(String? message) failure,
+  }) {
+    return fetched(pack);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
+    TResult Function()? success,
+    TResult Function(String? message)? failure,
+  }) {
+    return fetched?.call(pack);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
+    TResult Function()? success,
+    TResult Function(String? message)? failure,
+    required TResult orElse(),
+  }) {
+    if (fetched != null) {
+      return fetched(pack);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PassPackageInitial value) initial,
+    required TResult Function(PassPackageInProgress value) inProgress,
+    required TResult Function(PassPackageFetched value) fetched,
+    required TResult Function(PassPackageSuccess value) success,
+    required TResult Function(PassPackageFailure value) failure,
+  }) {
+    return fetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PassPackageInitial value)? initial,
+    TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
+    TResult Function(PassPackageSuccess value)? success,
+    TResult Function(PassPackageFailure value)? failure,
+  }) {
+    return fetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PassPackageInitial value)? initial,
+    TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
+    TResult Function(PassPackageSuccess value)? success,
+    TResult Function(PassPackageFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (fetched != null) {
+      return fetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PassPackageFetched implements PassPackageState {
+  const factory PassPackageFetched({required Pack pack}) = _$PassPackageFetched;
+
+  Pack get pack;
+  @JsonKey(ignore: true)
+  $PassPackageFetchedCopyWith<PassPackageFetched> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -387,6 +572,7 @@ class _$PassPackageSuccess implements PassPackageSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgress,
+    required TResult Function(Pack pack) fetched,
     required TResult Function() success,
     required TResult Function(String? message) failure,
   }) {
@@ -398,6 +584,7 @@ class _$PassPackageSuccess implements PassPackageSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
   }) {
@@ -409,6 +596,7 @@ class _$PassPackageSuccess implements PassPackageSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
     required TResult orElse(),
@@ -424,6 +612,7 @@ class _$PassPackageSuccess implements PassPackageSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(PassPackageInitial value) initial,
     required TResult Function(PassPackageInProgress value) inProgress,
+    required TResult Function(PassPackageFetched value) fetched,
     required TResult Function(PassPackageSuccess value) success,
     required TResult Function(PassPackageFailure value) failure,
   }) {
@@ -435,6 +624,7 @@ class _$PassPackageSuccess implements PassPackageSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
   }) {
@@ -446,6 +636,7 @@ class _$PassPackageSuccess implements PassPackageSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
     required TResult orElse(),
@@ -529,6 +720,7 @@ class _$PassPackageFailure implements PassPackageFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgress,
+    required TResult Function(Pack pack) fetched,
     required TResult Function() success,
     required TResult Function(String? message) failure,
   }) {
@@ -540,6 +732,7 @@ class _$PassPackageFailure implements PassPackageFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
   }) {
@@ -551,6 +744,7 @@ class _$PassPackageFailure implements PassPackageFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgress,
+    TResult Function(Pack pack)? fetched,
     TResult Function()? success,
     TResult Function(String? message)? failure,
     required TResult orElse(),
@@ -566,6 +760,7 @@ class _$PassPackageFailure implements PassPackageFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(PassPackageInitial value) initial,
     required TResult Function(PassPackageInProgress value) inProgress,
+    required TResult Function(PassPackageFetched value) fetched,
     required TResult Function(PassPackageSuccess value) success,
     required TResult Function(PassPackageFailure value) failure,
   }) {
@@ -577,6 +772,7 @@ class _$PassPackageFailure implements PassPackageFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
   }) {
@@ -588,6 +784,7 @@ class _$PassPackageFailure implements PassPackageFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PassPackageInitial value)? initial,
     TResult Function(PassPackageInProgress value)? inProgress,
+    TResult Function(PassPackageFetched value)? fetched,
     TResult Function(PassPackageSuccess value)? success,
     TResult Function(PassPackageFailure value)? failure,
     required TResult orElse(),

@@ -13,8 +13,8 @@ class AddPackageCubit extends Cubit<AddPackageState> {
 
   final Repository _repository;
 
-  Future<void> fetch() async {
-    emit(const AddPackageState.initial());
+  Future<bool> fetch() async {
+    emit(const AddPackageState.inProgress());
     try {
       final res = await Future.wait([
         _repository.getDeliveryCompanies(),
@@ -31,14 +31,18 @@ class AddPackageCubit extends Cubit<AddPackageState> {
         senders: senders,
         receivers: receivers,
       ));
+      return true;
     } catch (e, _) {
       if (e is DioError) {
-        final String message = e.response?.data as String? ?? e.response?.statusMessage ?? e.message;
+        final String message = e.response?.data as String? ??
+            e.response?.statusMessage ??
+            e.message;
         emit(AddPackageState.failure(
           message: message,
         ));
       }
       emit(const AddPackageState.failure());
+      return false;
     }
   }
 
@@ -49,6 +53,7 @@ class AddPackageCubit extends Cubit<AddPackageState> {
     required int receiverId,
     String comment = '',
   }) async {
+    emit(const AddPackageState.inProgress());
     final res = await _repository.addPackage(
       PackWrite(
         barcode: barcode,
@@ -70,6 +75,7 @@ class AddPackageCubit extends Cubit<AddPackageState> {
 @freezed
 class AddPackageState with _$AddPackageState {
   const factory AddPackageState.initial() = AddPackageInitial;
+  const factory AddPackageState.inProgress() = AddPackageInProgress;
   const factory AddPackageState.fetched({
     @Default([]) List<DeliveryCompany> deliveryCompanies,
     @Default([]) List<Sender> senders,

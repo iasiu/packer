@@ -8,5 +8,12 @@
             "request": "launch",
             "program": "lib/main.dart",
         },
+        {
+            "name": "flutter release",
+            "type": "dart",
+            "flutterMode": "release",
+            "request": "launch",
+            "program": "lib/main.dart",
+        },
     ]
 }

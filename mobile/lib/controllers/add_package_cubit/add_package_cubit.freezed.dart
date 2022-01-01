@@ -21,6 +21,10 @@ class _$AddPackageStateTearOff {
     return const AddPackageInitial();
   }
 
+  AddPackageInProgress inProgress() {
+    return const AddPackageInProgress();
+  }
+
   AddPackageFetched fetched(
       {List<DeliveryCompany> deliveryCompanies = const [],
       List<Sender> senders = const [],
@@ -51,6 +55,7 @@ mixin _$AddPackageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() inProgress,
     required TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)
         fetched,
@@ -61,6 +66,7 @@ mixin _$AddPackageState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -71,6 +77,7 @@ mixin _$AddPackageState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -82,6 +89,7 @@ mixin _$AddPackageState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPackageInitial value) initial,
+    required TResult Function(AddPackageInProgress value) inProgress,
     required TResult Function(AddPackageFetched value) fetched,
     required TResult Function(AddPackageAdded value) added,
     required TResult Function(AddPackageFailure value) failure,
@@ -90,6 +98,7 @@ mixin _$AddPackageState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -98,6 +107,7 @@ mixin _$AddPackageState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -165,6 +175,7 @@ class _$AddPackageInitial implements AddPackageInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() inProgress,
     required TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)
         fetched,
@@ -178,6 +189,7 @@ class _$AddPackageInitial implements AddPackageInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -191,6 +203,7 @@ class _$AddPackageInitial implements AddPackageInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -208,6 +221,7 @@ class _$AddPackageInitial implements AddPackageInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPackageInitial value) initial,
+    required TResult Function(AddPackageInProgress value) inProgress,
     required TResult Function(AddPackageFetched value) fetched,
     required TResult Function(AddPackageAdded value) added,
     required TResult Function(AddPackageFailure value) failure,
@@ -219,6 +233,7 @@ class _$AddPackageInitial implements AddPackageInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -230,6 +245,7 @@ class _$AddPackageInitial implements AddPackageInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -244,6 +260,135 @@ class _$AddPackageInitial implements AddPackageInitial {
 
 abstract class AddPackageInitial implements AddPackageState {
   const factory AddPackageInitial() = _$AddPackageInitial;
+}
+
+/// @nodoc
+abstract class $AddPackageInProgressCopyWith<$Res> {
+  factory $AddPackageInProgressCopyWith(AddPackageInProgress value,
+          $Res Function(AddPackageInProgress) then) =
+      _$AddPackageInProgressCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AddPackageInProgressCopyWithImpl<$Res>
+    extends _$AddPackageStateCopyWithImpl<$Res>
+    implements $AddPackageInProgressCopyWith<$Res> {
+  _$AddPackageInProgressCopyWithImpl(
+      AddPackageInProgress _value, $Res Function(AddPackageInProgress) _then)
+      : super(_value, (v) => _then(v as AddPackageInProgress));
+
+  @override
+  AddPackageInProgress get _value => super._value as AddPackageInProgress;
+}
+
+/// @nodoc
+
+class _$AddPackageInProgress implements AddPackageInProgress {
+  const _$AddPackageInProgress();
+
+  @override
+  String toString() {
+    return 'AddPackageState.inProgress()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AddPackageInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() inProgress,
+    required TResult Function(List<DeliveryCompany> deliveryCompanies,
+            List<Sender> senders, List<Receiver> receivers)
+        fetched,
+    required TResult Function() added,
+    required TResult Function(String? message) failure,
+  }) {
+    return inProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(List<DeliveryCompany> deliveryCompanies,
+            List<Sender> senders, List<Receiver> receivers)?
+        fetched,
+    TResult Function()? added,
+    TResult Function(String? message)? failure,
+  }) {
+    return inProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgress,
+    TResult Function(List<DeliveryCompany> deliveryCompanies,
+            List<Sender> senders, List<Receiver> receivers)?
+        fetched,
+    TResult Function()? added,
+    TResult Function(String? message)? failure,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddPackageInitial value) initial,
+    required TResult Function(AddPackageInProgress value) inProgress,
+    required TResult Function(AddPackageFetched value) fetched,
+    required TResult Function(AddPackageAdded value) added,
+    required TResult Function(AddPackageFailure value) failure,
+  }) {
+    return inProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
+    TResult Function(AddPackageFetched value)? fetched,
+    TResult Function(AddPackageAdded value)? added,
+    TResult Function(AddPackageFailure value)? failure,
+  }) {
+    return inProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
+    TResult Function(AddPackageFetched value)? fetched,
+    TResult Function(AddPackageAdded value)? added,
+    TResult Function(AddPackageFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddPackageInProgress implements AddPackageState {
+  const factory AddPackageInProgress() = _$AddPackageInProgress;
 }
 
 /// @nodoc
@@ -341,6 +486,7 @@ class _$AddPackageFetched implements AddPackageFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() inProgress,
     required TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)
         fetched,
@@ -354,6 +500,7 @@ class _$AddPackageFetched implements AddPackageFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -367,6 +514,7 @@ class _$AddPackageFetched implements AddPackageFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -384,6 +532,7 @@ class _$AddPackageFetched implements AddPackageFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPackageInitial value) initial,
+    required TResult Function(AddPackageInProgress value) inProgress,
     required TResult Function(AddPackageFetched value) fetched,
     required TResult Function(AddPackageAdded value) added,
     required TResult Function(AddPackageFailure value) failure,
@@ -395,6 +544,7 @@ class _$AddPackageFetched implements AddPackageFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -406,6 +556,7 @@ class _$AddPackageFetched implements AddPackageFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -474,6 +625,7 @@ class _$AddPackageAdded implements AddPackageAdded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() inProgress,
     required TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)
         fetched,
@@ -487,6 +639,7 @@ class _$AddPackageAdded implements AddPackageAdded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -500,6 +653,7 @@ class _$AddPackageAdded implements AddPackageAdded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -517,6 +671,7 @@ class _$AddPackageAdded implements AddPackageAdded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPackageInitial value) initial,
+    required TResult Function(AddPackageInProgress value) inProgress,
     required TResult Function(AddPackageFetched value) fetched,
     required TResult Function(AddPackageAdded value) added,
     required TResult Function(AddPackageFailure value) failure,
@@ -528,6 +683,7 @@ class _$AddPackageAdded implements AddPackageAdded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -539,6 +695,7 @@ class _$AddPackageAdded implements AddPackageAdded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -622,6 +779,7 @@ class _$AddPackageFailure implements AddPackageFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() inProgress,
     required TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)
         fetched,
@@ -635,6 +793,7 @@ class _$AddPackageFailure implements AddPackageFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -648,6 +807,7 @@ class _$AddPackageFailure implements AddPackageFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? inProgress,
     TResult Function(List<DeliveryCompany> deliveryCompanies,
             List<Sender> senders, List<Receiver> receivers)?
         fetched,
@@ -665,6 +825,7 @@ class _$AddPackageFailure implements AddPackageFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AddPackageInitial value) initial,
+    required TResult Function(AddPackageInProgress value) inProgress,
     required TResult Function(AddPackageFetched value) fetched,
     required TResult Function(AddPackageAdded value) added,
     required TResult Function(AddPackageFailure value) failure,
@@ -676,6 +837,7 @@ class _$AddPackageFailure implements AddPackageFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,
@@ -687,6 +849,7 @@ class _$AddPackageFailure implements AddPackageFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddPackageInitial value)? initial,
+    TResult Function(AddPackageInProgress value)? inProgress,
     TResult Function(AddPackageFetched value)? fetched,
     TResult Function(AddPackageAdded value)? added,
     TResult Function(AddPackageFailure value)? failure,

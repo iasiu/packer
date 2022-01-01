@@ -36,12 +36,6 @@ class AddPackagePage extends HookWidget {
     final sender = useState<Sender?>(null);
     final receiver = useState<Receiver?>(null);
     final paddingTop = MediaQuery.of(context).padding.top;
-    useEffect(
-      () {
-        context.read<AddPackageCubit>().fetch();
-      },
-      [],
-    );
 
     return BlocBuilder<AddPackageCubit, AddPackageState>(
       builder: (context, state) {
@@ -54,69 +48,71 @@ class AddPackagePage extends HookWidget {
           actions: state is AddPackageFetched
               ? [
                   Center(
-                      child: GestureDetector(
-                    onTap: () {
-                      if (barcode.value.length >= 4) {
-                        if (deliveryCompany.value != null) {
-                          if (sender.value != null) {
-                            if (receiver.value != null) {
-                              formKey.currentState!.saveAndValidate();
-                              final value = formKey.currentState!.value;
-                              context.read<AddPackageCubit>().addPackage(
-                                    barcode: barcode.value,
-                                    deliveryCompanyId:
-                                        deliveryCompany.value!.id,
-                                    senderId: sender.value!.id,
-                                    receiverId: receiver.value!.id,
-                                    comment: value['comment'],
-                                  );
-                              Navigator.of(context).popUntil(
-                                (route) =>
-                                    route.settings.name == AppPages.home.route,
-                              );
+                    child: GestureDetector(
+                      onTap: () {
+                        if (barcode.value.length >= 4) {
+                          if (deliveryCompany.value != null) {
+                            if (sender.value != null) {
+                              if (receiver.value != null) {
+                                formKey.currentState!.saveAndValidate();
+                                final value = formKey.currentState!.value;
+                                context.read<AddPackageCubit>().addPackage(
+                                      barcode: barcode.value,
+                                      deliveryCompanyId:
+                                          deliveryCompany.value!.id,
+                                      senderId: sender.value!.id,
+                                      receiverId: receiver.value!.id,
+                                      comment: value['comment'] ?? '',
+                                    );
+                                Navigator.of(context).popUntil(
+                                  (route) =>
+                                      route.settings.name ==
+                                      AppPages.home.route,
+                                );
+                              } else {
+                                AppToaster.show(
+                                  text: 'Please pick receiver first',
+                                  bgColor: Colors.red,
+                                  textColor: AppColors.cultured,
+                                );
+                              }
                             } else {
                               AppToaster.show(
-                                text: 'Please pick receiver first',
+                                text: 'Please pick sender first',
                                 bgColor: Colors.red,
                                 textColor: AppColors.cultured,
                               );
                             }
                           } else {
                             AppToaster.show(
-                              text: 'Please pick sender first',
+                              text: 'Please pick delivery company first',
                               bgColor: Colors.red,
                               textColor: AppColors.cultured,
                             );
                           }
                         } else {
                           AppToaster.show(
-                            text: 'Please pick delivery company first',
+                            text: 'Barcode is too short, please scan again',
                             bgColor: Colors.red,
                             textColor: AppColors.cultured,
                           );
                         }
-                      } else {
-                        AppToaster.show(
-                          text: 'Barcode is too short, please scan again',
-                          bgColor: Colors.red,
-                          textColor: AppColors.cultured,
-                        );
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text('Save',
-                          style: TextStyles.white16.copyWith(
-                            color: AppColors.inpost,
-                          )),
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text('Save',
+                            style: TextStyles.white16.copyWith(
+                              color: AppColors.inpost,
+                            )),
+                      ),
                     ),
-                  )),
+                  ),
                 ]
               : null,
           body: state.maybeMap(
             orElse: () => const ErrorPlaceholder(errorText: null),
             failure: (failure) => ErrorPlaceholder(errorText: failure.message),
-            initial: (_) => const LoadingPlaceholder(
+            inProgress: (_) => const LoadingPlaceholder(
               backgroundColor: Colors.transparent,
             ),
             fetched: (fetched) => GestureDetector(
@@ -138,6 +134,7 @@ class AddPackagePage extends HookWidget {
                         text: barcode.value,
                         color: AppColors.jet,
                         textColor: AppColors.cultured,
+                        textAlign: TextAlign.start,
                       ),
                       AppTextButton(
                         text: 'Scan again',
@@ -158,6 +155,7 @@ class AddPackagePage extends HookWidget {
                         color: AppColors.jet,
                         textColor: AppColors.cultured,
                         text: deliveryCompany.value?.name ?? '',
+                        textAlign: TextAlign.start,
                       ),
                       AppTextButton(
                         text: 'Pick delivery company',
@@ -191,6 +189,7 @@ class AddPackagePage extends HookWidget {
                         color: AppColors.jet,
                         textColor: AppColors.cultured,
                         text: sender.value?.name ?? '',
+                        textAlign: TextAlign.start,
                       ),
                       AppTextButton(
                         text: 'Pick sender',
@@ -223,6 +222,7 @@ class AddPackagePage extends HookWidget {
                         color: AppColors.jet,
                         textColor: AppColors.cultured,
                         text: receiver.value?.name ?? '',
+                        textAlign: TextAlign.start,
                       ),
                       AppTextButton(
                         text: 'Pick receiver',
@@ -262,8 +262,8 @@ class AddPackagePage extends HookWidget {
                               cursorColor: AppColors.cultured,
                               maxLength: 200,
                               style: TextStyles.white14,
-                              maxLines: 8,
-                              minLines: 8,
+                              maxLines: 5,
+                              minLines: 5,
                               decoration: const InputDecoration.collapsed(
                                 hintText: null,
                               ).copyWith(

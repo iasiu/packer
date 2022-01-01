@@ -46,8 +46,8 @@ class Repository {
     } catch (e, _) {
       if (e is DioError) {
         return left(RepositoryException(
-            message:
-                e.response?.data ?? e.response?.statusMessage ?? e.message));
+          message: e.response?.data ?? e.response?.statusMessage ?? e.message,
+        ));
       }
       return left(RepositoryException());
     }
@@ -59,17 +59,41 @@ class Repository {
       return right(null);
     } catch (e, _) {
       if (e is DioError) {
-        return left(RepositoryException(
-            message:
-                e.response?.data ?? e.response?.statusMessage ?? e.message));
+        try {
+          final res = e.response?.data as Map<String, dynamic>;
+          if (res.containsKey('barcode')) {
+            return left(RepositoryException(
+              message: (res['barcode'] as List<dynamic>)[0] as String?,
+            ));
+          }
+        } catch (_, __) {
+          return left(RepositoryException(
+            message: e.response?.data ?? e.response?.statusMessage ?? e.message,
+          ));
+        }
       }
       return left(RepositoryException());
     }
   }
 
-  Future<Either<RepositoryException, void>> passPackage(String barcode) async {
+  Future<Either<RepositoryException, Pack>> getPack(String barcode) async {
     try {
-      await cs.get('/pass/' + barcode);
+      final res = await cs.get('/pack/' + barcode);
+      final package = Pack.fromJson((res.data as Map<String, dynamic>));
+      return right(package);
+    } catch (e, _) {
+      if (e is DioError) {
+        return left(RepositoryException(
+          message: e.response?.data ?? e.response?.statusMessage ?? e.message,
+        ));
+      }
+      return left(RepositoryException());
+    }
+  }
+
+  Future<Either<RepositoryException, void>> passPack(int id) async {
+    try {
+      await cs.get('/pass/' + id.toString());
       return right(null);
     } catch (e, _) {
       if (e is DioError) {
@@ -77,9 +101,8 @@ class Repository {
         try {
           serverMessage = e.response?.data;
         } catch (_, __) {}
-        final String message = serverMessage ??
-            e.response?.statusMessage ??
-            e.message;
+        final String message =
+            serverMessage ?? e.response?.statusMessage ?? e.message;
         return left(RepositoryException(message: message));
       }
       return left(RepositoryException());
