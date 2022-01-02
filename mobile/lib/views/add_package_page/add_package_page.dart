@@ -177,9 +177,6 @@ class _AddPackageForm extends StatelessWidget {
           color: AppColors.jet,
           textColor: AppColors.cultured,
           textAlign: TextAlign.start,
-        ),
-        AppTextButton(
-          text: 'Scan again',
           onPressed: () {
             AppScanner.barcode().then((barcodeScanRes) {
               if (barcodeScanRes != '-1') {
@@ -196,11 +193,8 @@ class _AddPackageForm extends StatelessWidget {
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: deliveryCompany.value?.name ?? '',
+          text: deliveryCompany.value?.name ?? 'Pick delivery company',
           textAlign: TextAlign.start,
-        ),
-        AppTextButton(
-          text: 'Pick delivery company',
           onPressed: () async {
             final deliveryRes = await showModalBottomSheet<DeliveryCompany>(
               context: context,
@@ -229,11 +223,8 @@ class _AddPackageForm extends StatelessWidget {
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: sender.value?.name ?? '',
+          text: sender.value?.name ?? 'Pick sender',
           textAlign: TextAlign.start,
-        ),
-        AppTextButton(
-          text: 'Pick sender',
           onPressed: () async {
             final senderRes = await showModalBottomSheet<Sender>(
               context: context,
@@ -263,11 +254,8 @@ class _AddPackageForm extends StatelessWidget {
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: receiver.value?.name ?? '',
+          text: receiver.value?.name ?? 'Pick receiver',
           textAlign: TextAlign.start,
-        ),
-        AppTextButton(
-          text: 'Pick receiver',
           onPressed: () async {
             final receiverRes = await showModalBottomSheet<Receiver>(
               context: context,

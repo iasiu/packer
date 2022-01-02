@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/models/models.dart';
-import 'package:packer/utils/app_toaster.dart';
 import 'package:packer/views/add_package_page/widgets/add_receiver_page.dart';
 import 'package:packer/views/add_package_page/widgets/list_element.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
