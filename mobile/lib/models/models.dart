@@ -6,46 +6,77 @@ part 'models.freezed.dart';
 @freezed
 class DeliveryCompany with _$DeliveryCompany {
   const factory DeliveryCompany({
+    required int id,
     required String name,
   }) = _DeliveryCompany;
 
-  factory DeliveryCompany.fromJson(Map<String, dynamic> json) => _$DeliveryCompanyFromJson(json);
+  factory DeliveryCompany.fromJson(Map<String, dynamic> json) =>
+      _$DeliveryCompanyFromJson(json);
 }
 
 @freezed
 class Sender with _$Sender {
   const factory Sender({
+    required int id,
     required String name,
     required String city,
     required String addressLine,
     required String postCode,
-    @Default('') String comment,
   }) = _Sender;
 
   factory Sender.fromJson(Map<String, dynamic> json) => _$SenderFromJson(json);
 }
 
 @freezed
+class SenderWrite with _$SenderWrite {
+  const factory SenderWrite({
+    required String name,
+    required String city,
+    required String addressLine,
+    required String postCode,
+  }) = _SenderWrite;
+
+  factory SenderWrite.fromJson(Map<String, dynamic> json) => _$SenderWriteFromJson(json);
+}
+
+@freezed
 class Receiver with _$Receiver {
   const factory Receiver({
+    required int id,
     required String name,
     required String emailAddress,
     @Default('') String phoneNumber,
     @Default('') String officeNumber,
   }) = _Receiver;
 
-  factory Receiver.fromJson(Map<String, dynamic> json) => _$ReceiverFromJson(json);
+  factory Receiver.fromJson(Map<String, dynamic> json) =>
+      _$ReceiverFromJson(json);
+}
+
+@freezed
+class ReceiverWrite with _$ReceiverWrite {
+  const factory ReceiverWrite({
+    required String name,
+    required String emailAddress,
+    @Default('') String phoneNumber,
+    @Default('') String officeNumber,
+  }) = _ReceiverWrite;
+
+  factory ReceiverWrite.fromJson(Map<String, dynamic> json) =>
+      _$ReceiverWriteFromJson(json);
 }
 
 @freezed
 class Pack with _$Pack {
   const factory Pack({
+    required int id,
     @Default('') String barcode,
     required DateTime deliveryDate,
     DateTime? passDate,
     required DeliveryCompany deliveryCompany,
     required Sender sender,
-    @Default(null) Receiver? receiver,
+    required Receiver receiver,
+    @Default('') String comment,
   }) = _Pack;
 
   factory Pack.fromJson(Map<String, dynamic> json) => _$PackFromJson(json);
@@ -57,10 +88,12 @@ class PackWrite with _$PackWrite {
     @Default('') String barcode,
     required DateTime deliveryDate,
     DateTime? passDate,
-    required int deliveryCompanyId,
-    required int senderId,
-    @Default(null) int? receiverId,
+    required int deliveryCompany,
+    required int sender,
+    required int receiver,
+    @Default('') String comment,
   }) = _PackWrite;
 
-  factory PackWrite.fromJson(Map<String, dynamic> json) => _$PackWriteFromJson(json);
+  factory PackWrite.fromJson(Map<String, dynamic> json) =>
+      _$PackWriteFromJson(json);
 }

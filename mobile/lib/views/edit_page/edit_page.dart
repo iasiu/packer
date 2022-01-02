@@ -12,7 +12,7 @@ class EditPage extends StatelessWidget {
       height: 60,
       title: Text(
         S.of(context).editPackage,
-        style: TextStyles.white30,
+        style: TextStyles.white24,
       ),
     );
   }

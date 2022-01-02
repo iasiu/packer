@@ -7,11 +7,13 @@ class AppScaffold extends StatelessWidget {
     this.body,
     required this.title,
     this.height = 72,
+    this.actions,
   }) : super(key: key);
 
   final Widget? body;
   final Widget? title;
   final double height;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class AppScaffold extends StatelessWidget {
           backgroundColor: AppColors.jet,
           title: title,
           centerTitle: true,
+          actions: actions,
         ),
       ),
       body: body,

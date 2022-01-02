@@ -24,4 +24,18 @@ class ClientService {
       options: Options(headers: {'Authorization': _basicAuth}),
     );
   }
+
+  Future<Response> post({
+    required String path,
+    required dynamic data,
+  }) {
+    return client.post(
+      _link + path,
+      options: Options(headers: {
+        'Authorization': _basicAuth,
+        'Content-Type': 'application/json'
+      }),
+      data: data,
+    );
+  }
 }

@@ -12,7 +12,7 @@ class HistoryPage extends StatelessWidget {
       height: 60,
       title: Text(
         S.of(context).history,
-        style: TextStyles.white30,
+        style: TextStyles.white24,
       ),
     );
   }

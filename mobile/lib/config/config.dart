@@ -6,6 +6,7 @@ class AppColors {
   static const cultured = Color(0xFFFCFAF9);
   static const inpost = Color(0xFFFFCC02);
   static const davysGray = Color(0xFFB8B8B8);
+  static const loadingBackground = Color(0xBB000000);
 }
 
 class TextStyles {
@@ -13,13 +14,21 @@ class TextStyles {
     color: AppColors.cultured,
     fontSize: 48,
   );
-  static const white30 = TextStyle(
+  static const white24 = TextStyle(
     color: AppColors.cultured,
-    fontSize: 30,
+    fontSize: 24,
+  );
+  static const white20 = TextStyle(
+    color: AppColors.cultured,
+    fontSize: 20,
   );
   static const white18 = TextStyle(
     color: AppColors.cultured,
     fontSize: 18,
+  );
+  static const white16 = TextStyle(
+    color: AppColors.cultured,
+    fontSize: 16,
   );
   static const white14 = TextStyle(
     color: AppColors.cultured,
