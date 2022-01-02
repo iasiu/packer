@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/models/models.dart';
+import 'package:packer/utils/app_toaster.dart';
+import 'package:packer/views/add_package_page/widgets/add_receiver_page.dart';
 import 'package:packer/views/add_package_page/widgets/list_element.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 import 'package:packer/views/widgets/app_text_button.dart';
@@ -58,7 +60,13 @@ class PickReceiverPage extends StatelessWidget {
                   children: [
                     AppTextButton(
                       text: 'New receiver',
-                      onPressed: () {},
+                      onPressed: () async {
+                        final receiver = await Navigator.of(context)
+                            .push(AddReceiverPageRoute()) as Receiver?;
+                        if (receiver != null) {
+                          Navigator.of(context).pop(receiver);
+                        }
+                      },
                       height: 48,
                       width: (MediaQuery.of(context).size.width ~/ 2.5) * 1.0,
                       radius: 24,

@@ -34,6 +34,22 @@ Map<String, dynamic> _$$_SenderToJson(_$_Sender instance) => <String, dynamic>{
       'postCode': instance.postCode,
     };
 
+_$_SenderWrite _$$_SenderWriteFromJson(Map<String, dynamic> json) =>
+    _$_SenderWrite(
+      name: json['name'] as String,
+      city: json['city'] as String,
+      addressLine: json['addressLine'] as String,
+      postCode: json['postCode'] as String,
+    );
+
+Map<String, dynamic> _$$_SenderWriteToJson(_$_SenderWrite instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'city': instance.city,
+      'addressLine': instance.addressLine,
+      'postCode': instance.postCode,
+    };
+
 _$_Receiver _$$_ReceiverFromJson(Map<String, dynamic> json) => _$_Receiver(
       id: json['id'] as int,
       name: json['name'] as String,
@@ -45,6 +61,22 @@ _$_Receiver _$$_ReceiverFromJson(Map<String, dynamic> json) => _$_Receiver(
 Map<String, dynamic> _$$_ReceiverToJson(_$_Receiver instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
+      'emailAddress': instance.emailAddress,
+      'phoneNumber': instance.phoneNumber,
+      'officeNumber': instance.officeNumber,
+    };
+
+_$_ReceiverWrite _$$_ReceiverWriteFromJson(Map<String, dynamic> json) =>
+    _$_ReceiverWrite(
+      name: json['name'] as String,
+      emailAddress: json['emailAddress'] as String,
+      phoneNumber: json['phoneNumber'] as String? ?? '',
+      officeNumber: json['officeNumber'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$_ReceiverWriteToJson(_$_ReceiverWrite instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'emailAddress': instance.emailAddress,
       'phoneNumber': instance.phoneNumber,

@@ -28,6 +28,18 @@ class Sender with _$Sender {
 }
 
 @freezed
+class SenderWrite with _$SenderWrite {
+  const factory SenderWrite({
+    required String name,
+    required String city,
+    required String addressLine,
+    required String postCode,
+  }) = _SenderWrite;
+
+  factory SenderWrite.fromJson(Map<String, dynamic> json) => _$SenderWriteFromJson(json);
+}
+
+@freezed
 class Receiver with _$Receiver {
   const factory Receiver({
     required int id,
@@ -39,6 +51,19 @@ class Receiver with _$Receiver {
 
   factory Receiver.fromJson(Map<String, dynamic> json) =>
       _$ReceiverFromJson(json);
+}
+
+@freezed
+class ReceiverWrite with _$ReceiverWrite {
+  const factory ReceiverWrite({
+    required String name,
+    required String emailAddress,
+    @Default('') String phoneNumber,
+    @Default('') String officeNumber,
+  }) = _ReceiverWrite;
+
+  factory ReceiverWrite.fromJson(Map<String, dynamic> json) =>
+      _$ReceiverWriteFromJson(json);
 }
 
 @freezed

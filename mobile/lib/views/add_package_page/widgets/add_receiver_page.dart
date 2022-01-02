@@ -9,13 +9,13 @@ import 'package:packer/views/widgets/app_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:packer/views/widgets/loading_placeholder.dart';
 
-class AddSenderPageRoute extends MaterialPageRoute<void> {
-  AddSenderPageRoute()
-      : super(builder: (BuildContext context) => AddSenderPage());
+class AddReceiverPageRoute extends MaterialPageRoute<void> {
+  AddReceiverPageRoute()
+      : super(builder: (BuildContext context) => AddReceiverPage());
 }
 
-class AddSenderPage extends StatelessWidget {
-  AddSenderPage({
+class AddReceiverPage extends StatelessWidget {
+  AddReceiverPage({
     Key? key,
   }) : super(key: key);
 
@@ -32,7 +32,7 @@ class AddSenderPage extends StatelessWidget {
             AppScaffold(
               height: 60,
               title: const Text(
-                'New sender',
+                'New receiver',
                 style: TextStyles.white24,
               ),
               body: GestureDetector(
@@ -53,46 +53,49 @@ class AddSenderPage extends StatelessWidget {
                             const SizedBox(height: 4),
                             AppTextField(
                               name: 'name',
-                              validator:
-                                  FormBuilderValidators.required(context),
+                              validator: FormBuilderValidators.required(context),
                               padding: 12,
                               textInputAction: TextInputAction.next,
                             ),
                             const SizedBox(height: 8),
                             const Text(
-                              'City*',
+                              'Email address*',
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
                             AppTextField(
-                              name: 'city',
-                              validator: required,
+                              name: 'email',
+                              validator: FormBuilderValidators.compose([
+                                required,
+                                FormBuilderValidators.email(context),
+                              ]),
                               padding: 12,
                               textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.emailAddress,
                             ),
                             const SizedBox(height: 8),
                             const Text(
-                              'Address*',
+                              'Phone number',
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
                             AppTextField(
-                              name: 'address',
-                              validator: required,
-                              padding: 12,
-                              textInputAction: TextInputAction.next,
-                              keyboardType: TextInputType.streetAddress,
-                            ),
-                            const SizedBox(height: 8),
-                            const Text(
-                              'Post code*',
-                              style: TextStyles.white20,
-                            ),
-                            const SizedBox(height: 4),
-                            AppTextField(
-                              name: 'postcode',
+                              name: 'phone',
                               maxLength: 20,
-                              validator: required,
+                              validator: FormBuilderValidators.numeric(context),
+                              padding: 12,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.phone,
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Office',
+                              style: TextStyles.white20,
+                            ),
+                            const SizedBox(height: 4),
+                            const AppTextField(
+                              name: 'office',
+                              maxLength: 20,
                               padding: 12,
                               textInputAction: TextInputAction.done,
                               keyboardType: TextInputType.streetAddress,
@@ -103,15 +106,15 @@ class AddSenderPage extends StatelessWidget {
                               onPressed: () async {
                                 if (_formKey.currentState!.saveAndValidate()) {
                                   final value = _formKey.currentState!.value;
-                                  final sender = await context
+                                  final receiver = await context
                                       .read<AddPackageCubit>()
-                                      .addSender(
+                                      .addReceiver(
                                         name: value['name'],
-                                        city: value['city'],
-                                        addressLine: value['address'],
-                                        postCode: value['postcode'],
+                                        emailAddress: value['email'],
+                                        phoneNumber: value['phone'],
+                                        officeNumber: value['office'],
                                       );
-                                  Navigator.of(context).pop(sender);
+                                  Navigator.of(context).pop(receiver);
                                 }
                               },
                             ),

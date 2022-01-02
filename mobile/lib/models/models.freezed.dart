@@ -413,6 +413,221 @@ abstract class _Sender implements Sender {
   _$SenderCopyWith<_Sender> get copyWith => throw _privateConstructorUsedError;
 }
 
+SenderWrite _$SenderWriteFromJson(Map<String, dynamic> json) {
+  return _SenderWrite.fromJson(json);
+}
+
+/// @nodoc
+class _$SenderWriteTearOff {
+  const _$SenderWriteTearOff();
+
+  _SenderWrite call(
+      {required String name,
+      required String city,
+      required String addressLine,
+      required String postCode}) {
+    return _SenderWrite(
+      name: name,
+      city: city,
+      addressLine: addressLine,
+      postCode: postCode,
+    );
+  }
+
+  SenderWrite fromJson(Map<String, Object?> json) {
+    return SenderWrite.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SenderWrite = _$SenderWriteTearOff();
+
+/// @nodoc
+mixin _$SenderWrite {
+  String get name => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
+  String get addressLine => throw _privateConstructorUsedError;
+  String get postCode => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SenderWriteCopyWith<SenderWrite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SenderWriteCopyWith<$Res> {
+  factory $SenderWriteCopyWith(
+          SenderWrite value, $Res Function(SenderWrite) then) =
+      _$SenderWriteCopyWithImpl<$Res>;
+  $Res call({String name, String city, String addressLine, String postCode});
+}
+
+/// @nodoc
+class _$SenderWriteCopyWithImpl<$Res> implements $SenderWriteCopyWith<$Res> {
+  _$SenderWriteCopyWithImpl(this._value, this._then);
+
+  final SenderWrite _value;
+  // ignore: unused_field
+  final $Res Function(SenderWrite) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? city = freezed,
+    Object? addressLine = freezed,
+    Object? postCode = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressLine: addressLine == freezed
+          ? _value.addressLine
+          : addressLine // ignore: cast_nullable_to_non_nullable
+              as String,
+      postCode: postCode == freezed
+          ? _value.postCode
+          : postCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$SenderWriteCopyWith<$Res>
+    implements $SenderWriteCopyWith<$Res> {
+  factory _$SenderWriteCopyWith(
+          _SenderWrite value, $Res Function(_SenderWrite) then) =
+      __$SenderWriteCopyWithImpl<$Res>;
+  @override
+  $Res call({String name, String city, String addressLine, String postCode});
+}
+
+/// @nodoc
+class __$SenderWriteCopyWithImpl<$Res> extends _$SenderWriteCopyWithImpl<$Res>
+    implements _$SenderWriteCopyWith<$Res> {
+  __$SenderWriteCopyWithImpl(
+      _SenderWrite _value, $Res Function(_SenderWrite) _then)
+      : super(_value, (v) => _then(v as _SenderWrite));
+
+  @override
+  _SenderWrite get _value => super._value as _SenderWrite;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? city = freezed,
+    Object? addressLine = freezed,
+    Object? postCode = freezed,
+  }) {
+    return _then(_SenderWrite(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressLine: addressLine == freezed
+          ? _value.addressLine
+          : addressLine // ignore: cast_nullable_to_non_nullable
+              as String,
+      postCode: postCode == freezed
+          ? _value.postCode
+          : postCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SenderWrite implements _SenderWrite {
+  const _$_SenderWrite(
+      {required this.name,
+      required this.city,
+      required this.addressLine,
+      required this.postCode});
+
+  factory _$_SenderWrite.fromJson(Map<String, dynamic> json) =>
+      _$$_SenderWriteFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String city;
+  @override
+  final String addressLine;
+  @override
+  final String postCode;
+
+  @override
+  String toString() {
+    return 'SenderWrite(name: $name, city: $city, addressLine: $addressLine, postCode: $postCode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SenderWrite &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality()
+                .equals(other.addressLine, addressLine) &&
+            const DeepCollectionEquality().equals(other.postCode, postCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(addressLine),
+      const DeepCollectionEquality().hash(postCode));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SenderWriteCopyWith<_SenderWrite> get copyWith =>
+      __$SenderWriteCopyWithImpl<_SenderWrite>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SenderWriteToJson(this);
+  }
+}
+
+abstract class _SenderWrite implements SenderWrite {
+  const factory _SenderWrite(
+      {required String name,
+      required String city,
+      required String addressLine,
+      required String postCode}) = _$_SenderWrite;
+
+  factory _SenderWrite.fromJson(Map<String, dynamic> json) =
+      _$_SenderWrite.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get city;
+  @override
+  String get addressLine;
+  @override
+  String get postCode;
+  @override
+  @JsonKey(ignore: true)
+  _$SenderWriteCopyWith<_SenderWrite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Receiver _$ReceiverFromJson(Map<String, dynamic> json) {
   return _Receiver.fromJson(json);
 }
@@ -655,6 +870,235 @@ abstract class _Receiver implements Receiver {
   @override
   @JsonKey(ignore: true)
   _$ReceiverCopyWith<_Receiver> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ReceiverWrite _$ReceiverWriteFromJson(Map<String, dynamic> json) {
+  return _ReceiverWrite.fromJson(json);
+}
+
+/// @nodoc
+class _$ReceiverWriteTearOff {
+  const _$ReceiverWriteTearOff();
+
+  _ReceiverWrite call(
+      {required String name,
+      required String emailAddress,
+      String phoneNumber = '',
+      String officeNumber = ''}) {
+    return _ReceiverWrite(
+      name: name,
+      emailAddress: emailAddress,
+      phoneNumber: phoneNumber,
+      officeNumber: officeNumber,
+    );
+  }
+
+  ReceiverWrite fromJson(Map<String, Object?> json) {
+    return ReceiverWrite.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $ReceiverWrite = _$ReceiverWriteTearOff();
+
+/// @nodoc
+mixin _$ReceiverWrite {
+  String get name => throw _privateConstructorUsedError;
+  String get emailAddress => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
+  String get officeNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ReceiverWriteCopyWith<ReceiverWrite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReceiverWriteCopyWith<$Res> {
+  factory $ReceiverWriteCopyWith(
+          ReceiverWrite value, $Res Function(ReceiverWrite) then) =
+      _$ReceiverWriteCopyWithImpl<$Res>;
+  $Res call(
+      {String name,
+      String emailAddress,
+      String phoneNumber,
+      String officeNumber});
+}
+
+/// @nodoc
+class _$ReceiverWriteCopyWithImpl<$Res>
+    implements $ReceiverWriteCopyWith<$Res> {
+  _$ReceiverWriteCopyWithImpl(this._value, this._then);
+
+  final ReceiverWrite _value;
+  // ignore: unused_field
+  final $Res Function(ReceiverWrite) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? emailAddress = freezed,
+    Object? phoneNumber = freezed,
+    Object? officeNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      officeNumber: officeNumber == freezed
+          ? _value.officeNumber
+          : officeNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ReceiverWriteCopyWith<$Res>
+    implements $ReceiverWriteCopyWith<$Res> {
+  factory _$ReceiverWriteCopyWith(
+          _ReceiverWrite value, $Res Function(_ReceiverWrite) then) =
+      __$ReceiverWriteCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String name,
+      String emailAddress,
+      String phoneNumber,
+      String officeNumber});
+}
+
+/// @nodoc
+class __$ReceiverWriteCopyWithImpl<$Res>
+    extends _$ReceiverWriteCopyWithImpl<$Res>
+    implements _$ReceiverWriteCopyWith<$Res> {
+  __$ReceiverWriteCopyWithImpl(
+      _ReceiverWrite _value, $Res Function(_ReceiverWrite) _then)
+      : super(_value, (v) => _then(v as _ReceiverWrite));
+
+  @override
+  _ReceiverWrite get _value => super._value as _ReceiverWrite;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? emailAddress = freezed,
+    Object? phoneNumber = freezed,
+    Object? officeNumber = freezed,
+  }) {
+    return _then(_ReceiverWrite(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      officeNumber: officeNumber == freezed
+          ? _value.officeNumber
+          : officeNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ReceiverWrite implements _ReceiverWrite {
+  const _$_ReceiverWrite(
+      {required this.name,
+      required this.emailAddress,
+      this.phoneNumber = '',
+      this.officeNumber = ''});
+
+  factory _$_ReceiverWrite.fromJson(Map<String, dynamic> json) =>
+      _$$_ReceiverWriteFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String emailAddress;
+  @JsonKey()
+  @override
+  final String phoneNumber;
+  @JsonKey()
+  @override
+  final String officeNumber;
+
+  @override
+  String toString() {
+    return 'ReceiverWrite(name: $name, emailAddress: $emailAddress, phoneNumber: $phoneNumber, officeNumber: $officeNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ReceiverWrite &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.emailAddress, emailAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.officeNumber, officeNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(emailAddress),
+      const DeepCollectionEquality().hash(phoneNumber),
+      const DeepCollectionEquality().hash(officeNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ReceiverWriteCopyWith<_ReceiverWrite> get copyWith =>
+      __$ReceiverWriteCopyWithImpl<_ReceiverWrite>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReceiverWriteToJson(this);
+  }
+}
+
+abstract class _ReceiverWrite implements ReceiverWrite {
+  const factory _ReceiverWrite(
+      {required String name,
+      required String emailAddress,
+      String phoneNumber,
+      String officeNumber}) = _$_ReceiverWrite;
+
+  factory _ReceiverWrite.fromJson(Map<String, dynamic> json) =
+      _$_ReceiverWrite.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get emailAddress;
+  @override
+  String get phoneNumber;
+  @override
+  String get officeNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$ReceiverWriteCopyWith<_ReceiverWrite> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

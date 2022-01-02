@@ -6,17 +6,31 @@ class AppTextField extends StatelessWidget {
   const AppTextField({
     Key? key,
     required this.name,
-    this.maxLength,
-    this.lines,
+    this.maxLength = 200,
+    this.lines = 1,
+    this.counterStyle = TextStyles.white14,
+    this.validator,
+    this.padding = 8,
+    this.textInputAction,
+    this.keyboardType,
   }) : super(key: key);
 
   final String name;
   final int? lines;
   final int? maxLength;
+  final TextStyle? counterStyle;
+  final String? Function(String?)? validator;
+  final double padding;
+  final TextInputAction? textInputAction;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
+      autocorrect: false,
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
+      validator: validator,
       cursorColor: AppColors.cultured,
       maxLength: maxLength,
       style: TextStyles.white14,
@@ -28,7 +42,7 @@ class AppTextField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
         ),
-        contentPadding: const EdgeInsets.all(8),
+        contentPadding: EdgeInsets.all(padding),
         disabledBorder: null,
         errorBorder: null,
         enabledBorder: null,
@@ -38,7 +52,7 @@ class AppTextField extends StatelessWidget {
         focusedErrorBorder: null,
         fillColor: AppColors.jet,
         filled: true,
-        counterStyle: TextStyles.white14,
+        counterStyle: counterStyle,
       ),
       name: name,
     );

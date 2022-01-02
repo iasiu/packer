@@ -318,7 +318,6 @@ class _CommentForm extends StatelessWidget {
           AppTextField(
             name: 'comment',
             lines: 5,
-            maxLength: 200,
           ),
         ],
       ),

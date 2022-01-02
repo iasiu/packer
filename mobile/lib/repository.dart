@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:packer/client_service.dart';
@@ -11,7 +13,7 @@ class Repository {
   final ClientService cs;
 
   Future<List<DeliveryCompany>> getDeliveryCompanies() async {
-    final res = await cs.get('/deliveryCompanies');
+      final res = await cs.get('/deliveryCompanies');
     final deliveryCompanies = (res.data as List<Object?>)
         .map((e) => DeliveryCompany.fromJson(e as Map<String, dynamic>))
         .toList();
@@ -104,6 +106,38 @@ class Repository {
         final String message =
             serverMessage ?? e.response?.statusMessage ?? e.message;
         return left(RepositoryException(message: message));
+      }
+      return left(RepositoryException());
+    }
+  }
+
+  Future<Either<RepositoryException, Sender>> addSender(
+      SenderWrite sender) async {
+    try {
+      final res = await cs.post(path: '/senders/', data: sender.toJson());
+      final s = Sender.fromJson(res.data as Map<String, dynamic>);
+      return right(s);
+    } catch (e, _) {
+      if (e is DioError) {
+        return left(RepositoryException(
+          message: e.response?.data ?? e.response?.statusMessage ?? e.message,
+        ));
+      }
+      return left(RepositoryException());
+    }
+  }
+
+  Future<Either<RepositoryException, Receiver>> addReceiver(
+      ReceiverWrite receiver) async {
+    try {
+      final res = await cs.post(path: '/receivers/', data: receiver.toJson());
+      final r = Receiver.fromJson(res.data as Map<String, dynamic>);
+      return right(r);
+    } catch (e, _) {
+      if (e is DioError) {
+        return left(RepositoryException(
+          message: e.response?.data ?? e.response?.statusMessage ?? e.message,
+        ));
       }
       return left(RepositoryException());
     }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,8 +16,8 @@ class AddPackageCubit extends Cubit<AddPackageState> {
   final Repository _repository;
 
   Future<bool> fetch() async {
-    emit(const AddPackageState.inProgress());
     try {
+      emit(const AddPackageState.inProgress());
       final res = await Future.wait([
         _repository.getDeliveryCompanies(),
         _repository.getSenders(),
@@ -32,6 +34,11 @@ class AddPackageCubit extends Cubit<AddPackageState> {
         receivers: receivers,
       ));
       return true;
+    } on SocketException {
+      emit(const AddPackageState.failure(
+        message: 'There is a problem with your internet connection',
+      ));
+      return false;
     } catch (e, _) {
       if (e is DioError) {
         final String message = e.response?.data as String? ??
@@ -68,6 +75,70 @@ class AddPackageCubit extends Cubit<AddPackageState> {
     res.fold(
       (re) => emit(AddPackageState.failure(message: re.message)),
       (_) => emit(const AddPackageState.added()),
+    );
+  }
+
+  Future<Sender?> addSender({
+    required String name,
+    required String city,
+    required String addressLine,
+    required String postCode,
+  }) async {
+    return await state.maybeMap(
+      orElse: () {},
+      fetched: (fetched) async {
+        emit(const AddPackageState.inProgress());
+        final res = await _repository.addSender(SenderWrite(
+          name: name,
+          city: city,
+          addressLine: addressLine,
+          postCode: postCode,
+        ));
+
+        return res.fold(
+          (re) {
+            emit(AddPackageState.failure(message: re.message));
+          },
+          (sender) {
+            emit(fetched.copyWith(
+              senders: fetched.senders..add(sender),
+            ));
+            return sender;
+          },
+        );
+      },
+    );
+  }
+
+  Future<Receiver?> addReceiver({
+    required String name,
+    required String emailAddress,
+    String? phoneNumber,
+    String? officeNumber,
+  }) async {
+    return await state.maybeMap(
+      orElse: () {},
+      fetched: (fetched) async {
+        emit(const AddPackageState.inProgress());
+        final res = await _repository.addReceiver(ReceiverWrite(
+          name: name,
+          emailAddress: emailAddress,
+          phoneNumber: phoneNumber ?? '',
+          officeNumber: officeNumber ?? '',
+        ));
+
+        return res.fold(
+          (re) {
+            emit(AddPackageState.failure(message: re.message));
+          },
+          (receiver) {
+            emit(fetched.copyWith(
+              receivers: fetched.receivers..add(receiver),
+            ));
+            return receiver;
+          },
+        );
+      },
     );
   }
 }

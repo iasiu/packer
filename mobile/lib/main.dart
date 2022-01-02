@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:packer/config/injection.dart';
 import 'package:packer/controllers/pass_package_cubit/pass_package_cubit.dart';
 import 'package:packer/generated/l10n.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate
+          GlobalCupertinoLocalizations.delegate,
+          FormBuilderLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
         title: 'Packer',
