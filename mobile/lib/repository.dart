@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:packer/client_service.dart';
@@ -11,7 +13,7 @@ class Repository {
   final ClientService cs;
 
   Future<List<DeliveryCompany>> getDeliveryCompanies() async {
-      final res = await cs.get('/deliveryCompanies');
+    final res = await cs.get('/deliveryCompanies');
     final deliveryCompanies = (res.data as List<Object?>)
         .map((e) => DeliveryCompany.fromJson(e as Map<String, dynamic>))
         .toList();
@@ -43,6 +45,11 @@ class Repository {
           )
           .toList();
       return right(packs);
+    } on SocketException {
+      return left(RepositoryException(
+        message:
+            'There is a problem with your internet connection, try again later',
+      ));
     } catch (e, _) {
       if (e is DioError) {
         return left(RepositoryException(

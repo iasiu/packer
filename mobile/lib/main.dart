@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:packer/config/injection.dart';
+import 'package:packer/controllers/history_cubit/history_cubit.dart';
 import 'package:packer/controllers/pass_package_cubit/pass_package_cubit.dart';
 import 'package:packer/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider.value(value: getIt<AddPackageCubit>()),
         BlocProvider.value(value: getIt<PassPackageCubit>()),
+        BlocProvider.value(value: getIt<HistoryCubit>()),
       ],
       child: MaterialApp(
         localizationsDelegates: const [
