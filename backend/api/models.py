@@ -54,4 +54,4 @@ class Pack(models.Model):
     class Meta:
         verbose_name = 'Package'
         verbose_name_plural = 'Packages'
-        ordering = ['deliveryDate']
+        ordering = ['-deliveryDate']
