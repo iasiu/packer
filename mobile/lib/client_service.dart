@@ -38,4 +38,18 @@ class ClientService {
       data: data,
     );
   }
+  
+  Future<Response> put({
+    required String path,
+    required dynamic data,
+  }) {
+    return client.put(
+      _link + path,
+      options: Options(headers: {
+        'Authorization': _basicAuth,
+        'Content-Type': 'application/json'
+      }),
+      data: data,
+    );
+  }
 }
