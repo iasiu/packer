@@ -83,9 +83,20 @@ class AddPackageCubit extends Cubit<AddPackageState> {
     required String city,
     required String addressLine,
     required String postCode,
+    bool ignoreState = false,
   }) async {
     return await state.maybeMap(
-      orElse: () {},
+      orElse: () async {
+        if (ignoreState) {
+          final res = await _repository.addSender(SenderWrite(
+            name: name,
+            city: city,
+            addressLine: addressLine,
+            postCode: postCode,
+          ));
+          return res.fold((l) => null, (r) => r);
+        }
+      },
       fetched: (fetched) async {
         emit(const AddPackageState.inProgress());
         final res = await _repository.addSender(SenderWrite(
@@ -115,9 +126,20 @@ class AddPackageCubit extends Cubit<AddPackageState> {
     required String emailAddress,
     String? phoneNumber,
     String? officeNumber,
+    bool ignoreState = false,
   }) async {
     return await state.maybeMap(
-      orElse: () {},
+      orElse: () async {
+        if (ignoreState) {
+          final res = await _repository.addReceiver(ReceiverWrite(
+            name: name,
+            emailAddress: emailAddress,
+            phoneNumber: phoneNumber ?? '',
+            officeNumber: officeNumber ?? '',
+          ));
+          return res.fold((l) => null, (r) => r);
+        }
+      },
       fetched: (fetched) async {
         emit(const AddPackageState.inProgress());
         final res = await _repository.addReceiver(ReceiverWrite(

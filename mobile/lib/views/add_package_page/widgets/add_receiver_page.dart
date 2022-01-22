@@ -10,16 +10,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:packer/views/widgets/loading_placeholder.dart';
 
 class AddReceiverPageRoute extends MaterialPageRoute<void> {
-  AddReceiverPageRoute()
-      : super(builder: (BuildContext context) => AddReceiverPage());
+  AddReceiverPageRoute({required this.ignoreState})
+      : super(
+          builder: (BuildContext context) =>
+              AddReceiverPage(ignoreState: ignoreState),
+        );
+
+  final bool ignoreState;
 }
 
 class AddReceiverPage extends StatelessWidget {
   AddReceiverPage({
     Key? key,
+    required this.ignoreState,
   }) : super(key: key);
 
   final _formKey = GlobalKey<FormBuilderState>();
+  final bool ignoreState;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,8 @@ class AddReceiverPage extends StatelessWidget {
                             const SizedBox(height: 4),
                             AppTextField(
                               name: 'name',
-                              validator: FormBuilderValidators.required(context),
+                              validator:
+                                  FormBuilderValidators.required(context),
                               padding: 12,
                               textInputAction: TextInputAction.next,
                             ),
@@ -113,6 +121,7 @@ class AddReceiverPage extends StatelessWidget {
                                         emailAddress: value['email'],
                                         phoneNumber: value['phone'],
                                         officeNumber: value['office'],
+                                        ignoreState: ignoreState,
                                       );
                                   Navigator.of(context).pop(receiver);
                                 }

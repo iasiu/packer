@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
-import 'package:packer/controllers/history_cubit/history_cubit.dart';
 import 'package:intl/intl.dart';
+import 'package:packer/models/models.dart';
 
 class PackListItem extends StatelessWidget {
   const PackListItem({
     Key? key,
-    required this.index,
-    required this.fetched,
+    required this.pack,
   }) : super(key: key);
 
-  final int index;
-  final HistoryFetched fetched;
+  final Pack pack;
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +24,20 @@ class PackListItem extends StatelessWidget {
             child: Center(
               child: Column(children: [
                 Text(
-                  fetched.packs[index].sender.name,
+                  pack.sender.name,
                   style: TextStyles.white18,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  DateFormat.yMd().format(
-                    fetched.packs[index].deliveryDate,
-                  ),
-                  style: TextStyles.white16,
+                  '${DateFormat.yMMMEd().format(
+                    pack.deliveryDate.toLocal(),
+                  )} \n ${DateFormat.jm().format(
+                    pack.deliveryDate.toLocal(),
+                  )}',
+                  style: TextStyles.white14,
+                  textAlign: TextAlign.center,
                 ),
               ]),
             ),
@@ -45,7 +46,7 @@ class PackListItem extends StatelessWidget {
             child: Text(
               '----->',
               style: TextStyles.white16.copyWith(
-                color: fetched.packs[index].passDate != null
+                color: pack.passDate != null
                     ? AppColors.inpost
                     : AppColors.davysGray,
               ),
@@ -57,7 +58,7 @@ class PackListItem extends StatelessWidget {
               child: Column(children: [
                 FittedBox(
                   child: Text(
-                    fetched.packs[index].receiver.name,
+                    pack.receiver.name,
                     style: TextStyles.white18,
                     maxLines: 1,
                     overflow: TextOverflow.clip,
@@ -65,12 +66,15 @@ class PackListItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  fetched.packs[index].passDate != null
-                      ? DateFormat.yMd().format(
-                          fetched.packs[index].passDate!,
-                        )
+                  pack.passDate != null
+                      ? '${DateFormat.yMMMEd().format(
+                          pack.passDate!.toLocal(),
+                        )} \n ${DateFormat.jm().format(
+                          pack.passDate!.toLocal(),
+                        )}'
                       : '-',
-                  style: TextStyles.white16,
+                  style: TextStyles.white14,
+                  textAlign: TextAlign.center,
                 ),
               ]),
             ),

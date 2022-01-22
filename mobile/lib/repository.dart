@@ -133,7 +133,8 @@ class Repository {
   }
 
   Future<Either<RepositoryException, Receiver>> addReceiver(
-      ReceiverWrite receiver,) async {
+    ReceiverWrite receiver,
+  ) async {
     try {
       final res = await cs.post(path: '/receivers/', data: receiver.toJson());
       final r = Receiver.fromJson(res.data as Map<String, dynamic>);
@@ -149,9 +150,20 @@ class Repository {
   }
 
   Future<Either<RepositoryException, void>> updatePack(
+    int id,
     PackWrite packData,
   ) async {
+    try {
+      await cs.put(path: '/packs/$id/', data: packData.toJson());
+      return right(null);
+    } catch (e, _) {
+      if (e is DioError) {
+        return left(RepositoryException(
+          message: e.response?.data ?? e.response?.statusMessage ?? e.message,
+        ));
+      }
       return left(RepositoryException());
+    }
   }
 }
 

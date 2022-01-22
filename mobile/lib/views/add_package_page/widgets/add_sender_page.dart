@@ -10,16 +10,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:packer/views/widgets/loading_placeholder.dart';
 
 class AddSenderPageRoute extends MaterialPageRoute<void> {
-  AddSenderPageRoute()
-      : super(builder: (BuildContext context) => AddSenderPage());
+  AddSenderPageRoute({required this.ignoreState})
+      : super(
+          builder: (BuildContext context) => AddSenderPage(
+            ignoreState: ignoreState,
+          ),
+        );
+
+  final bool ignoreState;
 }
 
 class AddSenderPage extends StatelessWidget {
   AddSenderPage({
     Key? key,
+    required this.ignoreState,
   }) : super(key: key);
 
   final _formKey = GlobalKey<FormBuilderState>();
+  final bool ignoreState;
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +118,7 @@ class AddSenderPage extends StatelessWidget {
                                         city: value['city'],
                                         addressLine: value['address'],
                                         postCode: value['postcode'],
+                                        ignoreState: ignoreState,
                                       );
                                   Navigator.of(context).pop(sender);
                                 }

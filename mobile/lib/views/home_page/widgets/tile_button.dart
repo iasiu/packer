@@ -34,10 +34,14 @@ class TileButton extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const SizedBox(height: 12),
             icon,
-            Text(text, style: TextStyles.white14),
+            const Spacer(),
+            Text(
+              text,
+              style: TextStyles.white14,
+            ),
           ],
         ),
       ),

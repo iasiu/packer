@@ -37,8 +37,7 @@ class HistoryPage extends HookWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) => PackListItem(
-                      index: index,
-                      fetched: fetched,
+                      pack: fetched.packs[index],
                     ),
                     separatorBuilder: (context, _) => const Divider(
                       color: AppColors.cultured,
@@ -49,8 +48,6 @@ class HistoryPage extends HookWidget {
                     child: Text(
                       'List is currently empty',
                       style: TextStyles.white20,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
           );
