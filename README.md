@@ -32,25 +32,25 @@ Here's what I've learned:
 ### Screenshots
 
 ##### Main page
-<img src="images/main.png" alt="Main page" width="510" height="964">
+<img src="images/main.png" alt="Main page" width="306" height="578">
 
 ##### Barcode scanner
-<img src="images/scanner.png" alt="Main page" width="510" height="964">
+<img src="images/scanner.png" alt="Main page" width="306" height="578">
 
 ##### Add package
-<img src="images/add_pack.png" alt="Main page" width="510" height="964">
+<img src="images/add_pack.png" alt="Main page" width="306" height="578">
 
 ##### Pass package
-<img src="images/pass_pack.png" alt="Main page" width="510" height="964">
+<img src="images/pass_pack.png" alt="Main page" width="306" height="578">
 
 ##### Pass package result
-<img src="images/pass_pack_result.png" alt="Main page" width="510" height="964">
+<img src="images/pass_pack_result.png" alt="Main page" width="306" height="578">
 
 ##### History
-<img src="images/history.png" alt="Main page" width="510" height="964">
+<img src="images/history.png" alt="Main page" width="306" height="578">
 
 ##### Pick receiver
-<img src="images/pick_receiver.png" alt="Main page" width="510" height="964">
+<img src="images/pick_receiver.png" alt="Main page" width="306" height="578">
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
