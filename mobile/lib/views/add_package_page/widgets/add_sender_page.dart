@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/controllers/add_package_cubit/add_package_cubit.dart';
+import 'package:packer/generated/l10n.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 import 'package:packer/views/widgets/app_text_button.dart';
 import 'package:packer/views/widgets/app_text_field.dart';
@@ -39,8 +40,8 @@ class AddSenderPage extends StatelessWidget {
           children: [
             AppScaffold(
               height: 60,
-              title: const Text(
-                'New sender',
+              title: Text(
+                S.of(context).AddSenderPage_NewSender,
                 style: TextStyles.white24,
               ),
               body: GestureDetector(
@@ -54,8 +55,8 @@ class AddSenderPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Name*',
+                            Text(
+                              S.of(context).AddSenderPage_Name,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -67,8 +68,8 @@ class AddSenderPage extends StatelessWidget {
                               textInputAction: TextInputAction.next,
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'City*',
+                            Text(
+                              S.of(context).AddSenderPage_City,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -79,8 +80,8 @@ class AddSenderPage extends StatelessWidget {
                               textInputAction: TextInputAction.next,
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'Address*',
+                            Text(
+                              S.of(context).AddSenderPage_Address,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -92,8 +93,8 @@ class AddSenderPage extends StatelessWidget {
                               keyboardType: TextInputType.streetAddress,
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'Post code*',
+                            Text(
+                              S.of(context).AddSenderPage_PostCode,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -107,7 +108,7 @@ class AddSenderPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             AppTextButton(
-                              text: 'Save',
+                              text: S.of(context).AddSenderPage_Save,
                               onPressed: () async {
                                 if (_formKey.currentState!.saveAndValidate()) {
                                   final value = _formKey.currentState!.value;

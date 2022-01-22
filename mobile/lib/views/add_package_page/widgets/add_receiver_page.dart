@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/controllers/add_package_cubit/add_package_cubit.dart';
+import 'package:packer/generated/l10n.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
 import 'package:packer/views/widgets/app_text_button.dart';
 import 'package:packer/views/widgets/app_text_field.dart';
@@ -38,8 +39,8 @@ class AddReceiverPage extends StatelessWidget {
           children: [
             AppScaffold(
               height: 60,
-              title: const Text(
-                'New receiver',
+              title: Text(
+                S.of(context).AddReceiverPage_NewReceiver,
                 style: TextStyles.white24,
               ),
               body: GestureDetector(
@@ -53,8 +54,8 @@ class AddReceiverPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Name*',
+                            Text(
+                              S.of(context).AddReceiverPage_Name,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -66,8 +67,8 @@ class AddReceiverPage extends StatelessWidget {
                               textInputAction: TextInputAction.next,
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'Email address*',
+                            Text(
+                              S.of(context).AddReceiverPage_EmailAddress,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -82,8 +83,8 @@ class AddReceiverPage extends StatelessWidget {
                               keyboardType: TextInputType.emailAddress,
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'Phone number',
+                            Text(
+                              S.of(context).AddReceiverPage_PhoneNumber,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -96,8 +97,8 @@ class AddReceiverPage extends StatelessWidget {
                               keyboardType: TextInputType.phone,
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'Office',
+                            Text(
+                              S.of(context).AddReceiverPage_Office,
                               style: TextStyles.white20,
                             ),
                             const SizedBox(height: 4),
@@ -110,7 +111,7 @@ class AddReceiverPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             AppTextButton(
-                              text: 'Save',
+                              text: S.of(context).AddReceiverPage_Save,
                               onPressed: () async {
                                 if (_formKey.currentState!.saveAndValidate()) {
                                   final value = _formKey.currentState!.value;

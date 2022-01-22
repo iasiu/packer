@@ -21,7 +21,7 @@ class EditPage extends HookWidget {
     return AppScaffold(
       height: 60,
       title: Text(
-        S.of(context).editPackage,
+        S.of(context).EditPack,
         style: TextStyles.white24,
       ),
       body: BlocBuilder<EditCubit, EditState>(
@@ -53,9 +53,9 @@ class EditPage extends HookWidget {
                     ),
                     itemCount: fetched.packs.length,
                   )
-                : const Center(
+                : Center(
                     child: Text(
-                      'There are no packs that have not been passed yet',
+                      S.of(context).EditPage_ThereAre,
                       style: TextStyles.white20,
                     ),
                   ),

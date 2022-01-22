@@ -22,7 +22,7 @@ class HistoryPage extends HookWidget {
     return AppScaffold(
       height: 60,
       title: Text(
-        S.of(context).history,
+        S.of(context).History,
         style: TextStyles.white24,
       ),
       body: BlocBuilder<HistoryCubit, HistoryState>(
@@ -44,9 +44,9 @@ class HistoryPage extends HookWidget {
                     ),
                     itemCount: fetched.packs.length,
                   )
-                : const Center(
+                : Center(
                     child: Text(
-                      'List is currently empty',
+                      S.of(context).HistoryPage_EmptyList,
                       style: TextStyles.white20,
                     ),
                   ),

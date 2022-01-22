@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
+import 'package:packer/generated/l10n.dart';
 import 'package:packer/models/models.dart';
 import 'package:packer/views/add_package_page/widgets/list_element.dart';
 import 'package:packer/views/widgets/app_scaffold.dart';
@@ -16,8 +17,8 @@ class PickDeliveryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       height: 60,
-      title: const Text(
-        'Pick delivery company',
+      title: Text(
+        S.of(context).PickDeliveryPage_PickDelivery,
         style: TextStyles.white24,
       ),
       body: deliveryCompanies.isNotEmpty
@@ -35,9 +36,9 @@ class PickDeliveryPage extends StatelessWidget {
               ),
               itemCount: deliveryCompanies.length,
             )
-          : const Center(
+          : Center(
               child: Text(
-                'List is currently empty',
+                S.of(context).PickDeliveryPage_EmptyList,
                 style: TextStyles.white20,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

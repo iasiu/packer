@@ -48,7 +48,7 @@ class _EditPackPage extends HookWidget {
         return AppScaffold(
           height: 60,
           title: Text(
-            S.of(context).editPackage,
+            S.of(context).EditPack,
             style: TextStyles.white24,
           ),
           actions: state is EditFetched
@@ -74,7 +74,7 @@ class _EditPackPage extends HookWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Text(
-                          'Save',
+                          S.of(context).EditPackPage_Save,
                           style: TextStyles.white16.copyWith(
                             color: AppColors.inpost,
                           ),
@@ -148,8 +148,8 @@ class _EditPackForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Package barcode',
+        Text(
+          S.of(context).EditPackPage_Barcode,
           style: TextStyles.white20,
         ),
         AppTextButton(
@@ -159,8 +159,8 @@ class _EditPackForm extends StatelessWidget {
           textAlign: TextAlign.start,
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Delivery date',
+        Text(
+          S.of(context).EditPackPage_DeliveryDate,
           style: TextStyles.white20,
         ),
         AppTextButton(
@@ -174,14 +174,14 @@ class _EditPackForm extends StatelessWidget {
           textAlign: TextAlign.start,
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Delivery company*',
+        Text(
+          S.of(context).EditPackPage_Delivery,
           style: TextStyles.white20,
         ),
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: deliveryCompany.value?.name ?? 'Pick delivery company',
+          text: deliveryCompany.value?.name ?? S.of(context).EditPackPage_PickDelivery,
           textAlign: TextAlign.start,
           onPressed: () async {
             final deliveryRes = await showModalBottomSheet<DeliveryCompany>(
@@ -204,14 +204,14 @@ class _EditPackForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Sender*',
+        Text(
+          S.of(context).EditPackPage_Sender,
           style: TextStyles.white20,
         ),
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: sender.value?.name ?? 'Pick sender',
+          text: sender.value?.name ?? S.of(context).EditPackPage_PickSender,
           textAlign: TextAlign.start,
           onPressed: () async {
             final senderRes = await showModalBottomSheet<Sender>(
@@ -236,14 +236,14 @@ class _EditPackForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Receiver*',
+        Text(
+          S.of(context).EditPackPage_Receiver,
           style: TextStyles.white20,
         ),
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: receiver.value?.name ?? 'Pick receiver',
+          text: receiver.value?.name ?? S.of(context).EditPackPage_PickReceiver,
           textAlign: TextAlign.start,
           onPressed: () async {
             final receiverRes = await showModalBottomSheet<Receiver>(
@@ -294,8 +294,8 @@ class _CommentForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Comment',
+          Text(
+            S.of(context).EditPackPage_Comment,
             style: TextStyles.white20,
           ),
           AppTextField(

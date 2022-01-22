@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
+import 'package:packer/generated/l10n.dart';
 import 'package:packer/models/models.dart';
 import 'package:packer/views/add_package_page/widgets/add_sender_page.dart';
 import 'package:packer/views/add_package_page/widgets/list_element.dart';
@@ -22,8 +23,8 @@ class PickSenderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       height: 60,
-      title: const Text(
-        'Pick sender',
+      title: Text(
+        S.of(context).PickSenderPage_PickSender,
         style: TextStyles.white24,
       ),
       body: Stack(
@@ -43,9 +44,9 @@ class PickSenderPage extends StatelessWidget {
                   ),
                   itemCount: senders.length,
                 )
-              : const Center(
+              : Center(
                   child: Text(
-                    'List is currently empty',
+                    S.of(context).PickSenderPage_EmptyList,
                     style: TextStyles.white20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -62,7 +63,7 @@ class PickSenderPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppTextButton(
-                      text: 'New sender',
+                      text: S.of(context).PickSenderPage_PickSender,
                       onPressed: () async {
                         final sender = await Navigator.of(context).push(
                                 AddSenderPageRoute(ignoreState: ignoreState))

@@ -43,11 +43,10 @@ class AddPackagePage extends HookWidget {
         return AppScaffold(
           height: 60,
           title: Text(
-            S.of(context).addPackage,
+            S.of(context).AddPack,
             style: TextStyles.white24,
           ),
-          actions: state is AddPackageFetched
-              ? [
+          actions: state is AddPackageFetched ? [
                   Center(
                     child: GestureDetector(
                       onTap: () {
@@ -72,28 +71,28 @@ class AddPackagePage extends HookWidget {
                                 );
                               } else {
                                 AppToaster.show(
-                                  text: 'Please pick receiver first',
+                                  text: S.of(context).AddPackagePage_PleasePickDelivery,
                                   bgColor: Colors.red,
                                   textColor: AppColors.cultured,
                                 );
                               }
                             } else {
                               AppToaster.show(
-                                text: 'Please pick sender first',
+                                text: S.of(context).AddPackagePage_PleasePickSender,
                                 bgColor: Colors.red,
                                 textColor: AppColors.cultured,
                               );
                             }
                           } else {
                             AppToaster.show(
-                              text: 'Please pick delivery company first',
+                              text: S.of(context).AddPackagePage_PleasePickDelivery,
                               bgColor: Colors.red,
                               textColor: AppColors.cultured,
                             );
                           }
                         } else {
                           AppToaster.show(
-                            text: 'Barcode is too short, please scan again',
+                            text: S.of(context).AddPackagePage_BarcodeShort,
                             bgColor: Colors.red,
                             textColor: AppColors.cultured,
                           );
@@ -101,7 +100,8 @@ class AddPackagePage extends HookWidget {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: Text('Save',
+                        child: Text(
+                          S.of(context).AddPackagePage_Save,
                             style: TextStyles.white16.copyWith(
                               color: AppColors.inpost,
                             )),
@@ -168,8 +168,8 @@ class _AddPackageForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Package barcode*',
+        Text(
+          S.of(context).AddPackagePage_Barcode,
           style: TextStyles.white20,
         ),
         AppTextButton(
@@ -186,14 +186,14 @@ class _AddPackageForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Delivery company*',
+        Text(
+          S.of(context).AddPackagePage_Delivery,
           style: TextStyles.white20,
         ),
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: deliveryCompany.value?.name ?? 'Pick delivery company',
+          text: deliveryCompany.value?.name ?? S.of(context).AddPackagePage_PickDelivery,
           textAlign: TextAlign.start,
           onPressed: () async {
             final deliveryRes = await showModalBottomSheet<DeliveryCompany>(
@@ -216,14 +216,14 @@ class _AddPackageForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Sender*',
+        Text(
+          S.of(context).AddPackagePage_Sender,
           style: TextStyles.white20,
         ),
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: sender.value?.name ?? 'Pick sender',
+          text: sender.value?.name ?? S.of(context).AddPackagePage_PickSender,
           textAlign: TextAlign.start,
           onPressed: () async {
             final senderRes = await showModalBottomSheet<Sender>(
@@ -247,14 +247,14 @@ class _AddPackageForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Receiver*',
+        Text(
+          S.of(context).AddPackagePage_Receiver,
           style: TextStyles.white20,
         ),
         AppTextButton(
           color: AppColors.jet,
           textColor: AppColors.cultured,
-          text: receiver.value?.name ?? 'Pick receiver',
+          text: receiver.value?.name ?? S.of(context).AddPackagePage_PickReceiver,
           textAlign: TextAlign.start,
           onPressed: () async {
             final receiverRes = await showModalBottomSheet<Receiver>(
@@ -298,12 +298,12 @@ class _CommentForm extends StatelessWidget {
       enabled: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Text(
-            'Comment',
+            S.of(context).AddPackagePage_Comment,
             style: TextStyles.white20,
           ),
-          AppTextField(
+          const AppTextField(
             name: 'comment',
             lines: 5,
           ),

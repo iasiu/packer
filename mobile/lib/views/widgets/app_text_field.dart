@@ -14,6 +14,7 @@ class AppTextField extends StatelessWidget {
     this.textInputAction,
     this.keyboardType,
     this.initialValue,
+    this.readOnly = false,
   }) : super(key: key);
 
   final String name;
@@ -25,18 +26,20 @@ class AppTextField extends StatelessWidget {
   final double padding;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       initialValue: initialValue,
       autocorrect: false,
+      readOnly: readOnly,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       validator: validator,
       cursorColor: AppColors.cultured,
       maxLength: maxLength,
-      style: TextStyles.white14,
+      style: readOnly ? TextStyles.black14 : TextStyles.white14,
       maxLines: lines,
       minLines: lines,
       decoration: const InputDecoration.collapsed(
@@ -53,7 +56,7 @@ class AppTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(6.0),
         ),
         focusedErrorBorder: null,
-        fillColor: AppColors.jet,
+        fillColor: readOnly? AppColors.davysGray : AppColors.jet,
         filled: true,
         counterStyle: counterStyle,
       ),
