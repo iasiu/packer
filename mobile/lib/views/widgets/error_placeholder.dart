@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:packer/config/config.dart';
+import 'package:packer/generated/l10n.dart';
 
 class ErrorPlaceholder extends StatelessWidget {
   const ErrorPlaceholder({
@@ -13,7 +14,7 @@ class ErrorPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        errorText ?? 'Something went wrong, please try again later',
+        errorText ?? S.of(context).ErrorPlaceholder_SomethingWrong,
         style: TextStyles.white24,
       ),
     );

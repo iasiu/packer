@@ -31,7 +31,7 @@ class HomePage extends HookWidget {
             return Stack(
               children: [
                 AppScaffold(
-                  title: Text(S.of(context).appName, style: TextStyles.white48),
+                  title: Text(S.of(context).AppName, style: TextStyles.white48),
                   body: MultiBlocListener(
                     listeners: [
                       BlocListener<AddPackageCubit, AddPackageState>(
@@ -39,13 +39,13 @@ class HomePage extends HookWidget {
                         state.maybeMap(
                           orElse: () {},
                           added: (_) => AppToaster.show(
-                            text: 'Successfully added a package',
+                            text: S.of(context).HomePage_SuccessAdd,
                             bgColor: Colors.green,
                             textColor: AppColors.cultured,
                           ),
                           failure: (failure) => AppToaster.show(
                             text:
-                                failure.message ?? 'Encountered unknown error',
+                                failure.message ?? S.of(context).HomePage_UnknownError,
                             bgColor: Colors.red,
                             textColor: AppColors.cultured,
                           ),
@@ -56,12 +56,12 @@ class HomePage extends HookWidget {
                         state.maybeMap(
                           orElse: () {},
                           failure: (f) => AppToaster.show(
-                            text: f.message ?? 'Encountered unknown error',
+                            text: f.message ?? S.of(context).HomePage_UnknownError,
                             bgColor: Colors.red,
                             textColor: AppColors.cultured,
                           ),
                           success: (_) => AppToaster.show(
-                            text: 'Successfully passed a package',
+                            text: S.of(context).HomePage_SuccessPass,
                             bgColor: Colors.green,
                             textColor: AppColors.cultured,
                           ),
@@ -87,7 +87,7 @@ class HomePage extends HookWidget {
                                     color: AppColors.inpost,
                                     size: tileButtonSize - 60,
                                   ),
-                                  text: S.of(context).addPackage,
+                                  text: S.of(context).AddPack,
                                   onTap: () async {
                                     context.read<AddPackageCubit>().emit(
                                           const AddPackageState.inProgress(),
@@ -124,7 +124,7 @@ class HomePage extends HookWidget {
                                     color: AppColors.inpost,
                                     size: tileButtonSize - 60,
                                   ),
-                                  text: S.of(context).passPackage,
+                                  text: S.of(context).PassPack,
                                   onTap: () {
                                     context.read<PassPackageCubit>().emit(
                                           const PassPackageState.inProgress(),
@@ -169,7 +169,7 @@ class HomePage extends HookWidget {
                                     color: AppColors.inpost,
                                     size: tileButtonSize - 60,
                                   ),
-                                  text: S.of(context).editPackage,
+                                  text: S.of(context).EditPack,
                                   onTap: () {
                                     Navigator.of(context)
                                         .pushNamed(AppPages.edit.route);
@@ -185,7 +185,7 @@ class HomePage extends HookWidget {
                                     color: AppColors.inpost,
                                     size: tileButtonSize - 60,
                                   ),
-                                  text: S.of(context).history,
+                                  text: S.of(context).History,
                                   onTap: () {
                                     Navigator.of(context)
                                         .pushNamed(AppPages.history.route);

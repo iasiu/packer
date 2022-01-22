@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:packer/generated/l10n.dart';
 import 'package:packer/config/config.dart';
 import 'package:packer/models/models.dart';
 import 'package:packer/views/add_package_page/widgets/add_receiver_page.dart';
@@ -20,8 +21,8 @@ class PickReceiverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       height: 60,
-      title: const Text(
-        'Pick receiver',
+      title: Text(
+        S.of(context).PickReceiverPage_PickReceiver,
         style: TextStyles.white24,
       ),
       body: Stack(
@@ -41,9 +42,9 @@ class PickReceiverPage extends StatelessWidget {
                   ),
                   itemCount: receivers.length,
                 )
-              : const Center(
+              : Center(
                   child: Text(
-                    'List is currently empty',
+                    S.of(context).PickReceiverPage_EmptyList,
                     style: TextStyles.white20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -60,7 +61,7 @@ class PickReceiverPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppTextButton(
-                      text: 'New receiver',
+                      text: S.of(context).PickReceiverPage_NewReceiver,
                       onPressed: () async {
                         final receiver = await Navigator.of(context)
                             .push(AddReceiverPageRoute(ignoreState: ignoreState)) as Receiver?;
