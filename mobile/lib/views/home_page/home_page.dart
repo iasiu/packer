@@ -85,7 +85,7 @@ class HomePage extends HookWidget {
                                   icon: Icon(
                                     Icons.crop_free,
                                     color: AppColors.inpost,
-                                    size: tileButtonSize - 48,
+                                    size: tileButtonSize - 60,
                                   ),
                                   text: S.of(context).addPackage,
                                   onTap: () async {
@@ -122,7 +122,7 @@ class HomePage extends HookWidget {
                                   icon: Icon(
                                     Icons.volunteer_activism,
                                     color: AppColors.inpost,
-                                    size: tileButtonSize - 48,
+                                    size: tileButtonSize - 60,
                                   ),
                                   text: S.of(context).passPackage,
                                   onTap: () {
@@ -167,7 +167,7 @@ class HomePage extends HookWidget {
                                   icon: Icon(
                                     Icons.edit,
                                     color: AppColors.inpost,
-                                    size: tileButtonSize - 48,
+                                    size: tileButtonSize - 60,
                                   ),
                                   text: S.of(context).editPackage,
                                   onTap: () {
@@ -183,7 +183,7 @@ class HomePage extends HookWidget {
                                   icon: Icon(
                                     Icons.history,
                                     color: AppColors.inpost,
-                                    size: tileButtonSize - 48,
+                                    size: tileButtonSize - 60,
                                   ),
                                   text: S.of(context).history,
                                   onTap: () {

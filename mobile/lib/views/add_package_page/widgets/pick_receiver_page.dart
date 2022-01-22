@@ -10,9 +10,11 @@ class PickReceiverPage extends StatelessWidget {
   const PickReceiverPage({
     Key? key,
     required this.receivers,
+    this.ignoreState = false,
   }) : super(key: key);
 
   final List<Receiver> receivers;
+  final bool ignoreState;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class PickReceiverPage extends StatelessWidget {
                       text: 'New receiver',
                       onPressed: () async {
                         final receiver = await Navigator.of(context)
-                            .push(AddReceiverPageRoute()) as Receiver?;
+                            .push(AddReceiverPageRoute(ignoreState: ignoreState)) as Receiver?;
                         if (receiver != null) {
                           Navigator.of(context).pop(receiver);
                         }

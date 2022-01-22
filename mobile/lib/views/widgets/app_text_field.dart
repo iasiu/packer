@@ -13,9 +13,11 @@ class AppTextField extends StatelessWidget {
     this.padding = 8,
     this.textInputAction,
     this.keyboardType,
+    this.initialValue,
   }) : super(key: key);
 
   final String name;
+  final String? initialValue;
   final int? lines;
   final int? maxLength;
   final TextStyle? counterStyle;
@@ -27,6 +29,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
+      initialValue: initialValue,
       autocorrect: false,
       keyboardType: keyboardType,
       textInputAction: textInputAction,

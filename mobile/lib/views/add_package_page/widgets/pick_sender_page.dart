@@ -11,10 +11,12 @@ class PickSenderPage extends StatelessWidget {
     Key? key,
     required this.senders,
     required this.paddingTop,
+    this.ignoreState = false,
   }) : super(key: key);
 
   final List<Sender> senders;
   final double paddingTop;
+  final bool ignoreState;
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +64,9 @@ class PickSenderPage extends StatelessWidget {
                     AppTextButton(
                       text: 'New sender',
                       onPressed: () async {
-                        final sender = await Navigator.of(context)
-                            .push(AddSenderPageRoute()) as Sender?;
+                        final sender = await Navigator.of(context).push(
+                                AddSenderPageRoute(ignoreState: ignoreState))
+                            as Sender?;
                         if (sender != null) {
                           Navigator.of(context).pop(sender);
                         }
