@@ -4,6 +4,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <img src="images/packup_logo.png" alt="Main page" width="256" height="256">
+
   <h3 align="center">Packup</h3>
 
   <p align="center">
